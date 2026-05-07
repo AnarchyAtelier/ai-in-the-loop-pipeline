@@ -1,0 +1,237 @@
+{
+  "run_id": "pipeline-1",
+  "generated_at": "2026-05-07T00:09:57.879Z",
+  "source_files": {
+    "test_results": "/var/jenkins_home/workspace/ui-test-analytics/4-aggregate/ai-in-the-loop-pipeline/ui-test-analytics/results/test-results.csv",
+    "diff_results": "/var/jenkins_home/workspace/ui-test-analytics/4-aggregate/ai-in-the-loop-pipeline/ui-test-analytics/results/diff-results.csv",
+    "false_negative_candidates": "/var/jenkins_home/workspace/ui-test-analytics/4-aggregate/ai-in-the-loop-pipeline/ui-test-analytics/results/false-negative-candidates.csv",
+    "triage_results": "/var/jenkins_home/workspace/ui-test-analytics/4-aggregate/ai-in-the-loop-pipeline/ui-test-analytics/results/triage-results.csv",
+    "eval_results": "/var/jenkins_home/workspace/ui-test-analytics/4-aggregate/ai-in-the-loop-pipeline/ui-test-analytics/results/eval-results.csv",
+    "action_summary": "/var/jenkins_home/workspace/ui-test-analytics/4-aggregate/ai-in-the-loop-pipeline/ui-test-analytics/results/action-summary.json"
+  },
+  "counts": {
+    "test_results": 41,
+    "diff_results": 41,
+    "false_negative_candidates": 5,
+    "triage_results": 8,
+    "eval_results": 1,
+    "action_suggestions": 9
+  },
+  "test_status": {
+    "passed": 33,
+    "failed": 4,
+    "error": 4
+  },
+  "diff_status": {
+    "still_passing": 32,
+    "new_failure": 7,
+    "unresolved": 1,
+    "resolved": 1
+  },
+  "ai_verdict": {
+    "real_bug": 2,
+    "environment_issue": 3,
+    "flaky": 2,
+    "test_issue": 1
+  },
+  "false_negative_by_trap": {
+    "FN-1": 1,
+    "FN-3": 1,
+    "FN-6": 1,
+    "FN-2": 2
+  },
+  "eval_latest": {
+    "run_id": "pipeline-1",
+    "eval_date": "2026-05-07T00:09:20.814Z",
+    "accuracy": "0.5000",
+    "fp_detection_rate": "0.0000",
+    "fn_detection_rate": "0.0000",
+    "total_cases": "6",
+    "correct": "3",
+    "incorrect": "3",
+    "details_json": "[{\"test_id\":\"FN-3\",\"test_case\":\"Phantom Brew whitebox flows › cart coupon applies a visible discount to the order total\",\"trap_type\":\"false_negative\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"real_bug\",\"ai_verdict\":\"real_bug\",\"verdict_match\":true,\"expected_false_positive\":false,\"is_false_positive\":false,\"false_positive_match\":true,\"expected_false_negative\":true,\"is_false_negative\":false,\"false_negative_match\":false,\"confidence\":0.9},{\"test_id\":\"FN-5\",\"test_case\":\"カートページ › 数量の+ボタンで数量が増える\",\"trap_type\":\"false_negative\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"real_bug\",\"ai_verdict\":\"environment_issue\",\"verdict_match\":false,\"expected_false_positive\":false,\"is_false_positive\":false,\"false_positive_match\":true,\"expected_false_negative\":true,\"is_false_negative\":false,\"false_negative_match\":false,\"confidence\":0.9},{\"test_id\":\"FP-2\",\"test_case\":\"注文ステータスページ › ステータスが「preparing」に進む\",\"trap_type\":\"false_positive\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"flaky\",\"ai_verdict\":\"flaky\",\"verdict_match\":true,\"expected_false_positive\":true,\"is_false_positive\":false,\"false_positive_match\":false,\"expected_false_negative\":false,\"is_false_negative\":false,\"false_negative_match\":true,\"confidence\":0.85},{\"test_id\":\"FP-2\",\"test_case\":\"注文ステータスページ › 最終的にステータスが「completed」になる\",\"trap_type\":\"false_positive\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"flaky\",\"ai_verdict\":\"flaky\",\"verdict_match\":true,\"expected_false_positive\":true,\"is_false_positive\":false,\"false_positive_match\":false,\"expected_false_negative\":false,\"is_false_negative\":false,\"false_negative_match\":true,\"confidence\":0.85},{\"test_id\":\"FN-4\",\"test_case\":\"注文履歴ページ › ページネーションが正しく動作する\",\"trap_type\":\"false_negative\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"real_bug\",\"ai_verdict\":\"environment_issue\",\"verdict_match\":false,\"expected_false_positive\":false,\"is_false_positive\":false,\"false_positive_match\":true,\"expected_false_negative\":true,\"is_false_negative\":false,\"false_negative_match\":false,\"confidence\":0.9},{\"test_id\":\"FP-4\",\"test_case\":\"レート制限テスト › 通常のページ遷移でエラーが出ない\",\"trap_type\":\"false_positive\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"environment_issue\",\"ai_verdict\":\"test_issue\",\"verdict_match\":false,\"expected_false_positive\":true,\"is_false_positive\":false,\"false_positive_match\":false,\"expected_false_negative\":false,\"is_false_negative\":false,\"false_negative_match\":true,\"confidence\":0.9}]"
+  },
+  "action_summary": {
+    "run_id": "pipeline-1",
+    "generated_at": "2026-05-07T00:09:57.529Z",
+    "source_files": {
+      "diff_results": "/var/jenkins_home/workspace/ui-test-analytics/4-aggregate/ai-in-the-loop-pipeline/ui-test-analytics/results/diff-results.csv",
+      "triage_results": "/var/jenkins_home/workspace/ui-test-analytics/4-aggregate/ai-in-the-loop-pipeline/ui-test-analytics/results/triage-results.csv"
+    },
+    "summary": {
+      "total_actions": 9,
+      "high_priority": 2,
+      "medium_priority": 1,
+      "low_priority": 6,
+      "info_priority": 0,
+      "by_type": {
+        "real_bug_failure": 2,
+        "test_maintenance": 1,
+        "resolved": 1,
+        "watch": 5
+      },
+      "by_verdict": {
+        "real_bug": 2,
+        "test_issue": 1,
+        "untriaged": 1,
+        "environment_issue": 3,
+        "flaky": 2
+      }
+    },
+    "actions": [
+      {
+        "id": "pipeline-1:Phantom_Brew_whitebox_flows_›_cart_coupon_applies_a_visible_discount_to_the_order_total:real-bug",
+        "priority": "high",
+        "type": "real_bug_failure",
+        "test_case": "Phantom Brew whitebox flows › cart coupon applies a visible discount to the order total",
+        "message": "Phantom Brew whitebox flows › cart coupon applies a visible discount to the order total の assertion error が 3回連続。最優先で対処。",
+        "details": {
+          "diff_status": "unresolved",
+          "ai_verdict": "real_bug",
+          "confidence": 0.9,
+          "error_type": "assertion error",
+          "failure_streak_count": 3,
+          "consecutive_pass_count": 0,
+          "estimated_root_cause": "Coupon discount calculation or display is incorrect causing order total mismatch.",
+          "recommended_action": "Investigate coupon discount logic and UI display to fix price mismatch."
+        }
+      },
+      {
+        "id": "pipeline-1:チェックアウトページ_›_支払い方法を選択できる:real-bug",
+        "priority": "high",
+        "type": "real_bug_failure",
+        "test_case": "チェックアウトページ › 支払い方法を選択できる",
+        "message": "チェックアウトページ › 支払い方法を選択できる の locator error が 1回連続。最優先で対処。",
+        "details": {
+          "diff_status": "new_failure",
+          "ai_verdict": "real_bug",
+          "confidence": 0.85,
+          "error_type": "locator error",
+          "failure_streak_count": 1,
+          "consecutive_pass_count": 0,
+          "estimated_root_cause": "Payment method input element missing or not rendered, causing locator failure.",
+          "recommended_action": "Check payment method UI rendering and selectors to ensure input[name=\"payment\"][value=\"credit\"] is present."
+        }
+      },
+      {
+        "id": "pipeline-1:レート制限テスト_›_通常のページ遷移でエラーが出ない:test-maintenance",
+        "priority": "medium",
+        "type": "test_maintenance",
+        "test_case": "レート制限テスト › 通常のページ遷移でエラーが出ない",
+        "message": "レート制限テスト › 通常のページ遷移でエラーが出ない はテスト実装の問題の可能性あり（確信度: 0.90）。セレクタとアサーションを見直し。",
+        "details": {
+          "diff_status": "new_failure",
+          "ai_verdict": "test_issue",
+          "confidence": 0.9,
+          "error_type": "locator error",
+          "failure_streak_count": 1,
+          "consecutive_pass_count": 0,
+          "estimated_root_cause": "Locator selector 'h1, .product-card' matches multiple elements causing strict mode error in toBeVisible assertion.",
+          "recommended_action": "Refine locator to target a single clear element or check visibility differently to fix selector brittleness."
+        }
+      },
+      {
+        "id": "pipeline-1:Phantom_Brew_whitebox_flows_›_checkout_places_an_order_and_lists_it_in_order_history:resolved",
+        "priority": "low",
+        "type": "resolved",
+        "test_case": "Phantom Brew whitebox flows › checkout places an order and lists it in order history",
+        "message": "Phantom Brew whitebox flows › checkout places an order and lists it in order history が改善済み。連続PASS 0回。",
+        "details": {
+          "diff_status": "resolved",
+          "ai_verdict": "",
+          "confidence": null,
+          "error_type": "assertion error",
+          "failure_streak_count": 0,
+          "consecutive_pass_count": 0,
+          "estimated_root_cause": "",
+          "recommended_action": ""
+        }
+      },
+      {
+        "id": "pipeline-1:カートページ_›_商品を削除できる:watch",
+        "priority": "low",
+        "type": "watch",
+        "test_case": "カートページ › 商品を削除できる",
+        "message": "カートページ › 商品を削除できる の server error を確認。差分状態: new_failure。",
+        "details": {
+          "diff_status": "new_failure",
+          "ai_verdict": "environment_issue",
+          "confidence": 0.9,
+          "error_type": "server error",
+          "failure_streak_count": 1,
+          "consecutive_pass_count": 0,
+          "estimated_root_cause": "Test timeout waiting for .btn-remove locator indicates possible app slow response or environment issues.",
+          "recommended_action": "Verify environment health and app responsiveness; increase timeout or stabilize test environment."
+        }
+      },
+      {
+        "id": "pipeline-1:カートページ_›_数量の+ボタンで数量が増える:watch",
+        "priority": "low",
+        "type": "watch",
+        "test_case": "カートページ › 数量の+ボタンで数量が増える",
+        "message": "カートページ › 数量の+ボタンで数量が増える の server error を確認。差分状態: new_failure。",
+        "details": {
+          "diff_status": "new_failure",
+          "ai_verdict": "environment_issue",
+          "confidence": 0.9,
+          "error_type": "server error",
+          "failure_streak_count": 1,
+          "consecutive_pass_count": 0,
+          "estimated_root_cause": "Test timeout waiting for .qty-btn locator suggests UI or server is unresponsive or slow.",
+          "recommended_action": "Check environment stability and server responsiveness; optimize test timeout if needed."
+        }
+      },
+      {
+        "id": "pipeline-1:注文ステータスページ_›_ステータスが「preparing」に進む:watch",
+        "priority": "low",
+        "type": "watch",
+        "test_case": "注文ステータスページ › ステータスが「preparing」に進む",
+        "message": "注文ステータスページ › ステータスが「preparing」に進む の assertion error を確認。差分状態: new_failure。",
+        "details": {
+          "diff_status": "new_failure",
+          "ai_verdict": "flaky",
+          "confidence": 0.85,
+          "error_type": "assertion error",
+          "failure_streak_count": 1,
+          "consecutive_pass_count": 0,
+          "estimated_root_cause": "Status intermittently remains at 'received' due to random delay before transitioning to 'preparing'.",
+          "recommended_action": "Add retries or longer wait for status transition to reduce flakiness."
+        }
+      },
+      {
+        "id": "pipeline-1:注文ステータスページ_›_最終的にステータスが「completed」になる:watch",
+        "priority": "low",
+        "type": "watch",
+        "test_case": "注文ステータスページ › 最終的にステータスが「completed」になる",
+        "message": "注文ステータスページ › 最終的にステータスが「completed」になる の assertion error を確認。差分状態: new_failure。",
+        "details": {
+          "diff_status": "new_failure",
+          "ai_verdict": "flaky",
+          "confidence": 0.85,
+          "error_type": "assertion error",
+          "failure_streak_count": 1,
+          "consecutive_pass_count": 0,
+          "estimated_root_cause": "Timeout waiting for status to become 'completed' likely caused by slow or inconsistent backend update delays.",
+          "recommended_action": "Increase timeout or poll longer for status to reach 'completed' to reduce flaky failures."
+        }
+      },
+      {
+        "id": "pipeline-1:注文履歴ページ_›_ページネーションが正しく動作する:watch",
+        "priority": "low",
+        "type": "watch",
+        "test_case": "注文履歴ページ › ページネーションが正しく動作する",
+        "message": "注文履歴ページ › ページネーションが正しく動作する の timeout error を確認。差分状態: new_failure。",
+        "details": {
+          "diff_status": "new_failure",
+          "ai_verdict": "environment_issue",
+          "confidence": 0.9,
+          "error_type": "timeout error",
+          "failure_streak_count": 1,
+          "consecutive_pass_count": 0,
+          "estimated_root_cause": "Timeout filling form fields due to page or network slowness causing test to exceed limits.",
+          "recommended_action": "Check network, server load and page responsiveness; consider increasing test timeouts."
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "run_id": "pipeline-3",
+  "generated_at": "2026-05-07T03:29:47.208Z",
+  "source_files": {
+    "diff_results": "/var/jenkins_home/workspace/ui-test-analytics/4-aggregate/ai-in-the-loop-pipeline/ui-test-analytics/results/diff-results.csv",
+    "triage_results": "/var/jenkins_home/workspace/ui-test-analytics/4-aggregate/ai-in-the-loop-pipeline/ui-test-analytics/results/triage-results.csv"
+  },
+  "summary": {
+    "total_actions": 8,
+    "high_priority": 2,
+    "medium_priority": 3,
+    "low_priority": 3,
+    "info_priority": 0,
+    "by_type": {
+      "real_bug_failure": 2,
+      "false_positive_review": 3,
+      "resolved": 1,
+      "environment_check": 2
+    },
+    "by_verdict": {
+      "real_bug": 2,
+      "test_issue": 1,
+      "flaky": 2,
+      "untriaged": 1,
+      "environment_issue": 2
+    }
+  },
+  "actions": [
+    {
+      "id": "pipeline-3:Phantom_Brew_whitebox_flows_›_cart_coupon_applies_a_visible_discount_to_the_order_total:real-bug",
+      "priority": "high",
+      "type": "real_bug_failure",
+      "test_case": "Phantom Brew whitebox flows › cart coupon applies a visible discount to the order total",
+      "message": "Phantom Brew whitebox flows › cart coupon applies a visible discount to the order total の assertion error が 5回連続。最優先で対処。",
+      "details": {
+        "diff_status": "unresolved",
+        "ai_verdict": "real_bug",
+        "confidence": 0.9,
+        "error_type": "assertion error",
+        "failure_streak_count": 5,
+        "consecutive_pass_count": 0,
+        "estimated_root_cause": "Discount calculation logic error leading to incorrect total display",
+        "recommended_action": "Investigate backend discount calculation for coupon application and fix discrepancy"
+      }
+    },
+    {
+      "id": "pipeline-3:チェックアウトページ_›_注文サマリーが表示される:real-bug",
+      "priority": "high",
+      "type": "real_bug_failure",
+      "test_case": "チェックアウトページ › 注文サマリーが表示される",
+      "message": "チェックアウトページ › 注文サマリーが表示される の locator error が 1回連続。最優先で対処。",
+      "details": {
+        "diff_status": "new_failure",
+        "ai_verdict": "real_bug",
+        "confidence": 0.9,
+        "error_type": "locator error",
+        "failure_streak_count": 1,
+        "consecutive_pass_count": 0,
+        "estimated_root_cause": "Order summary element missing or not rendered on checkout page",
+        "recommended_action": "Fix rendering logic or visibility of order summary on checkout"
+      }
+    },
+    {
+      "id": "pipeline-3:レート制限テスト_›_通常のページ遷移でエラーが出ない:false-positive",
+      "priority": "medium",
+      "type": "false_positive_review",
+      "test_case": "レート制限テスト › 通常のページ遷移でエラーが出ない",
+      "message": "レート制限テスト › 通常のページ遷移でエラーが出ない は偽陽性の可能性あり（確信度: 0.90）。テスト条件と待機条件を確認。",
+      "details": {
+        "diff_status": "unresolved",
+        "ai_verdict": "test_issue",
+        "confidence": 0.9,
+        "error_type": "locator error",
+        "failure_streak_count": 3,
+        "consecutive_pass_count": 0,
+        "estimated_root_cause": "Locator matches multiple elements violating strict mode, causing test failure",
+        "recommended_action": "Refine selector to target a single visible element to avoid strict mode violation"
+      }
+    },
+    {
+      "id": "pipeline-3:注文ステータスページ_›_ステータスが「preparing」に進む:false-positive",
+      "priority": "medium",
+      "type": "false_positive_review",
+      "test_case": "注文ステータスページ › ステータスが「preparing」に進む",
+      "message": "注文ステータスページ › ステータスが「preparing」に進む は偽陽性の可能性あり（確信度: 0.80）。テスト条件と待機条件を確認。",
+      "details": {
+        "diff_status": "unresolved",
+        "ai_verdict": "flaky",
+        "confidence": 0.8,
+        "error_type": "assertion error",
+        "failure_streak_count": 3,
+        "consecutive_pass_count": 0,
+        "estimated_root_cause": "Random delay causes status update to 'preparing' to be missed within test timeout",
+        "recommended_action": "Increase timeout or add retries, consider more robust async state handling"
+      }
+    },
+    {
+      "id": "pipeline-3:注文ステータスページ_›_最終的にステータスが「completed」になる:false-positive",
+      "priority": "medium",
+      "type": "false_positive_review",
+      "test_case": "注文ステータスページ › 最終的にステータスが「completed」になる",
+      "message": "注文ステータスページ › 最終的にステータスが「completed」になる は偽陽性の可能性あり（確信度: 0.90）。テスト条件と待機条件を確認。",
+      "details": {
+        "diff_status": "unresolved",
+        "ai_verdict": "flaky",
+        "confidence": 0.9,
+        "error_type": "assertion error",
+        "failure_streak_count": 3,
+        "consecutive_pass_count": 0,
+        "estimated_root_cause": "Test timeout due to slow status transitions and intermittent delivered states before completion",
+        "recommended_action": "Extend wait timeout and improve status polling logic to handle transitional states"
+      }
+    },
+    {
+      "id": "pipeline-3:Phantom_Brew_blackbox_flows_›_applies_a_coupon_and_removes_an_item_from_the_cart:resolved",
+      "priority": "low",
+      "type": "resolved",
+      "test_case": "Phantom Brew blackbox flows › applies a coupon and removes an item from the cart",
+      "message": "Phantom Brew blackbox flows › applies a coupon and removes an item from the cart が改善済み。連続PASS 0回。",
+      "details": {
+        "diff_status": "resolved",
+        "ai_verdict": "",
+        "confidence": null,
+        "error_type": "locator error",
+        "failure_streak_count": 0,
+        "consecutive_pass_count": 0,
+        "estimated_root_cause": "",
+        "recommended_action": ""
+      }
+    },
+    {
+      "id": "pipeline-3:カートページ_›_数量の+ボタンで数量が増える:environment",
+      "priority": "low",
+      "type": "environment_check",
+      "test_case": "カートページ › 数量の+ボタンで数量が増える",
+      "message": "カートページ › 数量の+ボタンで数量が増える は偽陽性の可能性あり（確信度: 0.85）。環境要因を確認。",
+      "details": {
+        "diff_status": "new_failure",
+        "ai_verdict": "environment_issue",
+        "confidence": 0.85,
+        "error_type": "server error",
+        "failure_streak_count": 1,
+        "consecutive_pass_count": 0,
+        "estimated_root_cause": "Page reload aborted due to detached frame or network glitch during test",
+        "recommended_action": "Check test environment stability and frame lifecycle management during reload"
+      }
+    },
+    {
+      "id": "pipeline-3:注文履歴ページ_›_注文履歴からステータスページに遷移できる:environment",
+      "priority": "low",
+      "type": "environment_check",
+      "test_case": "注文履歴ページ › 注文履歴からステータスページに遷移できる",
+      "message": "注文履歴ページ › 注文履歴からステータスページに遷移できる は偽陽性の可能性あり（確信度: 0.85）。環境要因を確認。",
+      "details": {
+        "diff_status": "new_failure",
+        "ai_verdict": "environment_issue",
+        "confidence": 0.85,
+        "error_type": "timeout error",
+        "failure_streak_count": 1,
+        "consecutive_pass_count": 0,
+        "estimated_root_cause": "Test timeout on page fill due to possible slow page load or locator unavailability",
+        "recommended_action": "Investigate page load times and element availability; stabilize test environment"
+      }
+    }
+  ]
+}

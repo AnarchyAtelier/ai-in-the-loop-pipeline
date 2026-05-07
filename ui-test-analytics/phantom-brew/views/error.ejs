@@ -1,0 +1,10 @@
+<% const pageTitle = 'Error' %>
+<%- include('partials/header') %>
+
+<div class="error-page">
+  <h1>Oops!</h1>
+  <p><%= typeof message !== 'undefined' ? message : 'Something went wrong.' %></p>
+  <a href="/menu" class="btn btn-primary">Back to Menu</a>
+</div>
+
+<%- include('partials/footer') %>

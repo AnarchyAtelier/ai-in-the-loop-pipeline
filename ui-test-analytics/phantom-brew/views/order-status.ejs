@@ -1,0 +1,81 @@
+<% const pageTitle = 'Order #' + order.id %>
+<%- include('partials/header') %>
+
+<h1>Order #<%= order.id %></h1>
+
+<div class="order-detail-layout">
+  <div class="status-section">
+    <div class="status-bar">
+      <div class="status-step" data-step="received">
+        <div class="step-dot"></div>
+        <span>Received</span>
+      </div>
+      <div class="status-step" data-step="preparing">
+        <div class="step-dot"></div>
+        <span>Preparing</span>
+      </div>
+      <div class="status-step" data-step="delivering">
+        <div class="step-dot"></div>
+        <span>Delivering</span>
+      </div>
+      <div class="status-step" data-step="completed">
+        <div class="step-dot"></div>
+        <span>Completed</span>
+      </div>
+    </div>
+    <div class="status-info">
+      <p id="status-text">Status: <strong id="current-status"><%= order.status %></strong></p>
+      <p id="eta-text">Estimated: <span id="eta-value">calculating...</span></p>
+    </div>
+  </div>
+
+  <div class="order-items-section">
+    <h2>Items</h2>
+    <% items.forEach(function(item) { %>
+    <div class="order-item-row">
+      <span><%= item.product_name %> <%= item.size ? '(' + item.size + ')' : '' %> x<%= item.quantity %></span>
+      <span>&yen;<%= (item.unit_price * item.quantity).toLocaleString() %></span>
+    </div>
+    <% }) %>
+    <hr>
+    <div class="summary-line total">
+      <span>Total</span>
+      <span>&yen;<%= order.total.toLocaleString() %></span>
+    </div>
+  </div>
+</div>
+
+<script>
+  const statuses = ['received', 'preparing', 'delivering', 'completed'];
+
+  function updateStatusUI(status) {
+    const idx = statuses.indexOf(status);
+    document.querySelectorAll('.status-step').forEach((el, i) => {
+      el.classList.toggle('active', i <= idx);
+      el.classList.toggle('current', i === idx);
+    });
+    document.getElementById('current-status').textContent = status;
+  }
+
+  // Initialize with current status
+  updateStatusUI('<%= order.status %>');
+
+  // FP-2: SSE with non-deterministic timing
+  const evtSource = new EventSource('/orders/<%= order.id %>/stream');
+  evtSource.onmessage = function(event) {
+    const data = JSON.parse(event.data);
+    updateStatusUI(data.status);
+    if (data.estimatedMinutes !== undefined) {
+      document.getElementById('eta-value').textContent =
+        data.estimatedMinutes > 0 ? data.estimatedMinutes + ' min' : 'Done!';
+    }
+    if (data.final) {
+      evtSource.close();
+    }
+  };
+  evtSource.onerror = function() {
+    evtSource.close();
+  };
+</script>
+
+<%- include('partials/footer') %>

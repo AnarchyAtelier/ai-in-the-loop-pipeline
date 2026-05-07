@@ -1,0 +1,15 @@
+{
+  "name": "1c-playwright-naive",
+  "version": "1.0.0",
+  "description": "Naive test suite - junior QA engineer level tests that hit all traps",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:menu": "npx playwright test tests/menu-and-detail.spec.ts",
+    "test:cart": "npx playwright test tests/cart.spec.ts",
+    "test:checkout": "npx playwright test tests/checkout.spec.ts",
+    "test:orders": "npx playwright test tests/orders.spec.ts"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.48.0"
+  }
+}

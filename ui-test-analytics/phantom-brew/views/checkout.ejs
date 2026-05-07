@@ -1,0 +1,169 @@
+<% const pageTitle = 'Checkout' %>
+<%- include('partials/header') %>
+
+<h1>Checkout</h1>
+
+<div class="checkout-layout <%= variant === 'B' ? 'variant-b' : 'variant-a' %>" data-variant="<%= variant %>">
+  <!-- FP-3: Variant A = 2-column form, Variant B = 1-column form with different wrapper structure -->
+  <% if (variant === 'A') { %>
+  <div class="checkout-form">
+    <h2>Delivery Information</h2>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="customer-name">Name</label>
+        <input type="text" id="customer-name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="customer-email">Email</label>
+        <!-- FN-6: Only HTML5 type=email validation, no server-side check -->
+        <input type="email" id="customer-email" name="email" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="customer-address">Address</label>
+        <input type="text" id="customer-address" name="address" required>
+      </div>
+      <div class="form-group">
+        <label for="customer-phone">Phone</label>
+        <input type="tel" id="customer-phone" name="phone" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Payment Method</label>
+      <div class="payment-options">
+        <label class="radio-item">
+          <input type="radio" name="payment" value="credit" checked>
+          <span>Credit Card</span>
+        </label>
+        <label class="radio-item">
+          <input type="radio" name="payment" value="cod">
+          <span>Cash on Delivery</span>
+        </label>
+      </div>
+    </div>
+    <div id="credit-card-section" class="form-group">
+      <label for="card-number">Card Number</label>
+      <input type="text" id="card-number" placeholder="1234 5678 9012 3456">
+      <div class="form-row">
+        <input type="text" id="card-expiry" placeholder="MM/YY" class="half">
+        <input type="text" id="card-cvc" placeholder="CVC" class="half">
+      </div>
+    </div>
+  </div>
+  <% } else { %>
+  <!-- Variant B: Single column, no wrapper divs for form-row -->
+  <div class="checkout-form single-column">
+    <h2>Delivery Information</h2>
+    <div class="form-group">
+      <label for="customer-name">Name</label>
+      <input type="text" id="customer-name" name="name" required>
+    </div>
+    <div class="form-group">
+      <label for="customer-email">Email</label>
+      <input type="email" id="customer-email" name="email" required>
+    </div>
+    <div class="form-group">
+      <label for="customer-address">Address</label>
+      <input type="text" id="customer-address" name="address" required>
+    </div>
+    <div class="form-group">
+      <label for="customer-phone">Phone</label>
+      <input type="tel" id="customer-phone" name="phone" required>
+    </div>
+    <div class="form-group">
+      <label>Payment Method</label>
+      <div class="payment-options">
+        <label class="radio-item">
+          <input type="radio" name="payment" value="credit" checked>
+          <span>Credit Card</span>
+        </label>
+        <label class="radio-item">
+          <input type="radio" name="payment" value="cod">
+          <span>Cash on Delivery</span>
+        </label>
+      </div>
+    </div>
+    <div id="credit-card-section" class="form-group">
+      <label for="card-number">Card Number</label>
+      <input type="text" id="card-number" placeholder="1234 5678 9012 3456">
+      <input type="text" id="card-expiry" placeholder="MM/YY">
+      <input type="text" id="card-cvc" placeholder="CVC">
+    </div>
+  </div>
+  <% } %>
+
+  <div class="order-summary">
+    <h2>Order Summary</h2>
+    <% items.forEach(function(item) { %>
+    <div class="summary-item">
+      <span><%= item.name %> x<%= item.quantity %></span>
+      <span>&yen;<%= item.itemSubtotal.toLocaleString() %></span>
+    </div>
+    <% }) %>
+    <hr>
+    <div class="summary-line">
+      <span>Subtotal</span>
+      <span>&yen;<%= subtotal.toLocaleString() %></span>
+    </div>
+    <div class="summary-line">
+      <span>Tax</span>
+      <span>&yen;<%= tax.toLocaleString() %></span>
+    </div>
+    <div class="summary-line total">
+      <span>Total</span>
+      <span>&yen;<%= total.toLocaleString() %></span>
+    </div>
+    <button class="btn btn-primary btn-lg btn-block" id="place-order-btn" onclick="placeOrder()">
+      Place Order
+    </button>
+  </div>
+</div>
+
+<script>
+  // Toggle credit card section
+  document.querySelectorAll('input[name="payment"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+      const section = document.getElementById('credit-card-section');
+      section.style.display = this.value === 'credit' ? 'block' : 'none';
+    });
+  });
+
+  function placeOrder() {
+    const btn = document.getElementById('place-order-btn');
+    btn.disabled = true;
+    btn.textContent = 'Processing...';
+
+    const data = {
+      name: document.getElementById('customer-name').value,
+      email: document.getElementById('customer-email').value,
+      address: document.getElementById('customer-address').value,
+      phone: document.getElementById('customer-phone').value,
+      paymentMethod: document.querySelector('input[name="payment"]:checked')?.value,
+    };
+
+    fetch('/checkout/place-order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
+    .then(r => r.json())
+    .then(result => {
+      if (result.success) {
+        window.location.href = '/orders/' + result.orderId;
+      } else {
+        showToast(result.error || 'Order failed', 'error');
+        btn.disabled = false;
+        btn.textContent = 'Place Order';
+      }
+    })
+    .catch(() => {
+      showToast('Order failed', 'error');
+      btn.disabled = false;
+      btn.textContent = 'Place Order';
+    });
+  }
+</script>
+<script src="/js/cart-shared.js"></script>
+
+<%- include('partials/footer') %>

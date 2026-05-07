@@ -1,0 +1,42 @@
+run_id,run_date,test_suite,test_case,diff_status,previous_error_type,current_error_type,consecutive_pass_count
+pipeline-5,2026-05-07T05:22:45.389Z,cart.spec.ts,カートページ › カートに商品が表示される,still_passing,,,1
+pipeline-5,2026-05-07T05:22:45.389Z,cart.spec.ts,カートページ › カートの合計金額が表示される,still_passing,,,1
+pipeline-5,2026-05-07T05:22:45.389Z,cart.spec.ts,カートページ › クーポンを適用すると割引メッセージが表示される,still_passing,,,1
+pipeline-5,2026-05-07T05:22:45.389Z,cart.spec.ts,カートページ › 商品をカートに追加するとバッジが更新される,still_passing,,,1
+pipeline-5,2026-05-07T05:22:45.389Z,cart.spec.ts,カートページ › 商品を削除できる,still_passing,,,1
+pipeline-5,2026-05-07T05:22:45.389Z,cart.spec.ts,カートページ › 数量の+ボタンで数量が増える,still_passing,,,1
+pipeline-5,2026-05-07T05:22:45.389Z,cart.spec.ts,カートページ › 数量の-ボタンで数量が減る,resolved,server error,,1
+pipeline-5,2026-05-07T05:22:45.389Z,cart.spec.ts,カートページ › 複数商品をカートに追加してバッジが正しい,still_passing,,,1
+pipeline-5,2026-05-07T05:22:45.389Z,checkout.spec.ts,チェックアウトページ › チェックアウトページが表示される,still_passing,,,0
+pipeline-5,2026-05-07T05:22:45.389Z,checkout.spec.ts,チェックアウトページ › 支払い方法を選択できる,still_passing,,,0
+pipeline-5,2026-05-07T05:22:45.389Z,checkout.spec.ts,チェックアウトページ › 正常な情報で注文を確定できる,still_passing,,,0
+pipeline-5,2026-05-07T05:22:45.389Z,checkout.spec.ts,チェックアウトページ › 注文サマリーが表示される,still_passing,,,0
+pipeline-5,2026-05-07T05:22:45.389Z,checkout.spec.ts,チェックアウトページ › 配送先フォームの全フィールドが表示される,unresolved,locator error,locator error,0
+pipeline-5,2026-05-07T05:22:45.389Z,menu-and-detail.spec.ts,メニューページ › カテゴリフィルターが動作する,still_passing,,,5
+pipeline-5,2026-05-07T05:22:45.389Z,menu-and-detail.spec.ts,メニューページ › ソート後に商品カードをクリックして詳細に遷移できる,still_passing,,,5
+pipeline-5,2026-05-07T05:22:45.389Z,menu-and-detail.spec.ts,メニューページ › 価格で昇順ソートできる,still_passing,,,5
+pipeline-5,2026-05-07T05:22:45.389Z,menu-and-detail.spec.ts,メニューページ › 商品カードのAdd to Cartボタンが動作する,still_passing,,,5
+pipeline-5,2026-05-07T05:22:45.389Z,menu-and-detail.spec.ts,メニューページ › 商品一覧が表示される,still_passing,,,5
+pipeline-5,2026-05-07T05:22:45.389Z,menu-and-detail.spec.ts,メニューページ › 検索で商品を絞り込める,still_passing,,,5
+pipeline-5,2026-05-07T05:22:45.389Z,menu-and-detail.spec.ts,商品詳細ページ › オプションを選択すると価格に反映される,still_passing,,,5
+pipeline-5,2026-05-07T05:22:45.389Z,menu-and-detail.spec.ts,商品詳細ページ › サイズ変更で価格が変わる,still_passing,,,5
+pipeline-5,2026-05-07T05:22:45.389Z,menu-and-detail.spec.ts,商品詳細ページ › 数量を変更すると合計に反映される,still_passing,,,5
+pipeline-5,2026-05-07T05:22:45.389Z,orders.spec.ts,レート制限テスト › 通常のページ遷移でエラーが出ない,unresolved,locator error,locator error,0
+pipeline-5,2026-05-07T05:22:45.389Z,orders.spec.ts,注文ステータスページ › ステータスが「preparing」に進む,unresolved,assertion error,assertion error,0
+pipeline-5,2026-05-07T05:22:45.389Z,orders.spec.ts,注文ステータスページ › ステータスが「received」で始まる,still_passing,,,0
+pipeline-5,2026-05-07T05:22:45.389Z,orders.spec.ts,注文ステータスページ › 予想配達時間が表示される,still_passing,,,0
+pipeline-5,2026-05-07T05:22:45.389Z,orders.spec.ts,注文ステータスページ › 最終的にステータスが「completed」になる,unresolved,assertion error,assertion error,0
+pipeline-5,2026-05-07T05:22:45.389Z,orders.spec.ts,注文ステータスページ › 注文後にステータスページが表示される,still_passing,,,0
+pipeline-5,2026-05-07T05:22:45.389Z,orders.spec.ts,注文履歴ページ › ページネーションが正しく動作する,still_passing,,,0
+pipeline-5,2026-05-07T05:22:45.389Z,orders.spec.ts,注文履歴ページ › 注文履歴からステータスページに遷移できる,still_passing,,,0
+pipeline-5,2026-05-07T05:22:45.389Z,orders.spec.ts,注文履歴ページ › 注文履歴に注文が表示される,still_passing,,,0
+pipeline-5,2026-05-07T05:22:45.389Z,orders.spec.ts,注文履歴ページ › 注文履歴の各行に必要な情報が表示される,still_passing,,,0
+pipeline-5,2026-05-07T05:22:45.389Z,phantom-brew.spec.ts,Phantom Brew blackbox flows › applies a coupon and removes an item from the cart,still_passing,,,0
+pipeline-5,2026-05-07T05:22:45.389Z,phantom-brew.spec.ts,Phantom Brew blackbox flows › customizes a coffee item and carries the selection into the cart,still_passing,,,0
+pipeline-5,2026-05-07T05:22:45.389Z,phantom-brew.spec.ts,"Phantom Brew blackbox flows › lets customers browse, filter, search, and sort menu items",still_passing,,,0
+pipeline-5,2026-05-07T05:22:45.389Z,phantom-brew.spec.ts,Phantom Brew blackbox flows › places an order and shows it in order history,still_passing,,,0
+pipeline-5,2026-05-07T05:22:45.389Z,phantom-brew.spec.ts,Phantom Brew whitebox flows › cart coupon applies a visible discount to the order total,unresolved,assertion error,assertion error,0
+pipeline-5,2026-05-07T05:22:45.389Z,phantom-brew.spec.ts,Phantom Brew whitebox flows › cart shows added item and supports quantity update and removal,still_passing,,,0
+pipeline-5,2026-05-07T05:22:45.389Z,phantom-brew.spec.ts,Phantom Brew whitebox flows › checkout places an order and lists it in order history,still_passing,,,0
+pipeline-5,2026-05-07T05:22:45.389Z,phantom-brew.spec.ts,"Phantom Brew whitebox flows › menu supports browsing, filtering, search, and price sort",still_passing,,,0
+pipeline-5,2026-05-07T05:22:45.389Z,phantom-brew.spec.ts,"Phantom Brew whitebox flows › product detail recalculates total from size, options, and quantity",still_passing,,,0

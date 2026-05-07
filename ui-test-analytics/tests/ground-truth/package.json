@@ -1,0 +1,16 @@
+{
+  "name": "ground-truth-tests",
+  "version": "1.0.0",
+  "description": "Ground truth test suite for ui-test-analytics false positive / false negative traps",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:fp": "npx playwright test specs/false-positives.spec.ts",
+    "test:fn": "npx playwright test specs/false-negatives.spec.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.48.0",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.0"
+  }
+}

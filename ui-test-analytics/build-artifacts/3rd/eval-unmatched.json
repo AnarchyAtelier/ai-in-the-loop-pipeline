@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-05-07T03:29:22.499Z",
+  "total_unmatched": 2,
+  "unmatched": [
+    {
+      "run_id": "pipeline-3",
+      "test_case": "チェックアウトページ › 注文サマリーが表示される",
+      "reason": "no_label"
+    },
+    {
+      "run_id": "pipeline-3",
+      "test_case": "注文履歴ページ › 注文履歴からステータスページに遷移できる",
+      "reason": "no_label"
+    }
+  ]
+}

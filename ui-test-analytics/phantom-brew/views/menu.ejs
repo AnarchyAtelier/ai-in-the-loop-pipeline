@@ -1,0 +1,67 @@
+<% const pageTitle = 'Menu' %>
+<%- include('partials/header') %>
+
+<section class="menu-controls">
+  <div class="filter-bar">
+    <div class="categories">
+      <a href="/menu?category=all&sort=<%= currentSort %>" class="cat-btn <%= currentCategory === 'all' ? 'active' : '' %>">All</a>
+      <a href="/menu?category=Coffee&sort=<%= currentSort %>" class="cat-btn <%= currentCategory === 'Coffee' ? 'active' : '' %>">Coffee</a>
+      <a href="/menu?category=Food&sort=<%= currentSort %>" class="cat-btn <%= currentCategory === 'Food' ? 'active' : '' %>">Food</a>
+      <a href="/menu?category=Sweets&sort=<%= currentSort %>" class="cat-btn <%= currentCategory === 'Sweets' ? 'active' : '' %>">Sweets</a>
+    </div>
+    <div class="sort-controls">
+      <label for="sort-select">Sort:</label>
+      <select id="sort-select" onchange="location.href='/menu?category=<%= currentCategory %>&sort='+this.value">
+        <option value="" <%= currentSort === '' ? 'selected' : '' %>>Default</option>
+        <option value="price_asc" <%= currentSort === 'price_asc' ? 'selected' : '' %>>Price: Low to High</option>
+        <option value="price_desc" <%= currentSort === 'price_desc' ? 'selected' : '' %>>Price: High to Low</option>
+      </select>
+    </div>
+  </div>
+  <div class="search-bar">
+    <form action="/menu" method="GET">
+      <input type="hidden" name="category" value="<%= currentCategory %>">
+      <input type="hidden" name="sort" value="<%= currentSort %>">
+      <input type="text" name="search" placeholder="Search products..." value="<%= currentSearch %>" id="search-input">
+      <button type="submit" class="btn btn-sm">Search</button>
+    </form>
+  </div>
+</section>
+
+<section class="product-grid" id="product-grid">
+  <% products.forEach(function(product, index) { %>
+    <!-- FP-5: Staggered animation with pointer-events: none during animation -->
+    <!-- FN-2: data-href stores the ORIGINAL product id, not re-sorted -->
+    <div class="product-card animate-in"
+         style="animation-delay: <%= index * 80 %>ms"
+         data-product-id="<%= product.id %>"
+         data-href="/menu/<%= product.id %>">
+      <a href="/menu/<%= product.id %>" class="card-link">
+        <div class="product-image" style="background-color: hsl(<%= product.id * 36 %>, 40%, 85%)">
+          <span class="category-tag"><%= product.category %></span>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name"><%= product.name %></h3>
+          <p class="product-price" data-price="<%= product.price_s %>">
+            &yen;<%= product.price_s %><%= product.price_m ? ' ~' : '' %>
+          </p>
+        </div>
+      </a>
+      <button class="btn btn-add-cart"
+              data-product-id="<%= product.id %>"
+              data-product-name="<%= product.name %>"
+              onclick="addToCart(<%= product.id %>)">
+        Add to Cart
+      </button>
+    </div>
+  <% }) %>
+</section>
+
+<% if (products.length === 0) { %>
+  <p class="empty-state">No products found.</p>
+<% } %>
+
+<script src="/js/menu.js"></script>
+<script src="/js/cart-shared.js"></script>
+
+<%- include('partials/footer') %>

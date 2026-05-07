@@ -1,0 +1,123 @@
+<% const pageTitle = 'Cart' %>
+<%- include('partials/header') %>
+
+<h1>Your Cart</h1>
+
+<% if (items.length === 0) { %>
+  <div class="empty-state">
+    <p>Your cart is empty.</p>
+    <a href="/menu" class="btn btn-primary">Browse Menu</a>
+  </div>
+<% } else { %>
+  <div class="cart-layout">
+    <div class="cart-items">
+      <% items.forEach(function(item) { %>
+        <div class="cart-item" data-item-id="<%= item.id %>">
+          <div class="item-info">
+            <h3><%= item.name %></h3>
+            <p class="item-meta">
+              <% if (item.size) { %>Size: <%= item.size %><% } %>
+              <% if (item.options.length > 0) { %>
+                | <%= item.options.map(o => o.name).join(', ') %>
+              <% } %>
+            </p>
+            <p class="item-price">&yen;<%= item.unitPrice.toLocaleString() %></p>
+          </div>
+          <div class="item-controls">
+            <div class="qty-control">
+              <button class="qty-btn" onclick="updateQty(<%= item.id %>, <%= item.quantity - 1 %>)">-</button>
+              <span class="qty-value" id="qty-<%= item.id %>"><%= item.quantity %></span>
+              <button class="qty-btn" onclick="updateQty(<%= item.id %>, <%= item.quantity + 1 %>)">+</button>
+            </div>
+            <p class="item-subtotal">&yen;<%= item.itemSubtotal.toLocaleString() %></p>
+            <button class="btn-remove" onclick="removeItem(<%= item.id %>)">Remove</button>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+
+    <div class="cart-summary">
+      <div class="coupon-section">
+        <input type="text" id="coupon-input" placeholder="Coupon code"
+               value="<%= couponCode %>" <%= couponApplied ? 'disabled' : '' %>>
+        <button class="btn btn-sm" onclick="applyCoupon()" id="coupon-btn"
+                <%= couponApplied ? 'disabled' : '' %>>
+          <%= couponApplied ? 'Applied' : 'Apply' %>
+        </button>
+        <p id="coupon-message" class="<%= couponApplied ? 'success-msg' : '' %>">
+          <%= couponApplied ? 'Coupon applied successfully!' : '' %>
+        </p>
+      </div>
+
+      <div class="summary-lines">
+        <div class="summary-line">
+          <span>Subtotal</span>
+          <span>&yen;<%= subtotal.toLocaleString() %></span>
+        </div>
+        <% if (discount > 0) { %>
+        <div class="summary-line discount" id="discount-line">
+          <span>Discount (<%= discountLabel %>)</span>
+          <span class="discount-amount">-&yen;<%= discount.toLocaleString() %></span>
+        </div>
+        <% } %>
+        <div class="summary-line">
+          <span>Tax (10%)</span>
+          <span>&yen;<%= tax.toLocaleString() %></span>
+        </div>
+        <div class="summary-line total">
+          <span>Total</span>
+          <!-- FN-3: Total does NOT reflect discount -->
+          <span id="cart-total">&yen;<%= total.toLocaleString() %></span>
+        </div>
+      </div>
+
+      <a href="/checkout" class="btn btn-primary btn-lg btn-block">Proceed to Checkout</a>
+    </div>
+  </div>
+<% } %>
+
+<script>
+  function updateQty(itemId, newQty) {
+    fetch('/cart/update', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ itemId, quantity: newQty }),
+    })
+    .then(r => r.json())
+    .then(() => location.reload())
+    .catch(() => showToast('Update failed', 'error'));
+  }
+
+  function removeItem(itemId) {
+    fetch('/cart/remove', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ itemId }),
+    })
+    .then(r => r.json())
+    .then(() => location.reload())
+    .catch(() => showToast('Remove failed', 'error'));
+  }
+
+  function applyCoupon() {
+    const code = document.getElementById('coupon-input').value.trim();
+    if (!code) return;
+    fetch('/cart/coupon', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ code }),
+    })
+    .then(r => r.json())
+    .then(data => {
+      document.getElementById('coupon-message').textContent = data.message;
+      document.getElementById('coupon-message').className = data.success ? 'success-msg' : 'error-msg';
+      if (data.success) {
+        // FN-3: Page reloads and shows discount line, but total doesn't change
+        location.reload();
+      }
+    });
+  }
+</script>
+<script src="/js/cart-shared.js"></script>
+
+<%- include('partials/footer') %>

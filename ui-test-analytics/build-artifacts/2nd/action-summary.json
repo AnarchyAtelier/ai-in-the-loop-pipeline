@@ -1,0 +1,182 @@
+{
+  "run_id": "pipeline-2",
+  "generated_at": "2026-05-07T03:15:11.788Z",
+  "source_files": {
+    "diff_results": "/var/jenkins_home/workspace/ui-test-analytics/4-aggregate/ai-in-the-loop-pipeline/ui-test-analytics/results/diff-results.csv",
+    "triage_results": "/var/jenkins_home/workspace/ui-test-analytics/4-aggregate/ai-in-the-loop-pipeline/ui-test-analytics/results/triage-results.csv"
+  },
+  "summary": {
+    "total_actions": 9,
+    "high_priority": 3,
+    "medium_priority": 2,
+    "low_priority": 4,
+    "info_priority": 0,
+    "by_type": {
+      "real_bug_failure": 3,
+      "false_positive_review": 1,
+      "environment_check": 1,
+      "resolved": 4
+    },
+    "by_verdict": {
+      "real_bug": 3,
+      "test_issue": 1,
+      "environment_issue": 1,
+      "untriaged": 4
+    }
+  },
+  "actions": [
+    {
+      "id": "pipeline-2:Phantom_Brew_blackbox_flows_›_applies_a_coupon_and_removes_an_item_from_the_cart:real-bug",
+      "priority": "high",
+      "type": "real_bug_failure",
+      "test_case": "Phantom Brew blackbox flows › applies a coupon and removes an item from the cart",
+      "message": "Phantom Brew blackbox flows › applies a coupon and removes an item from the cart の locator error が 1回連続。最優先で対処。",
+      "details": {
+        "diff_status": "new_failure",
+        "ai_verdict": "real_bug",
+        "confidence": 0.8,
+        "error_type": "locator error",
+        "failure_streak_count": 1,
+        "consecutive_pass_count": 0,
+        "estimated_root_cause": "Missing or incorrectly rendered product heading after item removed from cart.",
+        "recommended_action": "Investigate why 'House Blend' heading is missing; fix item removal or page state update."
+      }
+    },
+    {
+      "id": "pipeline-2:Phantom_Brew_whitebox_flows_›_cart_coupon_applies_a_visible_discount_to_the_order_total:real-bug",
+      "priority": "high",
+      "type": "real_bug_failure",
+      "test_case": "Phantom Brew whitebox flows › cart coupon applies a visible discount to the order total",
+      "message": "Phantom Brew whitebox flows › cart coupon applies a visible discount to the order total の assertion error が 4回連続。最優先で対処。",
+      "details": {
+        "diff_status": "unresolved",
+        "ai_verdict": "real_bug",
+        "confidence": 0.9,
+        "error_type": "assertion error",
+        "failure_streak_count": 4,
+        "consecutive_pass_count": 0,
+        "estimated_root_cause": "Order total calculation does not reflect applied discount correctly.",
+        "recommended_action": "Fix order total calculation to correctly apply coupon discount."
+      }
+    },
+    {
+      "id": "pipeline-2:注文ステータスページ_›_最終的にステータスが「completed」になる:real-bug",
+      "priority": "high",
+      "type": "real_bug_failure",
+      "test_case": "注文ステータスページ › 最終的にステータスが「completed」になる",
+      "message": "注文ステータスページ › 最終的にステータスが「completed」になる の assertion error が 2回連続。最優先で対処。",
+      "details": {
+        "diff_status": "unresolved",
+        "ai_verdict": "real_bug",
+        "confidence": 0.85,
+        "error_type": "assertion error",
+        "failure_streak_count": 2,
+        "consecutive_pass_count": 0,
+        "estimated_root_cause": "Order status does not progress to 'completed' within expected time.",
+        "recommended_action": "Fix backend or frontend order status progression logic to reach 'completed' state properly."
+      }
+    },
+    {
+      "id": "pipeline-2:レート制限テスト_›_通常のページ遷移でエラーが出ない:false-positive",
+      "priority": "medium",
+      "type": "false_positive_review",
+      "test_case": "レート制限テスト › 通常のページ遷移でエラーが出ない",
+      "message": "レート制限テスト › 通常のページ遷移でエラーが出ない は偽陽性の可能性あり（確信度: 0.90）。テスト条件と待機条件を確認。",
+      "details": {
+        "diff_status": "unresolved",
+        "ai_verdict": "test_issue",
+        "confidence": 0.9,
+        "error_type": "locator error",
+        "failure_streak_count": 2,
+        "consecutive_pass_count": 0,
+        "estimated_root_cause": "Selector 'h1, .product-card' matches multiple elements causing strict mode failure.",
+        "recommended_action": "Refine selector to target a single element uniquely or use different locator strategy."
+      }
+    },
+    {
+      "id": "pipeline-2:注文ステータスページ_›_ステータスが「preparing」に進む:environment",
+      "priority": "medium",
+      "type": "environment_check",
+      "test_case": "注文ステータスページ › ステータスが「preparing」に進む",
+      "message": "注文ステータスページ › ステータスが「preparing」に進む は偽陽性の可能性あり（確信度: 0.70）。環境要因を確認。",
+      "details": {
+        "diff_status": "unresolved",
+        "ai_verdict": "environment_issue",
+        "confidence": 0.7,
+        "error_type": "timeout error",
+        "failure_streak_count": 2,
+        "consecutive_pass_count": 0,
+        "estimated_root_cause": "Page element '#customer-name' is not available within timeout - likely slow page load or network issues.",
+        "recommended_action": "Check server response times and network connectivity; increase timeout if needed."
+      }
+    },
+    {
+      "id": "pipeline-2:カートページ_›_商品を削除できる:resolved",
+      "priority": "low",
+      "type": "resolved",
+      "test_case": "カートページ › 商品を削除できる",
+      "message": "カートページ › 商品を削除できる が改善済み。連続PASS 1回。",
+      "details": {
+        "diff_status": "resolved",
+        "ai_verdict": "",
+        "confidence": null,
+        "error_type": "server error",
+        "failure_streak_count": 0,
+        "consecutive_pass_count": 1,
+        "estimated_root_cause": "",
+        "recommended_action": ""
+      }
+    },
+    {
+      "id": "pipeline-2:カートページ_›_数量の+ボタンで数量が増える:resolved",
+      "priority": "low",
+      "type": "resolved",
+      "test_case": "カートページ › 数量の+ボタンで数量が増える",
+      "message": "カートページ › 数量の+ボタンで数量が増える が改善済み。連続PASS 1回。",
+      "details": {
+        "diff_status": "resolved",
+        "ai_verdict": "",
+        "confidence": null,
+        "error_type": "server error",
+        "failure_streak_count": 0,
+        "consecutive_pass_count": 1,
+        "estimated_root_cause": "",
+        "recommended_action": ""
+      }
+    },
+    {
+      "id": "pipeline-2:チェックアウトページ_›_支払い方法を選択できる:resolved",
+      "priority": "low",
+      "type": "resolved",
+      "test_case": "チェックアウトページ › 支払い方法を選択できる",
+      "message": "チェックアウトページ › 支払い方法を選択できる が改善済み。連続PASS 1回。",
+      "details": {
+        "diff_status": "resolved",
+        "ai_verdict": "",
+        "confidence": null,
+        "error_type": "locator error",
+        "failure_streak_count": 0,
+        "consecutive_pass_count": 1,
+        "estimated_root_cause": "",
+        "recommended_action": ""
+      }
+    },
+    {
+      "id": "pipeline-2:注文履歴ページ_›_ページネーションが正しく動作する:resolved",
+      "priority": "low",
+      "type": "resolved",
+      "test_case": "注文履歴ページ › ページネーションが正しく動作する",
+      "message": "注文履歴ページ › ページネーションが正しく動作する が改善済み。連続PASS 0回。",
+      "details": {
+        "diff_status": "resolved",
+        "ai_verdict": "",
+        "confidence": null,
+        "error_type": "timeout error",
+        "failure_streak_count": 0,
+        "consecutive_pass_count": 0,
+        "estimated_root_cause": "",
+        "recommended_action": ""
+      }
+    }
+  ]
+}

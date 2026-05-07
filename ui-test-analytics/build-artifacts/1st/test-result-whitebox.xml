@@ -1,0 +1,58 @@
+<testsuites id="" name="" tests="5" failures="1" skipped="0" errors="0" time="18.647813000000003">
+<testsuite name="phantom-brew.spec.ts" timestamp="2026-05-07T00:02:48.597Z" hostname="chromium" tests="5" failures="1" skipped="0" time="13.655" errors="0">
+<testcase name="Phantom Brew whitebox flows › menu supports browsing, filtering, search, and price sort" classname="phantom-brew.spec.ts" time="3.925">
+</testcase>
+<testcase name="Phantom Brew whitebox flows › product detail recalculates total from size, options, and quantity" classname="phantom-brew.spec.ts" time="1.059">
+</testcase>
+<testcase name="Phantom Brew whitebox flows › cart shows added item and supports quantity update and removal" classname="phantom-brew.spec.ts" time="1.147">
+</testcase>
+<testcase name="Phantom Brew whitebox flows › cart coupon applies a visible discount to the order total" classname="phantom-brew.spec.ts" time="6.048">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../tests/1a-playwright-whitebox/test-results/phantom-brew-Phantom-Brew--bbe20-discount-to-the-order-total-chromium/error-context.md]]
+
+[[ATTACHMENT|../tests/1a-playwright-whitebox/test-results/phantom-brew-Phantom-Brew--bbe20-discount-to-the-order-total-chromium/trace.zip]]
+]]>
+</system-out>
+<failure message="expect(locator).toHaveText(expected) failed" type="expect.toHaveText">
+<![CDATA[  [chromium] › phantom-brew.spec.ts:72:7 › Phantom Brew whitebox flows › cart coupon applies a visible discount to the order total 
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator:  locator('#cart-total')
+    Expected: "¥380"
+    Received: "¥418"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveText" with timeout 5000ms
+      - waiting for locator('#cart-total')
+        9 × locator resolved to <span id="cart-total">¥418</span>
+          - unexpected value "¥418"
+
+
+      79 |     await expect(page.locator('#coupon-message')).toHaveText('Coupon applied successfully!');
+      80 |     await expect(page.locator('#discount-line')).toContainText('10% OFF');
+    > 81 |     await expect(page.locator('#cart-total')).toHaveText('¥380');
+         |                                               ^
+      82 |   });
+      83 |
+      84 |   // Intent: Verify checkout creates an order and the order appears in history.
+        at /var/jenkins_home/workspace/ui-test-analytics/1a-playwright-whitebox/ai-in-the-loop-pipeline/ui-test-analytics/tests/1a-playwright-whitebox/tests/phantom-brew.spec.ts:81:47
+
+    Error Context: ../test-results/phantom-brew-Phantom-Brew--bbe20-discount-to-the-order-total-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../test-results/phantom-brew-Phantom-Brew--bbe20-discount-to-the-order-total-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace ../test-results/phantom-brew-Phantom-Brew--bbe20-discount-to-the-order-total-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+</testcase>
+<testcase name="Phantom Brew whitebox flows › checkout places an order and lists it in order history" classname="phantom-brew.spec.ts" time="1.476">
+</testcase>
+</testsuite>
+</testsuites>

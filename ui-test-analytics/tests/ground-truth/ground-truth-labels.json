@@ -1,0 +1,165 @@
+{
+  "description": "Ground Truth labels for AI triage evaluation",
+  "labels": [
+    {
+      "test_id": "FP-1",
+      "test_name": "カート追加後にバッジ数が安定しない場合がある",
+      "aliases": [
+        "FP-1: オプティミスティックUI + ロールバック › カート追加後にバッジ数が安定しない場合がある",
+        "カートページ › 商品をカートに追加するとバッジが更新される",
+        "カートページ › 複数商品をカートに追加してバッジが正しい"
+      ],
+      "trap_type": "false_positive",
+      "expected_verdict": "flaky",
+      "root_cause": "Optimistic UI update with 5% server-side rollback on stock check",
+      "is_app_bug": false,
+      "notes": "5%の確率でしか発生しないため、テスト結果は確率的"
+    },
+    {
+      "test_id": "FP-2",
+      "test_name": "「preparing」ステータスが表示されることを5秒以内に確認",
+      "aliases": [
+        "FP-2: SSEステータス更新の非決定的タイミング › 「preparing」ステータスが表示されることを5秒以内に確認",
+        "注文ステータスページ › ステータスが「preparing」に進む",
+        "注文ステータスページ › 最終的にステータスが「completed」になる"
+      ],
+      "trap_type": "false_positive",
+      "expected_verdict": "flaky",
+      "root_cause": "SSE status transitions have random delays (3-30 seconds per stage)",
+      "is_app_bug": false,
+      "notes": "ステータス遷移間隔がランダムなため、短いタイムアウトでは見逃す"
+    },
+    {
+      "test_id": "FP-3",
+      "test_name": "チェックアウトの form-row 要素が存在する",
+      "aliases": [
+        "FP-3: A/Bテストによるレイアウト変動 › チェックアウトの form-row 要素が存在する",
+        "チェックアウトページ › 配送先フォームの全フィールドが表示される"
+      ],
+      "trap_type": "false_positive",
+      "expected_verdict": "flaky",
+      "root_cause": "A/B test: 50% chance of variant B (single column) which lacks .form-row wrapper",
+      "is_app_bug": false,
+      "notes": "A/Bテストによる意図的なレイアウト変動"
+    },
+    {
+      "test_id": "FP-4",
+      "test_name": "短時間に大量リクエストを送ると429が返る",
+      "aliases": [
+        "FP-4: レート制限 › 短時間に大量リクエストを送ると429が返る",
+        "レート制限テスト › 通常のページ遷移でエラーが出ない"
+      ],
+      "trap_type": "false_positive",
+      "expected_verdict": "environment_issue",
+      "root_cause": "Rate limiter: 20 requests per 10 seconds per session",
+      "is_app_bug": false,
+      "notes": "正常な防御機構。テスト環境での並列実行で発生"
+    },
+    {
+      "test_id": "FP-5",
+      "test_name": "ページ読み込み直後にカードをクリックできる",
+      "aliases": [
+        "FP-5: CSSアニメーション中のpointer-events:none › ページ読み込み直後にカードをクリックできる",
+        "メニューページ › 商品カードのAdd to Cartボタンが動作する"
+      ],
+      "trap_type": "false_positive",
+      "expected_verdict": "flaky",
+      "root_cause": "CSS staggered animation with pointer-events: none during animation",
+      "is_app_bug": false,
+      "notes": "アニメーション完了後にpointer-eventsが復活する設計"
+    },
+    {
+      "test_id": "FP-6",
+      "test_name": "サーバー起動直後のレスポンスが2秒以内に返る",
+      "aliases": [
+        "FP-6: コールドスタート遅延 › サーバー起動直後のレスポンスが2秒以内に返る",
+        "チェックアウトページ › チェックアウトページが表示される"
+      ],
+      "trap_type": "false_positive",
+      "expected_verdict": "environment_issue",
+      "root_cause": "Cold start: first 5 requests have 3 second delay for DB pool warmup",
+      "is_app_bug": false,
+      "notes": "サーバー再起動直後にのみ発生。CI環境で起きやすい"
+    },
+    {
+      "test_id": "FN-1",
+      "test_name": "3商品以上のカートで税額が正確に計算される",
+      "aliases": [
+        "FN-1: 税計算の丸め誤差 › 3商品以上のカートで税額が正確に計算される",
+        "カートページ › カートの合計金額が表示される"
+      ],
+      "trap_type": "false_negative",
+      "expected_verdict": "real_bug",
+      "root_cause": "Tax rounded per-item instead of on total: Math.round(item * rate) summed vs Math.round(sum * rate)",
+      "is_app_bug": true,
+      "notes": "10%税率では差分が出にくいが、オプション追加で端数が出やすくなる"
+    },
+    {
+      "test_id": "FN-2",
+      "test_name": "価格昇順ソート後、最初のカードのリンク先が表示商品と一致する",
+      "aliases": [
+        "FN-2: ソート後のリンク先不整合 › 価格昇順ソート後、最初のカードのリンク先が表示商品と一致する",
+        "メニューページ › 価格で昇順ソートできる",
+        "メニューページ › ソート後に商品カードをクリックして詳細に遷移できる"
+      ],
+      "trap_type": "false_negative",
+      "expected_verdict": "real_bug",
+      "root_cause": "Client-side sort re-orders DOM elements visually but does not update href attributes",
+      "is_app_bug": true,
+      "notes": "表示テキストだけを見るテストでは検知不可"
+    },
+    {
+      "test_id": "FN-3",
+      "test_name": "PHANTOM10クーポン適用で合計が10%割引される",
+      "aliases": [
+        "FN-3: クーポン適用UIの欺き › PHANTOM10クーポン適用で合計が10%割引される",
+        "Phantom Brew whitebox flows › cart coupon applies a visible discount to the order total",
+        "カートページ › クーポンを適用すると割引メッセージが表示される"
+      ],
+      "trap_type": "false_negative",
+      "expected_verdict": "real_bug",
+      "root_cause": "Coupon discount is displayed in UI but not subtracted from total calculation",
+      "is_app_bug": true,
+      "notes": "「割引適用メッセージ表示」だけをチェックするテストでは検知不可"
+    },
+    {
+      "test_id": "FN-4",
+      "test_name": "ちょうど10件の注文でページネーションが正しく動作する",
+      "aliases": [
+        "FN-4: ページネーション境界バグ › ちょうど10件の注文でページネーションが正しく動作する",
+        "注文履歴ページ › ページネーションが正しく動作する"
+      ],
+      "trap_type": "false_negative",
+      "expected_verdict": "real_bug",
+      "root_cause": "Off-by-one: totalPages += 1 when total % perPage === 0, creating an empty last page",
+      "is_app_bug": true,
+      "notes": "テストデータが10件ちょうどでないと発現しない"
+    },
+    {
+      "test_id": "FN-5",
+      "test_name": "数量+ボタンを3回素早くクリックすると数量が4になる",
+      "aliases": [
+        "FN-5: 数量ボタン連打の競合状態 › 数量+ボタンを3回素早くクリックすると数量が4になる",
+        "カートページ › 数量の+ボタンで数量が増える"
+      ],
+      "trap_type": "false_negative",
+      "expected_verdict": "real_bug",
+      "root_cause": "Race condition: requests within 100ms window are silently ignored on server side",
+      "is_app_bug": true,
+      "notes": "Playwrightの通常click()は安定して実行されるため再現しにくい"
+    },
+    {
+      "test_id": "FN-6",
+      "test_name": "不正なメールアドレスで注文するとサーバーがエラーを返す",
+      "aliases": [
+        "FN-6: サーバー側メールバリデーション欠如 › 不正なメールアドレスで注文するとサーバーがエラーを返す",
+        "チェックアウトページ › 正常な情報で注文を確定できる"
+      ],
+      "trap_type": "false_negative",
+      "expected_verdict": "real_bug",
+      "root_cause": "No server-side email validation; relies solely on HTML5 type=email which Playwright bypasses",
+      "is_app_bug": true,
+      "notes": "正常系メールのみ入力するテストでは検知不可"
+    }
+  ]
+}

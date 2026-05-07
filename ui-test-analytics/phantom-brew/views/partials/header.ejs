@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= typeof pageTitle !== 'undefined' ? pageTitle + ' | ' : '' %>Phantom Brew</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/menu" class="logo">Phantom Brew</a>
+      <nav>
+        <a href="/menu">Menu</a>
+        <a href="/cart" class="cart-link">
+          Cart<span id="cart-badge" class="badge" style="<%= cartCount > 0 ? '' : 'display:none' %>"><%= cartCount %></span>
+        </a>
+        <a href="/orders">Orders</a>
+      </nav>
+    </div>
+  </header>
+  <main class="container">

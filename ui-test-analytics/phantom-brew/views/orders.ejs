@@ -1,0 +1,53 @@
+<% const pageTitle = 'Order History' %>
+<%- include('partials/header') %>
+
+<h1>Order History</h1>
+
+<% if (orders.length === 0 && currentPage === 1) { %>
+  <div class="empty-state">
+    <p>No orders yet.</p>
+    <a href="/menu" class="btn btn-primary">Browse Menu</a>
+  </div>
+<% } else { %>
+  <div class="orders-table">
+    <div class="table-header">
+      <span>Order ID</span>
+      <span>Date</span>
+      <span>Items</span>
+      <span>Total</span>
+      <span>Status</span>
+    </div>
+    <% orders.forEach(function(order) { %>
+      <a href="/orders/<%= order.id %>" class="table-row">
+        <span class="order-id">#<%= order.id %></span>
+        <span><%= new Date(order.created_at).toLocaleDateString('ja-JP') %></span>
+        <span><%= order.item_count %> items</span>
+        <span>&yen;<%= order.total.toLocaleString() %></span>
+        <span class="status-badge status-<%= order.status %>"><%= order.status %></span>
+      </a>
+    <% }) %>
+
+    <!-- FN-4: Shows empty page when orders = exactly 10 -->
+    <% if (orders.length === 0 && currentPage > 1) { %>
+      <div class="empty-page-note">
+        <p>No orders on this page.</p>
+      </div>
+    <% } %>
+  </div>
+
+  <% if (totalPages > 1) { %>
+  <div class="pagination">
+    <% if (currentPage > 1) { %>
+      <a href="/orders?page=<%= currentPage - 1 %>" class="page-btn">Previous</a>
+    <% } %>
+    <% for (let i = 1; i <= totalPages; i++) { %>
+      <a href="/orders?page=<%= i %>" class="page-btn <%= i === currentPage ? 'active' : '' %>"><%= i %></a>
+    <% } %>
+    <% if (currentPage < totalPages) { %>
+      <a href="/orders?page=<%= currentPage + 1 %>" class="page-btn" id="next-page-btn">Next</a>
+    <% } %>
+  </div>
+  <% } %>
+<% } %>
+
+<%- include('partials/footer') %>

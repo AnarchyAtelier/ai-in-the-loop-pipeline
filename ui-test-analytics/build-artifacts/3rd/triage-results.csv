@@ -1,0 +1,8 @@
+run_id,test_case,ai_verdict,confidence,estimated_root_cause,recommended_action,is_false_positive,is_false_negative
+pipeline-3,Phantom Brew whitebox flows › cart coupon applies a visible discount to the order total,real_bug,0.90,Discount calculation logic error leading to incorrect total display,Investigate backend discount calculation for coupon application and fix discrepancy,false,false
+pipeline-3,カートページ › 数量の+ボタンで数量が増える,environment_issue,0.85,Page reload aborted due to detached frame or network glitch during test,Check test environment stability and frame lifecycle management during reload,true,false
+pipeline-3,チェックアウトページ › 注文サマリーが表示される,real_bug,0.90,Order summary element missing or not rendered on checkout page,Fix rendering logic or visibility of order summary on checkout,false,false
+pipeline-3,注文ステータスページ › ステータスが「preparing」に進む,flaky,0.80,Random delay causes status update to 'preparing' to be missed within test timeout,"Increase timeout or add retries, consider more robust async state handling",true,false
+pipeline-3,注文ステータスページ › 最終的にステータスが「completed」になる,flaky,0.90,Test timeout due to slow status transitions and intermittent delivered states before completion,Extend wait timeout and improve status polling logic to handle transitional states,true,false
+pipeline-3,注文履歴ページ › 注文履歴からステータスページに遷移できる,environment_issue,0.85,Test timeout on page fill due to possible slow page load or locator unavailability,Investigate page load times and element availability; stabilize test environment,true,false
+pipeline-3,レート制限テスト › 通常のページ遷移でエラーが出ない,test_issue,0.90,"Locator matches multiple elements violating strict mode, causing test failure",Refine selector to target a single visible element to avoid strict mode violation,true,false

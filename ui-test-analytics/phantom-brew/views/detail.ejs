@@ -1,0 +1,143 @@
+<% const pageTitle = product.name %>
+<%- include('partials/header') %>
+
+<section class="product-detail">
+  <div class="detail-image" style="background-color: hsl(<%= product.id * 36 %>, 40%, 85%)">
+    <span class="category-tag"><%= product.category %></span>
+  </div>
+  <div class="detail-info">
+    <h1><%= product.name %></h1>
+    <p class="description"><%= product.description %></p>
+
+    <div class="detail-form" id="detail-form">
+      <% if (product.price_m) { %>
+      <div class="form-group">
+        <label>Size</label>
+        <div class="size-selector">
+          <button type="button" class="size-btn" data-size="S" data-price="<%= product.price_s %>">S &yen;<%= product.price_s %></button>
+          <button type="button" class="size-btn active" data-size="M" data-price="<%= product.price_m %>">M &yen;<%= product.price_m %></button>
+          <button type="button" class="size-btn" data-size="L" data-price="<%= product.price_l %>">L &yen;<%= product.price_l %></button>
+        </div>
+      </div>
+      <% } %>
+
+      <% if (product.category === 'Coffee') { %>
+      <div class="form-group">
+        <label>Options</label>
+        <div class="option-list">
+          <% options.forEach(function(opt) { %>
+          <label class="option-item">
+            <input type="checkbox" name="options" value="<%= opt.id %>" data-name="<%= opt.name %>" data-price="<%= opt.price %>">
+            <span><%= opt.name %> (+&yen;<%= opt.price %>)</span>
+          </label>
+          <% }) %>
+        </div>
+      </div>
+      <% } %>
+
+      <div class="form-group">
+        <label>Quantity</label>
+        <div class="qty-control">
+          <button type="button" class="qty-btn" onclick="changeQty(-1)">-</button>
+          <span id="qty-display">1</span>
+          <button type="button" class="qty-btn" onclick="changeQty(1)">+</button>
+        </div>
+      </div>
+
+      <div class="price-display">
+        <span class="label">Total:</span>
+        <span id="total-price" class="total-price">&yen;<%= product.price_m || product.price_s %></span>
+      </div>
+
+      <div class="stock-info">
+        In stock: <span id="stock-count"><%= product.stock %></span>
+      </div>
+
+      <button class="btn btn-primary btn-lg" id="add-to-cart-btn"
+              onclick="addToCartDetail(<%= product.id %>)">
+        Add to Cart
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  const baseProduct = {
+    id: <%= product.id %>,
+    priceS: <%= product.price_s %>,
+    priceM: <%= product.price_m || 'null' %>,
+    priceL: <%= product.price_l || 'null' %>,
+  };
+  let selectedSize = '<%= product.price_m ? "M" : "S" %>';
+  let selectedQty = 1;
+
+  function changeQty(delta) {
+    selectedQty = Math.max(1, Math.min(99, selectedQty + delta));
+    document.getElementById('qty-display').textContent = selectedQty;
+    updatePrice();
+  }
+
+  document.querySelectorAll('.size-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedSize = btn.dataset.size;
+      updatePrice();
+    });
+  });
+
+  function getSelectedOptions() {
+    const checked = document.querySelectorAll('input[name="options"]:checked');
+    return Array.from(checked).map(el => ({
+      id: parseInt(el.value),
+      name: el.dataset.name,
+      price: parseInt(el.dataset.price),
+    }));
+  }
+
+  document.querySelectorAll('input[name="options"]').forEach(cb => {
+    cb.addEventListener('change', updatePrice);
+  });
+
+  function updatePrice() {
+    const sizeKey = 'price' + selectedSize;
+    let base = baseProduct[sizeKey] || baseProduct.priceS;
+    const opts = getSelectedOptions();
+    const optTotal = opts.reduce((s, o) => s + o.price, 0);
+    const total = (base + optTotal) * selectedQty;
+    document.getElementById('total-price').textContent = '\u00A5' + total.toLocaleString();
+  }
+
+  function addToCartDetail(productId) {
+    const opts = getSelectedOptions();
+    fetch('/cart/add', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        productId,
+        size: selectedSize,
+        options: opts,
+        quantity: selectedQty,
+      }),
+    })
+    .then(r => r.json())
+    .then(data => {
+      if (data.rollback) {
+        // FP-1: Show brief success then revert
+        showToast('Added to cart!', 'success');
+        updateCartBadge(data.cartCount + 1); // optimistic
+        setTimeout(() => {
+          showToast('Sorry, item went out of stock', 'error');
+          updateCartBadge(data.cartCount);
+        }, 300);
+      } else if (data.success) {
+        showToast('Added to cart!', 'success');
+        updateCartBadge(data.cartCount);
+      }
+    })
+    .catch(() => showToast('Failed to add', 'error'));
+  }
+</script>
+<script src="/js/cart-shared.js"></script>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-05-07T00:09:20.817Z",
+  "total_unmatched": 2,
+  "unmatched": [
+    {
+      "run_id": "pipeline-1",
+      "test_case": "カートページ › 商品を削除できる",
+      "reason": "no_label"
+    },
+    {
+      "run_id": "pipeline-1",
+      "test_case": "チェックアウトページ › 支払い方法を選択できる",
+      "reason": "no_label"
+    }
+  ]
+}

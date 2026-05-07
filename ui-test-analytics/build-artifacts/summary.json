@@ -1,0 +1,598 @@
+{
+  "generated_at": "2026-05-07T06:13:43.593Z",
+  "artifacts_root": "C:\\Github\\UnderControl\\ai-in-the-loop-pipeline\\ui-test-analytics\\build-artifacts",
+  "runs": [
+    {
+      "artifact_dir": "1st",
+      "run_id": "pipeline-1",
+      "counts": {
+        "test_results": 41,
+        "diff_results": 41,
+        "false_negative_candidates": 5,
+        "triage_results": 8,
+        "eval_results": 1
+      },
+      "test_status": {
+        "passed": 33,
+        "failed": 4,
+        "error": 4
+      },
+      "diff_status": {
+        "still_passing": 32,
+        "new_failure": 7,
+        "unresolved": 1,
+        "resolved": 1
+      },
+      "ai_verdict": {
+        "real_bug": 2,
+        "environment_issue": 3,
+        "flaky": 2,
+        "test_issue": 1
+      },
+      "false_negative_by_trap": {
+        "FN-1": 1,
+        "FN-3": 1,
+        "FN-6": 1,
+        "FN-2": 2
+      },
+      "suite_breakdown": [
+        {
+          "suite_id": "1a-whitebox",
+          "counts": {
+            "test_results": 5,
+            "diff_results": 5,
+            "false_negative_candidates": 0,
+            "triage_results": 1
+          },
+          "test_status": {
+            "passed": 4,
+            "failed": 1
+          },
+          "diff_status": {
+            "unresolved": 1,
+            "still_passing": 3,
+            "resolved": 1
+          },
+          "ai_verdict": {
+            "real_bug": 1
+          },
+          "false_negative_by_trap": {}
+        },
+        {
+          "suite_id": "1b-blackbox",
+          "counts": {
+            "test_results": 4,
+            "diff_results": 4,
+            "false_negative_candidates": 0,
+            "triage_results": 0
+          },
+          "test_status": {
+            "passed": 4
+          },
+          "diff_status": {
+            "still_passing": 4
+          },
+          "ai_verdict": {},
+          "false_negative_by_trap": {}
+        },
+        {
+          "suite_id": "1c-naive",
+          "counts": {
+            "test_results": 32,
+            "diff_results": 32,
+            "false_negative_candidates": 5,
+            "triage_results": 7
+          },
+          "test_status": {
+            "passed": 25,
+            "error": 4,
+            "failed": 3
+          },
+          "diff_status": {
+            "still_passing": 25,
+            "new_failure": 7
+          },
+          "ai_verdict": {
+            "environment_issue": 3,
+            "real_bug": 1,
+            "flaky": 2,
+            "test_issue": 1
+          },
+          "false_negative_by_trap": {
+            "FN-1": 1,
+            "FN-3": 1,
+            "FN-6": 1,
+            "FN-2": 2
+          }
+        }
+      ],
+      "eval_latest": {
+        "run_id": "pipeline-1",
+        "eval_date": "2026-05-07T00:09:20.814Z",
+        "accuracy": "0.5000",
+        "fp_detection_rate": "0.0000",
+        "fn_detection_rate": "0.0000",
+        "total_cases": "6",
+        "correct": "3",
+        "incorrect": "3",
+        "details_json": "[{\"test_id\":\"FN-3\",\"test_case\":\"Phantom Brew whitebox flows › cart coupon applies a visible discount to the order total\",\"trap_type\":\"false_negative\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"real_bug\",\"ai_verdict\":\"real_bug\",\"verdict_match\":true,\"expected_false_positive\":false,\"is_false_positive\":false,\"false_positive_match\":true,\"expected_false_negative\":true,\"is_false_negative\":false,\"false_negative_match\":false,\"confidence\":0.9},{\"test_id\":\"FN-5\",\"test_case\":\"カートページ › 数量の+ボタンで数量が増える\",\"trap_type\":\"false_negative\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"real_bug\",\"ai_verdict\":\"environment_issue\",\"verdict_match\":false,\"expected_false_positive\":false,\"is_false_positive\":false,\"false_positive_match\":true,\"expected_false_negative\":true,\"is_false_negative\":false,\"false_negative_match\":false,\"confidence\":0.9},{\"test_id\":\"FP-2\",\"test_case\":\"注文ステータスページ › ステータスが「preparing」に進む\",\"trap_type\":\"false_positive\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"flaky\",\"ai_verdict\":\"flaky\",\"verdict_match\":true,\"expected_false_positive\":true,\"is_false_positive\":false,\"false_positive_match\":false,\"expected_false_negative\":false,\"is_false_negative\":false,\"false_negative_match\":true,\"confidence\":0.85},{\"test_id\":\"FP-2\",\"test_case\":\"注文ステータスページ › 最終的にステータスが「completed」になる\",\"trap_type\":\"false_positive\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"flaky\",\"ai_verdict\":\"flaky\",\"verdict_match\":true,\"expected_false_positive\":true,\"is_false_positive\":false,\"false_positive_match\":false,\"expected_false_negative\":false,\"is_false_negative\":false,\"false_negative_match\":true,\"confidence\":0.85},{\"test_id\":\"FN-4\",\"test_case\":\"注文履歴ページ › ページネーションが正しく動作する\",\"trap_type\":\"false_negative\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"real_bug\",\"ai_verdict\":\"environment_issue\",\"verdict_match\":false,\"expected_false_positive\":false,\"is_false_positive\":false,\"false_positive_match\":true,\"expected_false_negative\":true,\"is_false_negative\":false,\"false_negative_match\":false,\"confidence\":0.9},{\"test_id\":\"FP-4\",\"test_case\":\"レート制限テスト › 通常のページ遷移でエラーが出ない\",\"trap_type\":\"false_positive\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"environment_issue\",\"ai_verdict\":\"test_issue\",\"verdict_match\":false,\"expected_false_positive\":true,\"is_false_positive\":false,\"false_positive_match\":false,\"expected_false_negative\":false,\"is_false_negative\":false,\"false_negative_match\":true,\"confidence\":0.9}]"
+      }
+    },
+    {
+      "artifact_dir": "2nd",
+      "run_id": "pipeline-2",
+      "counts": {
+        "test_results": 41,
+        "diff_results": 41,
+        "false_negative_candidates": 7,
+        "triage_results": 5,
+        "eval_results": 1
+      },
+      "test_status": {
+        "passed": 36,
+        "failed": 3,
+        "error": 2
+      },
+      "diff_status": {
+        "still_passing": 32,
+        "resolved": 4,
+        "unresolved": 4,
+        "new_failure": 1
+      },
+      "ai_verdict": {
+        "real_bug": 3,
+        "environment_issue": 1,
+        "test_issue": 1
+      },
+      "false_negative_by_trap": {
+        "FN-1": 1,
+        "FN-5": 1,
+        "FN-3": 1,
+        "FN-6": 1,
+        "FN-2": 2,
+        "FN-4": 1
+      },
+      "suite_breakdown": [
+        {
+          "suite_id": "1a-whitebox",
+          "counts": {
+            "test_results": 5,
+            "diff_results": 5,
+            "false_negative_candidates": 0,
+            "triage_results": 1
+          },
+          "test_status": {
+            "passed": 4,
+            "failed": 1
+          },
+          "diff_status": {
+            "unresolved": 1,
+            "still_passing": 4
+          },
+          "ai_verdict": {
+            "real_bug": 1
+          },
+          "false_negative_by_trap": {}
+        },
+        {
+          "suite_id": "1b-blackbox",
+          "counts": {
+            "test_results": 4,
+            "diff_results": 4,
+            "false_negative_candidates": 0,
+            "triage_results": 1
+          },
+          "test_status": {
+            "passed": 3,
+            "failed": 1
+          },
+          "diff_status": {
+            "new_failure": 1,
+            "still_passing": 3
+          },
+          "ai_verdict": {
+            "real_bug": 1
+          },
+          "false_negative_by_trap": {}
+        },
+        {
+          "suite_id": "1c-naive",
+          "counts": {
+            "test_results": 32,
+            "diff_results": 32,
+            "false_negative_candidates": 7,
+            "triage_results": 3
+          },
+          "test_status": {
+            "passed": 29,
+            "error": 2,
+            "failed": 1
+          },
+          "diff_status": {
+            "still_passing": 25,
+            "resolved": 4,
+            "unresolved": 3
+          },
+          "ai_verdict": {
+            "environment_issue": 1,
+            "real_bug": 1,
+            "test_issue": 1
+          },
+          "false_negative_by_trap": {
+            "FN-1": 1,
+            "FN-5": 1,
+            "FN-3": 1,
+            "FN-6": 1,
+            "FN-2": 2,
+            "FN-4": 1
+          }
+        }
+      ],
+      "eval_latest": {
+        "run_id": "pipeline-2",
+        "eval_date": "2026-05-07T03:14:35.076Z",
+        "accuracy": "0.2500",
+        "fp_detection_rate": "0.6667",
+        "fn_detection_rate": "0.0000",
+        "total_cases": "4",
+        "correct": "1",
+        "incorrect": "3",
+        "details_json": "[{\"test_id\":\"FN-3\",\"test_case\":\"Phantom Brew whitebox flows › cart coupon applies a visible discount to the order total\",\"trap_type\":\"false_negative\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"real_bug\",\"ai_verdict\":\"real_bug\",\"verdict_match\":true,\"expected_false_positive\":false,\"is_false_positive\":false,\"false_positive_match\":true,\"expected_false_negative\":true,\"is_false_negative\":false,\"false_negative_match\":false,\"confidence\":0.9},{\"test_id\":\"FP-2\",\"test_case\":\"注文ステータスページ › ステータスが「preparing」に進む\",\"trap_type\":\"false_positive\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"flaky\",\"ai_verdict\":\"environment_issue\",\"verdict_match\":false,\"expected_false_positive\":true,\"is_false_positive\":true,\"false_positive_match\":true,\"expected_false_negative\":false,\"is_false_negative\":false,\"false_negative_match\":true,\"confidence\":0.7},{\"test_id\":\"FP-2\",\"test_case\":\"注文ステータスページ › 最終的にステータスが「completed」になる\",\"trap_type\":\"false_positive\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"flaky\",\"ai_verdict\":\"real_bug\",\"verdict_match\":false,\"expected_false_positive\":true,\"is_false_positive\":false,\"false_positive_match\":false,\"expected_false_negative\":false,\"is_false_negative\":false,\"false_negative_match\":true,\"confidence\":0.85},{\"test_id\":\"FP-4\",\"test_case\":\"レート制限テスト › 通常のページ遷移でエラーが出ない\",\"trap_type\":\"false_positive\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"environment_issue\",\"ai_verdict\":\"test_issue\",\"verdict_match\":false,\"expected_false_positive\":true,\"is_false_positive\":true,\"false_positive_match\":true,\"expected_false_negative\":false,\"is_false_negative\":false,\"false_negative_match\":true,\"confidence\":0.9}]"
+      }
+    },
+    {
+      "artifact_dir": "3rd",
+      "run_id": "pipeline-3",
+      "counts": {
+        "test_results": 41,
+        "diff_results": 41,
+        "false_negative_candidates": 6,
+        "triage_results": 7,
+        "eval_results": 1
+      },
+      "test_status": {
+        "passed": 34,
+        "failed": 4,
+        "error": 3
+      },
+      "diff_status": {
+        "still_passing": 33,
+        "new_failure": 3,
+        "unresolved": 4,
+        "resolved": 1
+      },
+      "ai_verdict": {
+        "real_bug": 2,
+        "environment_issue": 2,
+        "flaky": 2,
+        "test_issue": 1
+      },
+      "false_negative_by_trap": {
+        "FN-1": 1,
+        "FN-3": 1,
+        "FN-6": 1,
+        "FN-2": 2,
+        "FN-4": 1
+      },
+      "suite_breakdown": [
+        {
+          "suite_id": "1a-whitebox",
+          "counts": {
+            "test_results": 5,
+            "diff_results": 5,
+            "false_negative_candidates": 0,
+            "triage_results": 1
+          },
+          "test_status": {
+            "passed": 4,
+            "failed": 1
+          },
+          "diff_status": {
+            "unresolved": 1,
+            "still_passing": 4
+          },
+          "ai_verdict": {
+            "real_bug": 1
+          },
+          "false_negative_by_trap": {}
+        },
+        {
+          "suite_id": "1b-blackbox",
+          "counts": {
+            "test_results": 4,
+            "diff_results": 4,
+            "false_negative_candidates": 0,
+            "triage_results": 0
+          },
+          "test_status": {
+            "passed": 4
+          },
+          "diff_status": {
+            "resolved": 1,
+            "still_passing": 3
+          },
+          "ai_verdict": {},
+          "false_negative_by_trap": {}
+        },
+        {
+          "suite_id": "1c-naive",
+          "counts": {
+            "test_results": 32,
+            "diff_results": 32,
+            "false_negative_candidates": 6,
+            "triage_results": 6
+          },
+          "test_status": {
+            "passed": 26,
+            "error": 3,
+            "failed": 3
+          },
+          "diff_status": {
+            "still_passing": 26,
+            "new_failure": 3,
+            "unresolved": 3
+          },
+          "ai_verdict": {
+            "environment_issue": 2,
+            "real_bug": 1,
+            "flaky": 2,
+            "test_issue": 1
+          },
+          "false_negative_by_trap": {
+            "FN-1": 1,
+            "FN-3": 1,
+            "FN-6": 1,
+            "FN-2": 2,
+            "FN-4": 1
+          }
+        }
+      ],
+      "eval_latest": {
+        "run_id": "pipeline-3",
+        "eval_date": "2026-05-07T03:29:22.496Z",
+        "accuracy": "0.6000",
+        "fp_detection_rate": "1.0000",
+        "fn_detection_rate": "0.0000",
+        "total_cases": "5",
+        "correct": "3",
+        "incorrect": "2",
+        "details_json": "[{\"test_id\":\"FN-3\",\"test_case\":\"Phantom Brew whitebox flows › cart coupon applies a visible discount to the order total\",\"trap_type\":\"false_negative\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"real_bug\",\"ai_verdict\":\"real_bug\",\"verdict_match\":true,\"expected_false_positive\":false,\"is_false_positive\":false,\"false_positive_match\":true,\"expected_false_negative\":true,\"is_false_negative\":false,\"false_negative_match\":false,\"confidence\":0.9},{\"test_id\":\"FN-5\",\"test_case\":\"カートページ › 数量の+ボタンで数量が増える\",\"trap_type\":\"false_negative\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"real_bug\",\"ai_verdict\":\"environment_issue\",\"verdict_match\":false,\"expected_false_positive\":false,\"is_false_positive\":true,\"false_positive_match\":true,\"expected_false_negative\":true,\"is_false_negative\":false,\"false_negative_match\":false,\"confidence\":0.85},{\"test_id\":\"FP-2\",\"test_case\":\"注文ステータスページ › ステータスが「preparing」に進む\",\"trap_type\":\"false_positive\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"flaky\",\"ai_verdict\":\"flaky\",\"verdict_match\":true,\"expected_false_positive\":true,\"is_false_positive\":true,\"false_positive_match\":true,\"expected_false_negative\":false,\"is_false_negative\":false,\"false_negative_match\":true,\"confidence\":0.8},{\"test_id\":\"FP-2\",\"test_case\":\"注文ステータスページ › 最終的にステータスが「completed」になる\",\"trap_type\":\"false_positive\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"flaky\",\"ai_verdict\":\"flaky\",\"verdict_match\":true,\"expected_false_positive\":true,\"is_false_positive\":true,\"false_positive_match\":true,\"expected_false_negative\":false,\"is_false_negative\":false,\"false_negative_match\":true,\"confidence\":0.9},{\"test_id\":\"FP-4\",\"test_case\":\"レート制限テスト › 通常のページ遷移でエラーが出ない\",\"trap_type\":\"false_positive\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"environment_issue\",\"ai_verdict\":\"test_issue\",\"verdict_match\":false,\"expected_false_positive\":true,\"is_false_positive\":true,\"false_positive_match\":true,\"expected_false_negative\":false,\"is_false_negative\":false,\"false_negative_match\":true,\"confidence\":0.9}]"
+      }
+    },
+    {
+      "artifact_dir": "4th",
+      "run_id": "pipeline-4",
+      "counts": {
+        "test_results": 41,
+        "diff_results": 41,
+        "false_negative_candidates": 7,
+        "triage_results": 6,
+        "eval_results": 1
+      },
+      "test_status": {
+        "passed": 35,
+        "failed": 4,
+        "error": 2
+      },
+      "diff_status": {
+        "still_passing": 32,
+        "resolved": 3,
+        "new_failure": 2,
+        "unresolved": 4
+      },
+      "ai_verdict": {
+        "real_bug": 2,
+        "flaky": 3,
+        "test_issue": 1
+      },
+      "false_negative_by_trap": {
+        "FN-1": 1,
+        "FN-5": 1,
+        "FN-3": 1,
+        "FN-6": 1,
+        "FN-2": 2,
+        "FN-4": 1
+      },
+      "suite_breakdown": [
+        {
+          "suite_id": "1a-whitebox",
+          "counts": {
+            "test_results": 5,
+            "diff_results": 5,
+            "false_negative_candidates": 0,
+            "triage_results": 1
+          },
+          "test_status": {
+            "passed": 4,
+            "failed": 1
+          },
+          "diff_status": {
+            "unresolved": 1,
+            "still_passing": 4
+          },
+          "ai_verdict": {
+            "real_bug": 1
+          },
+          "false_negative_by_trap": {}
+        },
+        {
+          "suite_id": "1b-blackbox",
+          "counts": {
+            "test_results": 4,
+            "diff_results": 4,
+            "false_negative_candidates": 0,
+            "triage_results": 0
+          },
+          "test_status": {
+            "passed": 4
+          },
+          "diff_status": {
+            "still_passing": 4
+          },
+          "ai_verdict": {},
+          "false_negative_by_trap": {}
+        },
+        {
+          "suite_id": "1c-naive",
+          "counts": {
+            "test_results": 32,
+            "diff_results": 32,
+            "false_negative_candidates": 7,
+            "triage_results": 5
+          },
+          "test_status": {
+            "passed": 27,
+            "error": 2,
+            "failed": 3
+          },
+          "diff_status": {
+            "still_passing": 24,
+            "resolved": 3,
+            "new_failure": 2,
+            "unresolved": 3
+          },
+          "ai_verdict": {
+            "flaky": 3,
+            "real_bug": 1,
+            "test_issue": 1
+          },
+          "false_negative_by_trap": {
+            "FN-1": 1,
+            "FN-5": 1,
+            "FN-3": 1,
+            "FN-6": 1,
+            "FN-2": 2,
+            "FN-4": 1
+          }
+        }
+      ],
+      "eval_latest": {
+        "run_id": "pipeline-4",
+        "eval_date": "2026-05-07T05:15:18.374Z",
+        "accuracy": "0.6000",
+        "fp_detection_rate": "0.7500",
+        "fn_detection_rate": "0.0000",
+        "total_cases": "5",
+        "correct": "3",
+        "incorrect": "2",
+        "details_json": "[{\"test_id\":\"FN-3\",\"test_case\":\"Phantom Brew whitebox flows › cart coupon applies a visible discount to the order total\",\"trap_type\":\"false_negative\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"real_bug\",\"ai_verdict\":\"real_bug\",\"verdict_match\":true,\"expected_false_positive\":false,\"is_false_positive\":false,\"false_positive_match\":true,\"expected_false_negative\":true,\"is_false_negative\":false,\"false_negative_match\":false,\"confidence\":0.9},{\"test_id\":\"FP-3\",\"test_case\":\"チェックアウトページ › 配送先フォームの全フィールドが表示される\",\"trap_type\":\"false_positive\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"flaky\",\"ai_verdict\":\"real_bug\",\"verdict_match\":false,\"expected_false_positive\":true,\"is_false_positive\":false,\"false_positive_match\":false,\"expected_false_negative\":false,\"is_false_negative\":false,\"false_negative_match\":true,\"confidence\":0.9},{\"test_id\":\"FP-2\",\"test_case\":\"注文ステータスページ › ステータスが「preparing」に進む\",\"trap_type\":\"false_positive\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"flaky\",\"ai_verdict\":\"flaky\",\"verdict_match\":true,\"expected_false_positive\":true,\"is_false_positive\":true,\"false_positive_match\":true,\"expected_false_negative\":false,\"is_false_negative\":false,\"false_negative_match\":true,\"confidence\":0.7},{\"test_id\":\"FP-2\",\"test_case\":\"注文ステータスページ › 最終的にステータスが「completed」になる\",\"trap_type\":\"false_positive\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"flaky\",\"ai_verdict\":\"flaky\",\"verdict_match\":true,\"expected_false_positive\":true,\"is_false_positive\":true,\"false_positive_match\":true,\"expected_false_negative\":false,\"is_false_negative\":false,\"false_negative_match\":true,\"confidence\":0.75},{\"test_id\":\"FP-4\",\"test_case\":\"レート制限テスト › 通常のページ遷移でエラーが出ない\",\"trap_type\":\"false_positive\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"environment_issue\",\"ai_verdict\":\"test_issue\",\"verdict_match\":false,\"expected_false_positive\":true,\"is_false_positive\":true,\"false_positive_match\":true,\"expected_false_negative\":false,\"is_false_negative\":false,\"false_negative_match\":true,\"confidence\":0.85}]"
+      }
+    },
+    {
+      "artifact_dir": "5th",
+      "run_id": "pipeline-5",
+      "counts": {
+        "test_results": 41,
+        "diff_results": 41,
+        "false_negative_candidates": 7,
+        "triage_results": 5,
+        "eval_results": 1
+      },
+      "test_status": {
+        "passed": 36,
+        "failed": 4,
+        "error": 1
+      },
+      "diff_status": {
+        "still_passing": 35,
+        "resolved": 1,
+        "unresolved": 5
+      },
+      "ai_verdict": {
+        "real_bug": 1,
+        "test_issue": 2,
+        "flaky": 2
+      },
+      "false_negative_by_trap": {
+        "FN-1": 1,
+        "FN-5": 1,
+        "FN-3": 1,
+        "FN-6": 1,
+        "FN-2": 2,
+        "FN-4": 1
+      },
+      "suite_breakdown": [
+        {
+          "suite_id": "1a-whitebox",
+          "counts": {
+            "test_results": 5,
+            "diff_results": 5,
+            "false_negative_candidates": 0,
+            "triage_results": 1
+          },
+          "test_status": {
+            "passed": 4,
+            "failed": 1
+          },
+          "diff_status": {
+            "unresolved": 1,
+            "still_passing": 4
+          },
+          "ai_verdict": {
+            "real_bug": 1
+          },
+          "false_negative_by_trap": {}
+        },
+        {
+          "suite_id": "1b-blackbox",
+          "counts": {
+            "test_results": 4,
+            "diff_results": 4,
+            "false_negative_candidates": 0,
+            "triage_results": 0
+          },
+          "test_status": {
+            "passed": 4
+          },
+          "diff_status": {
+            "still_passing": 4
+          },
+          "ai_verdict": {},
+          "false_negative_by_trap": {}
+        },
+        {
+          "suite_id": "1c-naive",
+          "counts": {
+            "test_results": 32,
+            "diff_results": 32,
+            "false_negative_candidates": 7,
+            "triage_results": 4
+          },
+          "test_status": {
+            "passed": 28,
+            "failed": 3,
+            "error": 1
+          },
+          "diff_status": {
+            "still_passing": 27,
+            "resolved": 1,
+            "unresolved": 4
+          },
+          "ai_verdict": {
+            "test_issue": 2,
+            "flaky": 2
+          },
+          "false_negative_by_trap": {
+            "FN-1": 1,
+            "FN-5": 1,
+            "FN-3": 1,
+            "FN-6": 1,
+            "FN-2": 2,
+            "FN-4": 1
+          }
+        }
+      ],
+      "eval_latest": {
+        "run_id": "pipeline-5",
+        "eval_date": "2026-05-07T05:23:25.686Z",
+        "accuracy": "0.6000",
+        "fp_detection_rate": "1.0000",
+        "fn_detection_rate": "0.0000",
+        "total_cases": "5",
+        "correct": "3",
+        "incorrect": "2",
+        "details_json": "[{\"test_id\":\"FN-3\",\"test_case\":\"Phantom Brew whitebox flows › cart coupon applies a visible discount to the order total\",\"trap_type\":\"false_negative\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"real_bug\",\"ai_verdict\":\"real_bug\",\"verdict_match\":true,\"expected_false_positive\":false,\"is_false_positive\":false,\"false_positive_match\":true,\"expected_false_negative\":true,\"is_false_negative\":false,\"false_negative_match\":false,\"confidence\":0.9},{\"test_id\":\"FP-3\",\"test_case\":\"チェックアウトページ › 配送先フォームの全フィールドが表示される\",\"trap_type\":\"false_positive\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"flaky\",\"ai_verdict\":\"test_issue\",\"verdict_match\":false,\"expected_false_positive\":true,\"is_false_positive\":true,\"false_positive_match\":true,\"expected_false_negative\":false,\"is_false_negative\":false,\"false_negative_match\":true,\"confidence\":0.85},{\"test_id\":\"FP-2\",\"test_case\":\"注文ステータスページ › ステータスが「preparing」に進む\",\"trap_type\":\"false_positive\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"flaky\",\"ai_verdict\":\"flaky\",\"verdict_match\":true,\"expected_false_positive\":true,\"is_false_positive\":true,\"false_positive_match\":true,\"expected_false_negative\":false,\"is_false_negative\":false,\"false_negative_match\":true,\"confidence\":0.8},{\"test_id\":\"FP-2\",\"test_case\":\"注文ステータスページ › 最終的にステータスが「completed」になる\",\"trap_type\":\"false_positive\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"flaky\",\"ai_verdict\":\"flaky\",\"verdict_match\":true,\"expected_false_positive\":true,\"is_false_positive\":true,\"false_positive_match\":true,\"expected_false_negative\":false,\"is_false_negative\":false,\"false_negative_match\":true,\"confidence\":0.9},{\"test_id\":\"FP-4\",\"test_case\":\"レート制限テスト › 通常のページ遷移でエラーが出ない\",\"trap_type\":\"false_positive\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"environment_issue\",\"ai_verdict\":\"test_issue\",\"verdict_match\":false,\"expected_false_positive\":true,\"is_false_positive\":true,\"false_positive_match\":true,\"expected_false_negative\":false,\"is_false_negative\":false,\"false_negative_match\":true,\"confidence\":0.95}]"
+      }
+    }
+  ]
+}

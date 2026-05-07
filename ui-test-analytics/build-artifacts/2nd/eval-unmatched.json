@@ -1,0 +1,11 @@
+{
+  "generated_at": "2026-05-07T03:14:35.080Z",
+  "total_unmatched": 1,
+  "unmatched": [
+    {
+      "run_id": "pipeline-2",
+      "test_case": "Phantom Brew blackbox flows › applies a coupon and removes an item from the cart",
+      "reason": "no_label"
+    }
+  ]
+}

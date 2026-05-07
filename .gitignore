@@ -1,0 +1,7 @@
+julian-push.cmd
+scripts/
+/julian-push.cmd
+/ui-test-analytics/node_modules/
+/scripts/redact-secrets.ps1
+/julian-push.log
+/scripts/repo-start.ps1
