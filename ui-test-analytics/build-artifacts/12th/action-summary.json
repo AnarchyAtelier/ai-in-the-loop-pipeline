@@ -1,0 +1,266 @@
+{
+  "run_id": "pipeline-12",
+  "generated_at": "2026-05-08T15:29:42.660Z",
+  "source_files": {
+    "diff_results": "./results/diff-results.csv",
+    "triage_results": "./results/triage-results.csv"
+  },
+  "summary": {
+    "total_actions": 14,
+    "high_priority": 1,
+    "medium_priority": 3,
+    "low_priority": 1,
+    "info_priority": 9,
+    "by_type": {
+      "real_bug_failure": 1,
+      "false_positive_review": 4,
+      "stable": 9
+    },
+    "by_verdict": {
+      "real_bug": 1,
+      "test_issue": 1,
+      "flaky": 3,
+      "untriaged": 9
+    }
+  },
+  "actions": [
+    {
+      "id": "pipeline-12:Phantom_Brew_whitebox_flows_›_cart_coupon_applies_a_visible_discount_to_the_order_total:real-bug",
+      "priority": "high",
+      "type": "real_bug_failure",
+      "test_case": "Phantom Brew whitebox flows › cart coupon applies a visible discount to the order total",
+      "message": "Phantom Brew whitebox flows › cart coupon applies a visible discount to the order total の assertion error が 14回連続。最優先で対処。",
+      "details": {
+        "diff_status": "unresolved",
+        "ai_verdict": "real_bug",
+        "confidence": 0.97,
+        "error_type": "assertion error",
+        "failure_streak_count": 14,
+        "consecutive_pass_count": 0,
+        "estimated_root_cause": "Coupon UI shows success/10% OFF but total stays ¥418 instead of discounted ¥380; discount is not applied to order total calculation/rendering.",
+        "recommended_action": "Fix coupon discount computation or total recomputation after apply; verify rounding and displayed total update."
+      }
+    },
+    {
+      "id": "pipeline-12:レート制限テスト_›_通常のページ遷移でエラーが出ない:false-positive",
+      "priority": "medium",
+      "type": "false_positive_review",
+      "test_case": "レート制限テスト › 通常のページ遷移でエラーが出ない",
+      "message": "レート制限テスト › 通常のページ遷移でエラーが出ない は偽陽性の可能性あり（確信度: 0.99）。テスト条件と待機条件を確認。",
+      "details": {
+        "diff_status": "unresolved",
+        "ai_verdict": "test_issue",
+        "confidence": 0.99,
+        "error_type": "locator error",
+        "failure_streak_count": 12,
+        "consecutive_pass_count": 0,
+        "estimated_root_cause": "Selector 'h1, .product-card' matches many elements, causing Playwright strict mode violation unrelated to app behavior.",
+        "recommended_action": "Assert on a single stable locator or use .first()/count-based checks instead of a multi-match strict locator."
+      }
+    },
+    {
+      "id": "pipeline-12:注文ステータスページ_›_ステータスが「preparing」に進む:false-positive",
+      "priority": "medium",
+      "type": "false_positive_review",
+      "test_case": "注文ステータスページ › ステータスが「preparing」に進む",
+      "message": "注文ステータスページ › ステータスが「preparing」に進む は偽陽性の可能性あり（確信度: 0.98）。テスト条件と待機条件を確認。",
+      "details": {
+        "diff_status": "unresolved",
+        "ai_verdict": "flaky",
+        "confidence": 0.98,
+        "error_type": "assertion error",
+        "failure_streak_count": 12,
+        "consecutive_pass_count": 0,
+        "estimated_root_cause": "Status progression is delayed nondeterministically; test expects preparing within a fixed short window while status remains received.",
+        "recommended_action": "Poll until preparing with a longer timeout or control the backend/status timer in test setup."
+      }
+    },
+    {
+      "id": "pipeline-12:注文ステータスページ_›_最終的にステータスが「completed」になる:false-positive",
+      "priority": "medium",
+      "type": "false_positive_review",
+      "test_case": "注文ステータスページ › 最終的にステータスが「completed」になる",
+      "message": "注文ステータスページ › 最終的にステータスが「completed」になる は偽陽性の可能性あり（確信度: 0.92）。テスト条件と待機条件を確認。",
+      "details": {
+        "diff_status": "unresolved",
+        "ai_verdict": "flaky",
+        "confidence": 0.92,
+        "error_type": "assertion error",
+        "failure_streak_count": 12,
+        "consecutive_pass_count": 0,
+        "estimated_root_cause": "Order status never advanced from received within 15s, consistent with random/slow async status updates rather than a deterministic assertion mismatch.",
+        "recommended_action": "Stub or drive status transitions deterministically, or increase timeout and assert intermediate progress."
+      }
+    },
+    {
+      "id": "pipeline-12:カートページ_›_数量の-ボタンで数量が減る:false-positive",
+      "priority": "low",
+      "type": "false_positive_review",
+      "test_case": "カートページ › 数量の-ボタンで数量が減る",
+      "message": "カートページ › 数量の-ボタンで数量が減る は偽陽性の可能性あり（確信度: 0.77）。テスト条件と待機条件を確認。",
+      "details": {
+        "diff_status": "new_failure",
+        "ai_verdict": "flaky",
+        "confidence": 0.77,
+        "error_type": "server error",
+        "failure_streak_count": 1,
+        "consecutive_pass_count": 0,
+        "estimated_root_cause": "Click waits on .qty-btn '+' and never becomes actionable; likely page not ready, covered element, or async rendering race.",
+        "recommended_action": "Wait for cart items/controls to be visible and enabled before clicking; use a more stable selector than first()."
+      }
+    },
+    {
+      "id": "pipeline-12:メニューページ_›_カテゴリフィルターが動作する:stable",
+      "priority": "info",
+      "type": "stable",
+      "test_case": "メニューページ › カテゴリフィルターが動作する",
+      "message": "メニューページ › カテゴリフィルターが動作する は連続PASS 12回。安定化しています。",
+      "details": {
+        "diff_status": "still_passing",
+        "ai_verdict": "",
+        "confidence": null,
+        "error_type": "unknown error",
+        "failure_streak_count": 0,
+        "consecutive_pass_count": 12,
+        "estimated_root_cause": "",
+        "recommended_action": ""
+      }
+    },
+    {
+      "id": "pipeline-12:メニューページ_›_ソート後に商品カードをクリックして詳細に遷移できる:stable",
+      "priority": "info",
+      "type": "stable",
+      "test_case": "メニューページ › ソート後に商品カードをクリックして詳細に遷移できる",
+      "message": "メニューページ › ソート後に商品カードをクリックして詳細に遷移できる は連続PASS 12回。安定化しています。",
+      "details": {
+        "diff_status": "still_passing",
+        "ai_verdict": "",
+        "confidence": null,
+        "error_type": "unknown error",
+        "failure_streak_count": 0,
+        "consecutive_pass_count": 12,
+        "estimated_root_cause": "",
+        "recommended_action": ""
+      }
+    },
+    {
+      "id": "pipeline-12:メニューページ_›_価格で昇順ソートできる:stable",
+      "priority": "info",
+      "type": "stable",
+      "test_case": "メニューページ › 価格で昇順ソートできる",
+      "message": "メニューページ › 価格で昇順ソートできる は連続PASS 12回。安定化しています。",
+      "details": {
+        "diff_status": "still_passing",
+        "ai_verdict": "",
+        "confidence": null,
+        "error_type": "unknown error",
+        "failure_streak_count": 0,
+        "consecutive_pass_count": 12,
+        "estimated_root_cause": "",
+        "recommended_action": ""
+      }
+    },
+    {
+      "id": "pipeline-12:メニューページ_›_商品カードのAdd_to_Cartボタンが動作する:stable",
+      "priority": "info",
+      "type": "stable",
+      "test_case": "メニューページ › 商品カードのAdd to Cartボタンが動作する",
+      "message": "メニューページ › 商品カードのAdd to Cartボタンが動作する は連続PASS 12回。安定化しています。",
+      "details": {
+        "diff_status": "still_passing",
+        "ai_verdict": "",
+        "confidence": null,
+        "error_type": "unknown error",
+        "failure_streak_count": 0,
+        "consecutive_pass_count": 12,
+        "estimated_root_cause": "",
+        "recommended_action": ""
+      }
+    },
+    {
+      "id": "pipeline-12:メニューページ_›_商品一覧が表示される:stable",
+      "priority": "info",
+      "type": "stable",
+      "test_case": "メニューページ › 商品一覧が表示される",
+      "message": "メニューページ › 商品一覧が表示される は連続PASS 12回。安定化しています。",
+      "details": {
+        "diff_status": "still_passing",
+        "ai_verdict": "",
+        "confidence": null,
+        "error_type": "unknown error",
+        "failure_streak_count": 0,
+        "consecutive_pass_count": 12,
+        "estimated_root_cause": "",
+        "recommended_action": ""
+      }
+    },
+    {
+      "id": "pipeline-12:メニューページ_›_検索で商品を絞り込める:stable",
+      "priority": "info",
+      "type": "stable",
+      "test_case": "メニューページ › 検索で商品を絞り込める",
+      "message": "メニューページ › 検索で商品を絞り込める は連続PASS 12回。安定化しています。",
+      "details": {
+        "diff_status": "still_passing",
+        "ai_verdict": "",
+        "confidence": null,
+        "error_type": "unknown error",
+        "failure_streak_count": 0,
+        "consecutive_pass_count": 12,
+        "estimated_root_cause": "",
+        "recommended_action": ""
+      }
+    },
+    {
+      "id": "pipeline-12:商品詳細ページ_›_オプションを選択すると価格に反映される:stable",
+      "priority": "info",
+      "type": "stable",
+      "test_case": "商品詳細ページ › オプションを選択すると価格に反映される",
+      "message": "商品詳細ページ › オプションを選択すると価格に反映される は連続PASS 12回。安定化しています。",
+      "details": {
+        "diff_status": "still_passing",
+        "ai_verdict": "",
+        "confidence": null,
+        "error_type": "unknown error",
+        "failure_streak_count": 0,
+        "consecutive_pass_count": 12,
+        "estimated_root_cause": "",
+        "recommended_action": ""
+      }
+    },
+    {
+      "id": "pipeline-12:商品詳細ページ_›_サイズ変更で価格が変わる:stable",
+      "priority": "info",
+      "type": "stable",
+      "test_case": "商品詳細ページ › サイズ変更で価格が変わる",
+      "message": "商品詳細ページ › サイズ変更で価格が変わる は連続PASS 12回。安定化しています。",
+      "details": {
+        "diff_status": "still_passing",
+        "ai_verdict": "",
+        "confidence": null,
+        "error_type": "unknown error",
+        "failure_streak_count": 0,
+        "consecutive_pass_count": 12,
+        "estimated_root_cause": "",
+        "recommended_action": ""
+      }
+    },
+    {
+      "id": "pipeline-12:商品詳細ページ_›_数量を変更すると合計に反映される:stable",
+      "priority": "info",
+      "type": "stable",
+      "test_case": "商品詳細ページ › 数量を変更すると合計に反映される",
+      "message": "商品詳細ページ › 数量を変更すると合計に反映される は連続PASS 12回。安定化しています。",
+      "details": {
+        "diff_status": "still_passing",
+        "ai_verdict": "",
+        "confidence": null,
+        "error_type": "unknown error",
+        "failure_streak_count": 0,
+        "consecutive_pass_count": 12,
+        "estimated_root_cause": "",
+        "recommended_action": ""
+      }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "generated_at": "2026-05-08T15:29:17.855Z",
+  "total_unmatched": 1,
+  "unmatched": [
+    {
+      "run_id": "pipeline-12",
+      "test_case": "カートページ › 数量の-ボタンで数量が減る",
+      "reason": "no_label"
+    }
+  ]
+}

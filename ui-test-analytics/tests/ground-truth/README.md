@@ -46,6 +46,14 @@ npm run test:fn
 Evalite評価で使用する正解ラベルデータ。
 各テストに対して、AIトリアージが出すべき正しい判定を定義している。
 
+## ラベル運用
+
+`ground-truth-labels.json` は、テスト設計時に意図的に仕込んだ罠の正解ラベルを置く。Evalite では `label_source: designed` として扱われ、既定でメトリクスに含まれる。設計時点の仮説が実ログと食い違った場合は、FP-4 のように実エラーログを優先してこのファイルを修正する。
+
+`observed-labels.json` は、パイプラインを回す中で後から観測した失敗パターンのラベルを置く。Evalite では `label_source: observed` として扱われる。確信が固まるまでは `status: provisional` と `confidence_required: 3` を付け、通常の評価メトリクスから除外する。暫定ラベルを含めて確認したい場合だけ、`EVAL_INCLUDE_PROVISIONAL_LABELS=1` を指定するか、`pipeline/eval/index.ts` に `--include-provisional-labels` を渡す。
+
+`provisional` から `confirmed` へ昇格できる条件は、同じテストケース・同じ失敗モード・同じ推定原因が `confidence_required` 回数以上の独立した run で再現し、テストログまたはトレースでアプリ本体の既知バグではないことを確認できた場合とする。昇格時は `status: confirmed` に変更し、`notes` に確認した run と判断理由を残す。
+
 ## 注意事項
 
 - FP-1, FP-2, FP-3, FP-5 は確率的にPASSすることがある（罠が発火しなかった場合）

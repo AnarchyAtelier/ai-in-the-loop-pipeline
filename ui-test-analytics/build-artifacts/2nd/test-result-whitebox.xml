@@ -38,7 +38,7 @@
       82 |   });
       83 |
       84 |   // Intent: Verify checkout creates an order and the order appears in history.
-        at /var/jenkins_home/workspace/ui-test-analytics/1a-playwright-whitebox/ai-in-the-loop-pipeline/ui-test-analytics/tests/1a-playwright-whitebox/tests/phantom-brew.spec.ts:81:47
+        at ./tests/1a-playwright-whitebox/tests/phantom-brew.spec.ts:81:47
 
     Error Context: ../test-results/phantom-brew-Phantom-Brew--bbe20-discount-to-the-order-total-chromium/error-context.md
 

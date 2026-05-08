@@ -31,7 +31,7 @@
       92 |
       93 |     const qty = await page.locator('.qty-value').first().textContent();
       94 |     expect(parseInt(qty!)).toBe(2);
-        at /var/jenkins_home/workspace/ui-test-analytics/1c-playwright-naive/ai-in-the-loop-pipeline/ui-test-analytics/tests/1c-playwright-naive/tests/cart.spec.ts:91:16
+        at ./tests/1c-playwright-naive/tests/cart.spec.ts:91:16
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
     ../test-results/cart-カートページ-数量の-ボタンで数量が増える-chromium/test-failed-1.png
@@ -85,7 +85,7 @@
       61 |     await expect(page.locator('.summary-item')).toBeVisible();
       62 |   });
       63 |
-        at /var/jenkins_home/workspace/ui-test-analytics/1c-playwright-naive/ai-in-the-loop-pipeline/ui-test-analytics/tests/1c-playwright-naive/tests/checkout.spec.ts:60:50
+        at ./tests/1c-playwright-naive/tests/checkout.spec.ts:60:50
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
     ../test-results/checkout-チェックアウトページ-注文サマリーが表示される-chromium/test-failed-1.png
@@ -146,7 +146,7 @@
       52 |   });
       53 |
       54 |   test('最終的にステータスが「completed」になる', async ({ page }) => {
-        at /var/jenkins_home/workspace/ui-test-analytics/1c-playwright-naive/ai-in-the-loop-pipeline/ui-test-analytics/tests/1c-playwright-naive/tests/orders.spec.ts:51:20
+        at ./tests/1c-playwright-naive/tests/orders.spec.ts:51:20
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
     ../test-results/orders-注文ステータスページ-ステータスが「preparing」に進む-chromium/test-failed-1.png
@@ -193,7 +193,7 @@
       61 |   });
       62 |
       63 |   test('予想配達時間が表示される', async ({ page }) => {
-        at /var/jenkins_home/workspace/ui-test-analytics/1c-playwright-naive/ai-in-the-loop-pipeline/ui-test-analytics/tests/1c-playwright-naive/tests/orders.spec.ts:60:51
+        at ./tests/1c-playwright-naive/tests/orders.spec.ts:60:51
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
     ../test-results/orders-注文ステータスページ-最終的にステータスが「completed」になる-chromium/test-failed-1.png
@@ -234,8 +234,8 @@
       82 |     await page.fill('#customer-email', 'test@example.com');
       83 |     await page.fill('#customer-address', '東京都');
       84 |     await page.fill('#customer-phone', '000-0000-0000');
-        at placeQuickOrder (/var/jenkins_home/workspace/ui-test-analytics/1c-playwright-naive/ai-in-the-loop-pipeline/ui-test-analytics/tests/1c-playwright-naive/tests/orders.spec.ts:81:16)
-        at /var/jenkins_home/workspace/ui-test-analytics/1c-playwright-naive/ai-in-the-loop-pipeline/ui-test-analytics/tests/1c-playwright-naive/tests/orders.spec.ts:108:5
+        at placeQuickOrder (./tests/1c-playwright-naive/tests/orders.spec.ts:81:16)
+        at ./tests/1c-playwright-naive/tests/orders.spec.ts:108:5
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
     ../test-results/orders-注文履歴ページ-注文履歴からステータスページに遷移できる-chromium/test-failed-1.png
@@ -286,7 +286,7 @@
       148 |
       149 |     await page.goto('/cart');
       150 |     // カートが空でもページ自体は表示される
-        at /var/jenkins_home/workspace/ui-test-analytics/1c-playwright-naive/ai-in-the-loop-pipeline/ui-test-analytics/tests/1c-playwright-naive/tests/orders.spec.ts:147:53
+        at ./tests/1c-playwright-naive/tests/orders.spec.ts:147:53
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
     ../test-results/orders-レート制限テスト-通常のページ遷移でエラーが出ない-chromium/test-failed-1.png

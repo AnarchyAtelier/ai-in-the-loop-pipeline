@@ -1,0 +1,59 @@
+<testsuites id="" name="" tests="5" failures="1" skipped="0" errors="0" time="11.739971">
+<testsuite name="phantom-brew.spec.ts" timestamp="2026-05-08T15:18:52.017Z" hostname="chromium" tests="5" failures="1" skipped="0" time="9.28" errors="0">
+<testcase name="Phantom Brew whitebox flows › menu supports browsing, filtering, search, and price sort" classname="phantom-brew.spec.ts" time="1.138">
+</testcase>
+<testcase name="Phantom Brew whitebox flows › product detail recalculates total from size, options, and quantity" classname="phantom-brew.spec.ts" time="0.557">
+</testcase>
+<testcase name="Phantom Brew whitebox flows › cart shows added item and supports quantity update and removal" classname="phantom-brew.spec.ts" time="0.927">
+</testcase>
+<testcase name="Phantom Brew whitebox flows › cart coupon applies a visible discount to the order total" classname="phantom-brew.spec.ts" time="5.311">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../tests/1a-playwright-whitebox/test-results/phantom-brew-Phantom-Brew--bbe20-discount-to-the-order-total-chromium/error-context.md]]
+
+[[ATTACHMENT|../tests/1a-playwright-whitebox/test-results/phantom-brew-Phantom-Brew--bbe20-discount-to-the-order-total-chromium/trace.zip]]
+]]>
+</system-out>
+<failure message="expect(locator).toHaveText(expected) failed" type="expect.toHaveText">
+<![CDATA[  [chromium] › phantom-brew.spec.ts:72:7 › Phantom Brew whitebox flows › cart coupon applies a visible discount to the order total 
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator:  locator('#cart-badge')
+    Expected: "1"
+    Received: "0"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveText" with timeout 5000ms
+      - waiting for locator('#cart-badge')
+        9 × locator resolved to <span class="badge" id="cart-badge">0</span>
+          - unexpected value "0"
+
+
+      4 |   await page.goto('/menu/1');
+      5 |   await page.getByRole('button', { name: 'Add to Cart' }).click();
+    > 6 |   await expect(page.locator('#cart-badge')).toHaveText('1');
+        |                                             ^
+      7 | }
+      8 |
+      9 | test.describe('Phantom Brew whitebox flows', () => {
+        at addHouseBlendFromDetail (./tests/1a-playwright-whitebox/tests/phantom-brew.spec.ts:6:45)
+        at ./tests/1a-playwright-whitebox/tests/phantom-brew.spec.ts:73:5
+
+    Error Context: ../test-results/phantom-brew-Phantom-Brew--bbe20-discount-to-the-order-total-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../test-results/phantom-brew-Phantom-Brew--bbe20-discount-to-the-order-total-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace ../test-results/phantom-brew-Phantom-Brew--bbe20-discount-to-the-order-total-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+</testcase>
+<testcase name="Phantom Brew whitebox flows › checkout places an order and lists it in order history" classname="phantom-brew.spec.ts" time="1.347">
+</testcase>
+</testsuite>
+</testsuites>

@@ -1,0 +1,290 @@
+{
+  "run": {
+    "id": 1,
+    "runType": "full",
+    "createdAt": "2026-05-08 14:09:02"
+  },
+  "evals": [
+    {
+      "id": 1,
+      "name": "AI triage vs Ground Truth",
+      "filepath": "./evals/triage.eval.ts",
+      "duration": 0,
+      "status": "success",
+      "variantName": null,
+      "variantGroup": null,
+      "createdAt": "2026-05-08 14:09:02",
+      "averageScore": 0.9166666666666666,
+      "results": [
+        {
+          "id": 1,
+          "duration": 1,
+          "input": {
+            "run_id": "pipeline-6",
+            "test_case": "Phantom Brew whitebox flows › cart coupon applies a visible discount to the order total",
+            "test_id": "FN-3",
+            "trap_type": "false_negative",
+            "label_source": "designed",
+            "label_status": "confirmed",
+            "ai_verdict": "real_bug",
+            "confidence": 0.88,
+            "estimated_root_cause": "Add to Cart on /menu/1 did not update cart state; cart badge stayed 0 after click.",
+            "recommended_action": "Investigate add-to-cart handler/state sync on product detail page before coupon assertions.",
+            "is_false_positive": false,
+            "is_false_negative": true
+          },
+          "output": {
+            "ai_verdict": "real_bug",
+            "confidence": 0.88,
+            "is_false_positive": false,
+            "is_false_negative": true,
+            "estimated_root_cause": "Add to Cart on /menu/1 did not update cart state; cart badge stayed 0 after click.",
+            "recommended_action": "Investigate add-to-cart handler/state sync on product detail page before coupon assertions."
+          },
+          "expected": {
+            "test_id": "FN-3",
+            "expected_verdict": "real_bug",
+            "trap_type": "false_negative",
+            "label_source": "designed",
+            "label_status": "confirmed",
+            "is_app_bug": true,
+            "root_cause": "Coupon discount is displayed in UI but not subtracted from total calculation"
+          },
+          "status": "success",
+          "colOrder": 0,
+          "renderedColumns": [],
+          "createdAt": "2026-05-08 14:09:02",
+          "averageScore": 1,
+          "scores": [
+            {
+              "id": 1,
+              "name": "verdict_accuracy",
+              "score": 1,
+              "description": "Scores 1 when ai_verdict matches the Ground Truth expected verdict.",
+              "metadata": null,
+              "createdAt": "2026-05-08 14:09:02"
+            },
+            {
+              "id": 2,
+              "name": "fp_detection",
+              "score": 1,
+              "description": "For false-positive traps, scores 1 when is_false_positive is true.",
+              "metadata": null,
+              "createdAt": "2026-05-08 14:09:02"
+            },
+            {
+              "id": 3,
+              "name": "fn_detection",
+              "score": 1,
+              "description": "For false-negative traps, scores 1 when is_false_negative is true.",
+              "metadata": null,
+              "createdAt": "2026-05-08 14:09:02"
+            }
+          ],
+          "traces": []
+        },
+        {
+          "id": 2,
+          "duration": 1,
+          "input": {
+            "run_id": "pipeline-6",
+            "test_case": "注文ステータスページ › ステータスが「preparing」に進む",
+            "test_id": "FP-2",
+            "trap_type": "false_positive",
+            "label_source": "designed",
+            "label_status": "confirmed",
+            "ai_verdict": "flaky",
+            "confidence": 0.98,
+            "estimated_root_cause": "Status progression is time/random-delay dependent and may remain 'received' within the fixed 5s window.",
+            "recommended_action": "Poll until status changes with a longer timeout or control the backend timing in test.",
+            "is_false_positive": true,
+            "is_false_negative": false
+          },
+          "output": {
+            "ai_verdict": "flaky",
+            "confidence": 0.98,
+            "is_false_positive": true,
+            "is_false_negative": false,
+            "estimated_root_cause": "Status progression is time/random-delay dependent and may remain 'received' within the fixed 5s window.",
+            "recommended_action": "Poll until status changes with a longer timeout or control the backend timing in test."
+          },
+          "expected": {
+            "test_id": "FP-2",
+            "expected_verdict": "flaky",
+            "trap_type": "false_positive",
+            "label_source": "designed",
+            "label_status": "confirmed",
+            "is_app_bug": false,
+            "root_cause": "SSE status transitions have random delays (3-30 seconds per stage)"
+          },
+          "status": "success",
+          "colOrder": 1,
+          "renderedColumns": [],
+          "createdAt": "2026-05-08 14:09:02",
+          "averageScore": 1,
+          "scores": [
+            {
+              "id": 4,
+              "name": "verdict_accuracy",
+              "score": 1,
+              "description": "Scores 1 when ai_verdict matches the Ground Truth expected verdict.",
+              "metadata": null,
+              "createdAt": "2026-05-08 14:09:02"
+            },
+            {
+              "id": 5,
+              "name": "fp_detection",
+              "score": 1,
+              "description": "For false-positive traps, scores 1 when is_false_positive is true.",
+              "metadata": null,
+              "createdAt": "2026-05-08 14:09:02"
+            },
+            {
+              "id": 6,
+              "name": "fn_detection",
+              "score": 1,
+              "description": "For false-negative traps, scores 1 when is_false_negative is true.",
+              "metadata": null,
+              "createdAt": "2026-05-08 14:09:02"
+            }
+          ],
+          "traces": []
+        },
+        {
+          "id": 3,
+          "duration": 1,
+          "input": {
+            "run_id": "pipeline-6",
+            "test_case": "注文ステータスページ › 最終的にステータスが「completed」になる",
+            "test_id": "FP-2",
+            "trap_type": "false_positive",
+            "label_source": "designed",
+            "label_status": "confirmed",
+            "ai_verdict": "environment_issue",
+            "confidence": 0.75,
+            "estimated_root_cause": "Checkout page/input '#customer-name' never became available, suggesting page load/app startup failure rather than status logic.",
+            "recommended_action": "Check CI app startup/routing and ensure /checkout renders before filling form.",
+            "is_false_positive": true,
+            "is_false_negative": false
+          },
+          "output": {
+            "ai_verdict": "environment_issue",
+            "confidence": 0.75,
+            "is_false_positive": true,
+            "is_false_negative": false,
+            "estimated_root_cause": "Checkout page/input '#customer-name' never became available, suggesting page load/app startup failure rather than status logic.",
+            "recommended_action": "Check CI app startup/routing and ensure /checkout renders before filling form."
+          },
+          "expected": {
+            "test_id": "FP-2",
+            "expected_verdict": "flaky",
+            "trap_type": "false_positive",
+            "label_source": "designed",
+            "label_status": "confirmed",
+            "is_app_bug": false,
+            "root_cause": "SSE status transitions have random delays (3-30 seconds per stage)"
+          },
+          "status": "success",
+          "colOrder": 2,
+          "renderedColumns": [],
+          "createdAt": "2026-05-08 14:09:02",
+          "averageScore": 0.6666666666666666,
+          "scores": [
+            {
+              "id": 7,
+              "name": "verdict_accuracy",
+              "score": 0,
+              "description": "Scores 1 when ai_verdict matches the Ground Truth expected verdict.",
+              "metadata": null,
+              "createdAt": "2026-05-08 14:09:02"
+            },
+            {
+              "id": 8,
+              "name": "fp_detection",
+              "score": 1,
+              "description": "For false-positive traps, scores 1 when is_false_positive is true.",
+              "metadata": null,
+              "createdAt": "2026-05-08 14:09:02"
+            },
+            {
+              "id": 9,
+              "name": "fn_detection",
+              "score": 1,
+              "description": "For false-negative traps, scores 1 when is_false_negative is true.",
+              "metadata": null,
+              "createdAt": "2026-05-08 14:09:02"
+            }
+          ],
+          "traces": []
+        },
+        {
+          "id": 4,
+          "duration": 1,
+          "input": {
+            "run_id": "pipeline-6",
+            "test_case": "レート制限テスト › 通常のページ遷移でエラーが出ない",
+            "test_id": "FP-4",
+            "trap_type": "false_positive",
+            "label_source": "designed",
+            "label_status": "confirmed",
+            "ai_verdict": "test_issue",
+            "confidence": 0.99,
+            "estimated_root_cause": "Selector 'h1, .product-card' matches multiple elements, causing Playwright strict mode failure.",
+            "recommended_action": "Use a single specific locator or assert on .first() / count instead of a multi-match union selector.",
+            "is_false_positive": true,
+            "is_false_negative": false
+          },
+          "output": {
+            "ai_verdict": "test_issue",
+            "confidence": 0.99,
+            "is_false_positive": true,
+            "is_false_negative": false,
+            "estimated_root_cause": "Selector 'h1, .product-card' matches multiple elements, causing Playwright strict mode failure.",
+            "recommended_action": "Use a single specific locator or assert on .first() / count instead of a multi-match union selector."
+          },
+          "expected": {
+            "test_id": "FP-4",
+            "expected_verdict": "test_issue",
+            "trap_type": "false_positive",
+            "label_source": "designed",
+            "label_status": "confirmed",
+            "is_app_bug": false,
+            "root_cause": "Locator strict mode violation: 'h1, .product-card' resolves to multiple elements"
+          },
+          "status": "success",
+          "colOrder": 3,
+          "renderedColumns": [],
+          "createdAt": "2026-05-08 14:09:02",
+          "averageScore": 1,
+          "scores": [
+            {
+              "id": 10,
+              "name": "verdict_accuracy",
+              "score": 1,
+              "description": "Scores 1 when ai_verdict matches the Ground Truth expected verdict.",
+              "metadata": null,
+              "createdAt": "2026-05-08 14:09:02"
+            },
+            {
+              "id": 11,
+              "name": "fp_detection",
+              "score": 1,
+              "description": "For false-positive traps, scores 1 when is_false_positive is true.",
+              "metadata": null,
+              "createdAt": "2026-05-08 14:09:02"
+            },
+            {
+              "id": 12,
+              "name": "fn_detection",
+              "score": 1,
+              "description": "For false-negative traps, scores 1 when is_false_negative is true.",
+              "metadata": null,
+              "createdAt": "2026-05-08 14:09:02"
+            }
+          ],
+          "traces": []
+        }
+      ]
+    }
+  ]
+}

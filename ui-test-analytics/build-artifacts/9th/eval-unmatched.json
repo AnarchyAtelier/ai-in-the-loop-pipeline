@@ -1,0 +1,11 @@
+{
+  "generated_at": "2026-05-08T14:40:50.684Z",
+  "total_unmatched": 1,
+  "unmatched": [
+    {
+      "run_id": "pipeline-9",
+      "test_case": "注文履歴ページ › 注文履歴からステータスページに遷移できる",
+      "reason": "no_label"
+    }
+  ]
+}

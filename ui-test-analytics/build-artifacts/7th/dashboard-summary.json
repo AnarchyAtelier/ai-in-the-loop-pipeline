@@ -1,0 +1,302 @@
+{
+  "run_id": "pipeline-7",
+  "generated_at": "2026-05-08T14:21:14.036Z",
+  "source_files": {
+    "test_results": "./results/test-results.csv",
+    "diff_results": "./results/diff-results.csv",
+    "false_negative_candidates": "./results/false-negative-candidates.csv",
+    "triage_results": "./results/triage-results.csv",
+    "eval_results": "./results/eval-results.csv",
+    "action_summary": "./results/action-summary.json"
+  },
+  "counts": {
+    "test_results": 41,
+    "diff_results": 41,
+    "false_negative_candidates": 7,
+    "triage_results": 4,
+    "eval_results": 1,
+    "action_suggestions": 13
+  },
+  "test_status": {
+    "passed": 37,
+    "failed": 3,
+    "error": 1
+  },
+  "diff_status": {
+    "still_passing": 37,
+    "unresolved": 4
+  },
+  "ai_verdict": {
+    "real_bug": 2,
+    "flaky": 1,
+    "test_issue": 1
+  },
+  "false_negative_by_trap": {
+    "FN-1": 1,
+    "FN-5": 1,
+    "FN-3": 1,
+    "FN-6": 1,
+    "FN-2": 2,
+    "FN-4": 1
+  },
+  "eval_latest": {
+    "run_id": "pipeline-7",
+    "eval_date": "2026-05-08T14:20:48.683Z",
+    "accuracy": "0.7500",
+    "fp_detection_rate": "0.6667",
+    "fn_detection_rate": "1.0000",
+    "total_cases": "4",
+    "correct": "3",
+    "incorrect": "1",
+    "details_json": "[{\"test_id\":\"FN-3\",\"test_case\":\"Phantom Brew whitebox flows › cart coupon applies a visible discount to the order total\",\"trap_type\":\"false_negative\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"real_bug\",\"ai_verdict\":\"real_bug\",\"verdict_match\":true,\"expected_false_positive\":false,\"is_false_positive\":false,\"false_positive_match\":true,\"expected_false_negative\":true,\"is_false_negative\":true,\"false_negative_match\":true,\"confidence\":0.84},{\"test_id\":\"FP-2\",\"test_case\":\"注文ステータスページ › ステータスが「preparing」に進む\",\"trap_type\":\"false_positive\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"flaky\",\"ai_verdict\":\"flaky\",\"verdict_match\":true,\"expected_false_positive\":true,\"is_false_positive\":true,\"false_positive_match\":true,\"expected_false_negative\":false,\"is_false_negative\":false,\"false_negative_match\":true,\"confidence\":0.96},{\"test_id\":\"FP-2\",\"test_case\":\"注文ステータスページ › 最終的にステータスが「completed」になる\",\"trap_type\":\"false_positive\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"flaky\",\"ai_verdict\":\"real_bug\",\"verdict_match\":false,\"expected_false_positive\":true,\"is_false_positive\":false,\"false_positive_match\":false,\"expected_false_negative\":false,\"is_false_negative\":true,\"false_negative_match\":true,\"confidence\":0.61},{\"test_id\":\"FP-4\",\"test_case\":\"レート制限テスト › 通常のページ遷移でエラーが出ない\",\"trap_type\":\"false_positive\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"test_issue\",\"ai_verdict\":\"test_issue\",\"verdict_match\":true,\"expected_false_positive\":true,\"is_false_positive\":true,\"false_positive_match\":true,\"expected_false_negative\":false,\"is_false_negative\":false,\"false_negative_match\":true,\"confidence\":0.99}]"
+  },
+  "action_summary": {
+    "run_id": "pipeline-7",
+    "generated_at": "2026-05-08T14:21:13.719Z",
+    "source_files": {
+      "diff_results": "./results/diff-results.csv",
+      "triage_results": "./results/triage-results.csv"
+    },
+    "summary": {
+      "total_actions": 13,
+      "high_priority": 2,
+      "medium_priority": 2,
+      "low_priority": 0,
+      "info_priority": 9,
+      "by_type": {
+        "real_bug_failure": 2,
+        "false_positive_review": 2,
+        "stable": 9
+      },
+      "by_verdict": {
+        "real_bug": 2,
+        "test_issue": 1,
+        "flaky": 1,
+        "untriaged": 9
+      }
+    },
+    "actions": [
+      {
+        "id": "pipeline-7:Phantom_Brew_whitebox_flows_›_cart_coupon_applies_a_visible_discount_to_the_order_total:real-bug",
+        "priority": "high",
+        "type": "real_bug_failure",
+        "test_case": "Phantom Brew whitebox flows › cart coupon applies a visible discount to the order total",
+        "message": "Phantom Brew whitebox flows › cart coupon applies a visible discount to the order total の assertion error が 9回連続。最優先で対処。",
+        "details": {
+          "diff_status": "unresolved",
+          "ai_verdict": "real_bug",
+          "confidence": 0.84,
+          "error_type": "assertion error",
+          "failure_streak_count": 9,
+          "consecutive_pass_count": 0,
+          "estimated_root_cause": "Add to Cart on /menu/1 did not update cart state; badge stayed 0 before coupon flow started.",
+          "recommended_action": "Debug add-to-cart handler/state sync on product detail page and verify badge increments after click."
+        }
+      },
+      {
+        "id": "pipeline-7:注文ステータスページ_›_最終的にステータスが「completed」になる:real-bug",
+        "priority": "high",
+        "type": "real_bug_failure",
+        "test_case": "注文ステータスページ › 最終的にステータスが「completed」になる",
+        "message": "注文ステータスページ › 最終的にステータスが「completed」になる の assertion error が 7回連続。最優先で対処。",
+        "details": {
+          "diff_status": "unresolved",
+          "ai_verdict": "real_bug",
+          "confidence": 0.61,
+          "error_type": "assertion error",
+          "failure_streak_count": 7,
+          "consecutive_pass_count": 0,
+          "estimated_root_cause": "Order status never progressed at all; it remained received for 15s instead of reaching completed.",
+          "recommended_action": "Investigate status transition logic/background updates from received to preparing/completed."
+        }
+      },
+      {
+        "id": "pipeline-7:レート制限テスト_›_通常のページ遷移でエラーが出ない:false-positive",
+        "priority": "medium",
+        "type": "false_positive_review",
+        "test_case": "レート制限テスト › 通常のページ遷移でエラーが出ない",
+        "message": "レート制限テスト › 通常のページ遷移でエラーが出ない は偽陽性の可能性あり（確信度: 0.99）。テスト条件と待機条件を確認。",
+        "details": {
+          "diff_status": "unresolved",
+          "ai_verdict": "test_issue",
+          "confidence": 0.99,
+          "error_type": "locator error",
+          "failure_streak_count": 7,
+          "consecutive_pass_count": 0,
+          "estimated_root_cause": "Assertion uses multi-match selector 'h1, .product-card' with toBeVisible, causing Playwright strict mode failure.",
+          "recommended_action": "Use a single specific locator or assert count/any-visible explicitly."
+        }
+      },
+      {
+        "id": "pipeline-7:注文ステータスページ_›_ステータスが「preparing」に進む:false-positive",
+        "priority": "medium",
+        "type": "false_positive_review",
+        "test_case": "注文ステータスページ › ステータスが「preparing」に進む",
+        "message": "注文ステータスページ › ステータスが「preparing」に進む は偽陽性の可能性あり（確信度: 0.96）。テスト条件と待機条件を確認。",
+        "details": {
+          "diff_status": "unresolved",
+          "ai_verdict": "flaky",
+          "confidence": 0.96,
+          "error_type": "assertion error",
+          "failure_streak_count": 7,
+          "consecutive_pass_count": 0,
+          "estimated_root_cause": "Status progression is time/random-delay driven and did not advance from received within the test window.",
+          "recommended_action": "Poll/wait for eventual state or control/mock the status timer instead of asserting immediate progression."
+        }
+      },
+      {
+        "id": "pipeline-7:メニューページ_›_カテゴリフィルターが動作する:stable",
+        "priority": "info",
+        "type": "stable",
+        "test_case": "メニューページ › カテゴリフィルターが動作する",
+        "message": "メニューページ › カテゴリフィルターが動作する は連続PASS 7回。安定化しています。",
+        "details": {
+          "diff_status": "still_passing",
+          "ai_verdict": "",
+          "confidence": null,
+          "error_type": "unknown error",
+          "failure_streak_count": 0,
+          "consecutive_pass_count": 7,
+          "estimated_root_cause": "",
+          "recommended_action": ""
+        }
+      },
+      {
+        "id": "pipeline-7:メニューページ_›_ソート後に商品カードをクリックして詳細に遷移できる:stable",
+        "priority": "info",
+        "type": "stable",
+        "test_case": "メニューページ › ソート後に商品カードをクリックして詳細に遷移できる",
+        "message": "メニューページ › ソート後に商品カードをクリックして詳細に遷移できる は連続PASS 7回。安定化しています。",
+        "details": {
+          "diff_status": "still_passing",
+          "ai_verdict": "",
+          "confidence": null,
+          "error_type": "unknown error",
+          "failure_streak_count": 0,
+          "consecutive_pass_count": 7,
+          "estimated_root_cause": "",
+          "recommended_action": ""
+        }
+      },
+      {
+        "id": "pipeline-7:メニューページ_›_価格で昇順ソートできる:stable",
+        "priority": "info",
+        "type": "stable",
+        "test_case": "メニューページ › 価格で昇順ソートできる",
+        "message": "メニューページ › 価格で昇順ソートできる は連続PASS 7回。安定化しています。",
+        "details": {
+          "diff_status": "still_passing",
+          "ai_verdict": "",
+          "confidence": null,
+          "error_type": "unknown error",
+          "failure_streak_count": 0,
+          "consecutive_pass_count": 7,
+          "estimated_root_cause": "",
+          "recommended_action": ""
+        }
+      },
+      {
+        "id": "pipeline-7:メニューページ_›_商品カードのAdd_to_Cartボタンが動作する:stable",
+        "priority": "info",
+        "type": "stable",
+        "test_case": "メニューページ › 商品カードのAdd to Cartボタンが動作する",
+        "message": "メニューページ › 商品カードのAdd to Cartボタンが動作する は連続PASS 7回。安定化しています。",
+        "details": {
+          "diff_status": "still_passing",
+          "ai_verdict": "",
+          "confidence": null,
+          "error_type": "unknown error",
+          "failure_streak_count": 0,
+          "consecutive_pass_count": 7,
+          "estimated_root_cause": "",
+          "recommended_action": ""
+        }
+      },
+      {
+        "id": "pipeline-7:メニューページ_›_商品一覧が表示される:stable",
+        "priority": "info",
+        "type": "stable",
+        "test_case": "メニューページ › 商品一覧が表示される",
+        "message": "メニューページ › 商品一覧が表示される は連続PASS 7回。安定化しています。",
+        "details": {
+          "diff_status": "still_passing",
+          "ai_verdict": "",
+          "confidence": null,
+          "error_type": "unknown error",
+          "failure_streak_count": 0,
+          "consecutive_pass_count": 7,
+          "estimated_root_cause": "",
+          "recommended_action": ""
+        }
+      },
+      {
+        "id": "pipeline-7:メニューページ_›_検索で商品を絞り込める:stable",
+        "priority": "info",
+        "type": "stable",
+        "test_case": "メニューページ › 検索で商品を絞り込める",
+        "message": "メニューページ › 検索で商品を絞り込める は連続PASS 7回。安定化しています。",
+        "details": {
+          "diff_status": "still_passing",
+          "ai_verdict": "",
+          "confidence": null,
+          "error_type": "unknown error",
+          "failure_streak_count": 0,
+          "consecutive_pass_count": 7,
+          "estimated_root_cause": "",
+          "recommended_action": ""
+        }
+      },
+      {
+        "id": "pipeline-7:商品詳細ページ_›_オプションを選択すると価格に反映される:stable",
+        "priority": "info",
+        "type": "stable",
+        "test_case": "商品詳細ページ › オプションを選択すると価格に反映される",
+        "message": "商品詳細ページ › オプションを選択すると価格に反映される は連続PASS 7回。安定化しています。",
+        "details": {
+          "diff_status": "still_passing",
+          "ai_verdict": "",
+          "confidence": null,
+          "error_type": "unknown error",
+          "failure_streak_count": 0,
+          "consecutive_pass_count": 7,
+          "estimated_root_cause": "",
+          "recommended_action": ""
+        }
+      },
+      {
+        "id": "pipeline-7:商品詳細ページ_›_サイズ変更で価格が変わる:stable",
+        "priority": "info",
+        "type": "stable",
+        "test_case": "商品詳細ページ › サイズ変更で価格が変わる",
+        "message": "商品詳細ページ › サイズ変更で価格が変わる は連続PASS 7回。安定化しています。",
+        "details": {
+          "diff_status": "still_passing",
+          "ai_verdict": "",
+          "confidence": null,
+          "error_type": "unknown error",
+          "failure_streak_count": 0,
+          "consecutive_pass_count": 7,
+          "estimated_root_cause": "",
+          "recommended_action": ""
+        }
+      },
+      {
+        "id": "pipeline-7:商品詳細ページ_›_数量を変更すると合計に反映される:stable",
+        "priority": "info",
+        "type": "stable",
+        "test_case": "商品詳細ページ › 数量を変更すると合計に反映される",
+        "message": "商品詳細ページ › 数量を変更すると合計に反映される は連続PASS 7回。安定化しています。",
+        "details": {
+          "diff_status": "still_passing",
+          "ai_verdict": "",
+          "confidence": null,
+          "error_type": "unknown error",
+          "failure_streak_count": 0,
+          "consecutive_pass_count": 7,
+          "estimated_root_cause": "",
+          "recommended_action": ""
+        }
+      }
+    ]
+  }
+}

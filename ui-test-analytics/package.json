@@ -12,8 +12,10 @@
     "pipeline:advisor": "tsx pipeline/advisor/index.ts",
     "pipeline:aggregate": "npm run pipeline:advisor && tsx pipeline/aggregate/index.ts",
     "pipeline:eval": "tsx pipeline/eval/index.ts",
+    "artifacts:collect-runs": "tsx pipeline/artifacts/collect-runs.ts",
     "artifacts:normalize-run": "tsx pipeline/artifacts/normalize-run.ts",
     "artifacts:summarize-runs": "tsx pipeline/artifacts/summarize-runs.ts",
+    "artifacts:write-dashboard-data": "tsx pipeline/artifacts/write-dashboard-data.ts",
     "eval:dev": "evalite watch evals/triage.eval.ts",
     "eval:run": "evalite evals/triage.eval.ts",
     "typecheck": "tsc --noEmit"

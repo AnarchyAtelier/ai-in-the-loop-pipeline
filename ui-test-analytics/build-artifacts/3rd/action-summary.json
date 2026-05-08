@@ -2,8 +2,8 @@
   "run_id": "pipeline-3",
   "generated_at": "2026-05-07T03:29:47.208Z",
   "source_files": {
-    "diff_results": "/var/jenkins_home/workspace/ui-test-analytics/4-aggregate/ai-in-the-loop-pipeline/ui-test-analytics/results/diff-results.csv",
-    "triage_results": "/var/jenkins_home/workspace/ui-test-analytics/4-aggregate/ai-in-the-loop-pipeline/ui-test-analytics/results/triage-results.csv"
+    "diff_results": "./results/diff-results.csv",
+    "triage_results": "./results/triage-results.csv"
   },
   "summary": {
     "total_actions": 8,

@@ -11,7 +11,7 @@
       ],
       "trap_type": "false_positive",
       "expected_verdict": "flaky",
-      "root_cause": "Optimistic UI update with 5% server-side rollback on stock check",
+      "root_cause": "在庫確認時に5%の確率でサーバー側ロールバックが発生する楽観的UI更新",
       "is_app_bug": false,
       "notes": "5%の確率でしか発生しないため、テスト結果は確率的"
     },
@@ -25,7 +25,7 @@
       ],
       "trap_type": "false_positive",
       "expected_verdict": "flaky",
-      "root_cause": "SSE status transitions have random delays (3-30 seconds per stage)",
+      "root_cause": "SSEのステータス遷移に各段階3〜30秒のランダム遅延がある",
       "is_app_bug": false,
       "notes": "ステータス遷移間隔がランダムなため、短いタイムアウトでは見逃す"
     },
@@ -38,7 +38,7 @@
       ],
       "trap_type": "false_positive",
       "expected_verdict": "flaky",
-      "root_cause": "A/B test: 50% chance of variant B (single column) which lacks .form-row wrapper",
+      "root_cause": "A/Bテストで50%の確率で単一カラムのvariant Bになり、.form-rowラッパーが存在しない",
       "is_app_bug": false,
       "notes": "A/Bテストによる意図的なレイアウト変動"
     },
@@ -50,10 +50,10 @@
         "レート制限テスト › 通常のページ遷移でエラーが出ない"
       ],
       "trap_type": "false_positive",
-      "expected_verdict": "environment_issue",
-      "root_cause": "Rate limiter: 20 requests per 10 seconds per session",
+      "expected_verdict": "test_issue",
+      "root_cause": "Locator strict mode違反: 'h1, .product-card' が複数要素に解決される",
       "is_app_bug": false,
-      "notes": "正常な防御機構。テスト環境での並列実行で発生"
+      "notes": "設計時は環境問題を想定していたが、実エラーログ観測でテスト実装側の問題と判明（記事1 の追検証で確定）"
     },
     {
       "test_id": "FP-5",
@@ -64,7 +64,7 @@
       ],
       "trap_type": "false_positive",
       "expected_verdict": "flaky",
-      "root_cause": "CSS staggered animation with pointer-events: none during animation",
+      "root_cause": "段階的CSSアニメーション中は pointer-events: none になりクリックできない",
       "is_app_bug": false,
       "notes": "アニメーション完了後にpointer-eventsが復活する設計"
     },
@@ -77,7 +77,7 @@
       ],
       "trap_type": "false_positive",
       "expected_verdict": "environment_issue",
-      "root_cause": "Cold start: first 5 requests have 3 second delay for DB pool warmup",
+      "root_cause": "コールドスタート: DBプールウォームアップのため最初の5リクエストが3秒遅延する",
       "is_app_bug": false,
       "notes": "サーバー再起動直後にのみ発生。CI環境で起きやすい"
     },
@@ -90,7 +90,7 @@
       ],
       "trap_type": "false_negative",
       "expected_verdict": "real_bug",
-      "root_cause": "Tax rounded per-item instead of on total: Math.round(item * rate) summed vs Math.round(sum * rate)",
+      "root_cause": "商品ごとに税額を丸めて合算しており、合計額に税率を掛けて丸める計算とズレる",
       "is_app_bug": true,
       "notes": "10%税率では差分が出にくいが、オプション追加で端数が出やすくなる"
     },
@@ -104,7 +104,7 @@
       ],
       "trap_type": "false_negative",
       "expected_verdict": "real_bug",
-      "root_cause": "Client-side sort re-orders DOM elements visually but does not update href attributes",
+      "root_cause": "クライアント側ソートがDOM要素の見た目だけを並べ替え、href属性を更新していない",
       "is_app_bug": true,
       "notes": "表示テキストだけを見るテストでは検知不可"
     },
@@ -114,11 +114,12 @@
       "aliases": [
         "FN-3: クーポン適用UIの欺き › PHANTOM10クーポン適用で合計が10%割引される",
         "Phantom Brew whitebox flows › cart coupon applies a visible discount to the order total",
+        "Phantom Brew 白箱フロー › カートでクーポンを適用すると注文合計に割引が反映される",
         "カートページ › クーポンを適用すると割引メッセージが表示される"
       ],
       "trap_type": "false_negative",
       "expected_verdict": "real_bug",
-      "root_cause": "Coupon discount is displayed in UI but not subtracted from total calculation",
+      "root_cause": "クーポン適用メッセージは表示されるが、割引額が合計金額から差し引かれていない",
       "is_app_bug": true,
       "notes": "「割引適用メッセージ表示」だけをチェックするテストでは検知不可"
     },
@@ -131,7 +132,7 @@
       ],
       "trap_type": "false_negative",
       "expected_verdict": "real_bug",
-      "root_cause": "Off-by-one: totalPages += 1 when total % perPage === 0, creating an empty last page",
+      "root_cause": "境界値バグ: total % perPage === 0 のとき totalPages += 1 され、空の最終ページが作られる",
       "is_app_bug": true,
       "notes": "テストデータが10件ちょうどでないと発現しない"
     },
@@ -144,7 +145,7 @@
       ],
       "trap_type": "false_negative",
       "expected_verdict": "real_bug",
-      "root_cause": "Race condition: requests within 100ms window are silently ignored on server side",
+      "root_cause": "競合状態: 100ms以内の連続リクエストがサーバー側で黙って無視される",
       "is_app_bug": true,
       "notes": "Playwrightの通常click()は安定して実行されるため再現しにくい"
     },
@@ -157,7 +158,7 @@
       ],
       "trap_type": "false_negative",
       "expected_verdict": "real_bug",
-      "root_cause": "No server-side email validation; relies solely on HTML5 type=email which Playwright bypasses",
+      "root_cause": "サーバー側メール形式チェックがなく、PlaywrightがHTML5 type=emailの検証を迂回できる",
       "is_app_bug": true,
       "notes": "正常系メールのみ入力するテストでは検知不可"
     }

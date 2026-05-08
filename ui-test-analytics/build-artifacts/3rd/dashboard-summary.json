@@ -1,13 +1,13 @@
 {
   "run_id": "pipeline-3",
-  "generated_at": "2026-05-07T03:29:47.550Z",
+  "generated_at": "2026-05-08T13:45:51.480Z",
   "source_files": {
-    "test_results": "/var/jenkins_home/workspace/ui-test-analytics/4-aggregate/ai-in-the-loop-pipeline/ui-test-analytics/results/test-results.csv",
-    "diff_results": "/var/jenkins_home/workspace/ui-test-analytics/4-aggregate/ai-in-the-loop-pipeline/ui-test-analytics/results/diff-results.csv",
-    "false_negative_candidates": "/var/jenkins_home/workspace/ui-test-analytics/4-aggregate/ai-in-the-loop-pipeline/ui-test-analytics/results/false-negative-candidates.csv",
-    "triage_results": "/var/jenkins_home/workspace/ui-test-analytics/4-aggregate/ai-in-the-loop-pipeline/ui-test-analytics/results/triage-results.csv",
-    "eval_results": "/var/jenkins_home/workspace/ui-test-analytics/4-aggregate/ai-in-the-loop-pipeline/ui-test-analytics/results/eval-results.csv",
-    "action_summary": "/var/jenkins_home/workspace/ui-test-analytics/4-aggregate/ai-in-the-loop-pipeline/ui-test-analytics/results/action-summary.json"
+    "test_results": "./build-artifacts\\3rd\\test-results.csv",
+    "diff_results": "./build-artifacts\\3rd\\diff-results.csv",
+    "false_negative_candidates": "./build-artifacts\\3rd\\false-negative-candidates.csv",
+    "triage_results": "./build-artifacts\\3rd\\triage-results.csv",
+    "eval_results": "./build-artifacts\\3rd\\eval-results.csv",
+    "action_summary": "./build-artifacts\\3rd\\action-summary.json"
   },
   "counts": {
     "test_results": 41,
@@ -43,21 +43,21 @@
   },
   "eval_latest": {
     "run_id": "pipeline-3",
-    "eval_date": "2026-05-07T03:29:22.496Z",
-    "accuracy": "0.6000",
+    "eval_date": "2026-05-08T13:43:40.047Z",
+    "accuracy": "0.8000",
     "fp_detection_rate": "1.0000",
     "fn_detection_rate": "0.0000",
     "total_cases": "5",
-    "correct": "3",
-    "incorrect": "2",
-    "details_json": "[{\"test_id\":\"FN-3\",\"test_case\":\"Phantom Brew whitebox flows › cart coupon applies a visible discount to the order total\",\"trap_type\":\"false_negative\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"real_bug\",\"ai_verdict\":\"real_bug\",\"verdict_match\":true,\"expected_false_positive\":false,\"is_false_positive\":false,\"false_positive_match\":true,\"expected_false_negative\":true,\"is_false_negative\":false,\"false_negative_match\":false,\"confidence\":0.9},{\"test_id\":\"FN-5\",\"test_case\":\"カートページ › 数量の+ボタンで数量が増える\",\"trap_type\":\"false_negative\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"real_bug\",\"ai_verdict\":\"environment_issue\",\"verdict_match\":false,\"expected_false_positive\":false,\"is_false_positive\":true,\"false_positive_match\":true,\"expected_false_negative\":true,\"is_false_negative\":false,\"false_negative_match\":false,\"confidence\":0.85},{\"test_id\":\"FP-2\",\"test_case\":\"注文ステータスページ › ステータスが「preparing」に進む\",\"trap_type\":\"false_positive\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"flaky\",\"ai_verdict\":\"flaky\",\"verdict_match\":true,\"expected_false_positive\":true,\"is_false_positive\":true,\"false_positive_match\":true,\"expected_false_negative\":false,\"is_false_negative\":false,\"false_negative_match\":true,\"confidence\":0.8},{\"test_id\":\"FP-2\",\"test_case\":\"注文ステータスページ › 最終的にステータスが「completed」になる\",\"trap_type\":\"false_positive\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"flaky\",\"ai_verdict\":\"flaky\",\"verdict_match\":true,\"expected_false_positive\":true,\"is_false_positive\":true,\"false_positive_match\":true,\"expected_false_negative\":false,\"is_false_negative\":false,\"false_negative_match\":true,\"confidence\":0.9},{\"test_id\":\"FP-4\",\"test_case\":\"レート制限テスト › 通常のページ遷移でエラーが出ない\",\"trap_type\":\"false_positive\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"environment_issue\",\"ai_verdict\":\"test_issue\",\"verdict_match\":false,\"expected_false_positive\":true,\"is_false_positive\":true,\"false_positive_match\":true,\"expected_false_negative\":false,\"is_false_negative\":false,\"false_negative_match\":true,\"confidence\":0.9}]"
+    "correct": "4",
+    "incorrect": "1",
+    "details_json": "[{\"test_id\":\"FN-3\",\"test_case\":\"Phantom Brew whitebox flows › cart coupon applies a visible discount to the order total\",\"trap_type\":\"false_negative\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"real_bug\",\"ai_verdict\":\"real_bug\",\"verdict_match\":true,\"expected_false_positive\":false,\"is_false_positive\":false,\"false_positive_match\":true,\"expected_false_negative\":true,\"is_false_negative\":false,\"false_negative_match\":false,\"confidence\":0.9},{\"test_id\":\"FN-5\",\"test_case\":\"カートページ › 数量の+ボタンで数量が増える\",\"trap_type\":\"false_negative\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"real_bug\",\"ai_verdict\":\"environment_issue\",\"verdict_match\":false,\"expected_false_positive\":false,\"is_false_positive\":true,\"false_positive_match\":true,\"expected_false_negative\":true,\"is_false_negative\":false,\"false_negative_match\":false,\"confidence\":0.85},{\"test_id\":\"FP-2\",\"test_case\":\"注文ステータスページ › ステータスが「preparing」に進む\",\"trap_type\":\"false_positive\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"flaky\",\"ai_verdict\":\"flaky\",\"verdict_match\":true,\"expected_false_positive\":true,\"is_false_positive\":true,\"false_positive_match\":true,\"expected_false_negative\":false,\"is_false_negative\":false,\"false_negative_match\":true,\"confidence\":0.8},{\"test_id\":\"FP-2\",\"test_case\":\"注文ステータスページ › 最終的にステータスが「completed」になる\",\"trap_type\":\"false_positive\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"flaky\",\"ai_verdict\":\"flaky\",\"verdict_match\":true,\"expected_false_positive\":true,\"is_false_positive\":true,\"false_positive_match\":true,\"expected_false_negative\":false,\"is_false_negative\":false,\"false_negative_match\":true,\"confidence\":0.9},{\"test_id\":\"FP-4\",\"test_case\":\"レート制限テスト › 通常のページ遷移でエラーが出ない\",\"trap_type\":\"false_positive\",\"label_source\":\"designed\",\"label_status\":\"confirmed\",\"expected_verdict\":\"test_issue\",\"ai_verdict\":\"test_issue\",\"verdict_match\":true,\"expected_false_positive\":true,\"is_false_positive\":true,\"false_positive_match\":true,\"expected_false_negative\":false,\"is_false_negative\":false,\"false_negative_match\":true,\"confidence\":0.9}]"
   },
   "action_summary": {
     "run_id": "pipeline-3",
     "generated_at": "2026-05-07T03:29:47.208Z",
     "source_files": {
-      "diff_results": "/var/jenkins_home/workspace/ui-test-analytics/4-aggregate/ai-in-the-loop-pipeline/ui-test-analytics/results/diff-results.csv",
-      "triage_results": "/var/jenkins_home/workspace/ui-test-analytics/4-aggregate/ai-in-the-loop-pipeline/ui-test-analytics/results/triage-results.csv"
+      "diff_results": "./results/diff-results.csv",
+      "triage_results": "./results/triage-results.csv"
     },
     "summary": {
       "total_actions": 8,

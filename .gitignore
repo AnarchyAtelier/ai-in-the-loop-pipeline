@@ -5,3 +5,8 @@ scripts/
 /scripts/redact-secrets.ps1
 /julian-push.log
 /scripts/repo-start.ps1
+/ui-test-analytics/tests/1a-playwright-whitebox/node_modules/
+/ui-test-analytics/tests/1b-playwright-blackbox/node_modules/
+/ui-test-analytics/phantom-brew/node_modules/
+/ui-test-analytics/tests/ground-truth/node_modules/
+/ui-test-analytics/tests/1c-playwright-naive/node_modules/

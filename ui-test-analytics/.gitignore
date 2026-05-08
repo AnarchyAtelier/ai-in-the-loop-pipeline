@@ -11,4 +11,7 @@ coverage/
 dist/
 .tmp/
 
+dashboard/summary-data.js
+build-artifacts/dashboard/summary-data.js
+
 .DS_Store

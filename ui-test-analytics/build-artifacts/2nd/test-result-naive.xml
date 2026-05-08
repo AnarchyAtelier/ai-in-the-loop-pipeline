@@ -79,8 +79,8 @@
       18 |     await page.fill('#customer-email', 'test@example.com');
       19 |     await page.fill('#customer-address', '東京都千代田区1-1');
       20 |     await page.fill('#customer-phone', '03-0000-0000');
-        at placeOrder (/var/jenkins_home/workspace/ui-test-analytics/1c-playwright-naive/ai-in-the-loop-pipeline/ui-test-analytics/tests/1c-playwright-naive/tests/orders.spec.ts:17:16)
-        at /var/jenkins_home/workspace/ui-test-analytics/1c-playwright-naive/ai-in-the-loop-pipeline/ui-test-analytics/tests/1c-playwright-naive/tests/orders.spec.ts:44:5
+        at placeOrder (./tests/1c-playwright-naive/tests/orders.spec.ts:17:16)
+        at ./tests/1c-playwright-naive/tests/orders.spec.ts:44:5
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
     ../test-results/orders-注文ステータスページ-ステータスが「preparing」に進む-chromium/test-failed-1.png
@@ -125,7 +125,7 @@
       61 |   });
       62 |
       63 |   test('予想配達時間が表示される', async ({ page }) => {
-        at /var/jenkins_home/workspace/ui-test-analytics/1c-playwright-naive/ai-in-the-loop-pipeline/ui-test-analytics/tests/1c-playwright-naive/tests/orders.spec.ts:60:51
+        at ./tests/1c-playwright-naive/tests/orders.spec.ts:60:51
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
     ../test-results/orders-注文ステータスページ-最終的にステータスが「completed」になる-chromium/test-failed-1.png
@@ -184,7 +184,7 @@
       148 |
       149 |     await page.goto('/cart');
       150 |     // カートが空でもページ自体は表示される
-        at /var/jenkins_home/workspace/ui-test-analytics/1c-playwright-naive/ai-in-the-loop-pipeline/ui-test-analytics/tests/1c-playwright-naive/tests/orders.spec.ts:147:53
+        at ./tests/1c-playwright-naive/tests/orders.spec.ts:147:53
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
     ../test-results/orders-レート制限テスト-通常のページ遷移でエラーが出ない-chromium/test-failed-1.png

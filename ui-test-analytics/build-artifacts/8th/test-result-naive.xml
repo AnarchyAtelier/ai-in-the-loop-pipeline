@@ -1,0 +1,266 @@
+<testsuites id="" name="" tests="32" failures="3" skipped="0" errors="2" time="42.039767">
+<testsuite name="cart.spec.ts" timestamp="2026-05-08T14:24:59.437Z" hostname="chromium" tests="8" failures="0" skipped="0" time="27.175" errors="1">
+<testcase name="カートページ › 商品をカートに追加するとバッジが更新される" classname="cart.spec.ts" time="1.186">
+</testcase>
+<testcase name="カートページ › 複数商品をカートに追加してバッジが正しい" classname="cart.spec.ts" time="1.487">
+</testcase>
+<testcase name="カートページ › カートに商品が表示される" classname="cart.spec.ts" time="1.372">
+</testcase>
+<testcase name="カートページ › カートの合計金額が表示される" classname="cart.spec.ts" time="2.071">
+</testcase>
+<testcase name="カートページ › 数量の+ボタンで数量が増える" classname="cart.spec.ts" time="15.049">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../tests/1c-playwright-naive/test-results/cart-カートページ-数量の-ボタンで数量が増える-chromium/test-failed-1.png]]
+
+[[ATTACHMENT|../tests/1c-playwright-naive/test-results/cart-カートページ-数量の-ボタンで数量が増える-chromium/error-context.md]]
+]]>
+</system-out>
+<error message="Test timeout of 15000ms exceeded." type="Error">
+<![CDATA[  [chromium] › cart.spec.ts:81:7 › カートページ › 数量の+ボタンで数量が増える ─────────────────────────────────────────
+
+    Test timeout of 15000ms exceeded.
+
+    Error: locator.click: Test timeout of 15000ms exceeded.
+    Call log:
+      - waiting for locator('.qty-btn:has-text("+")').first()
+
+
+      87 |     // +を1回クリック
+      88 |     const plusBtn = page.locator('.qty-btn:has-text("+")').first();
+    > 89 |     await plusBtn.click();
+         |                   ^
+      90 |     await page.waitForTimeout(500);
+      91 |     await page.reload();
+      92 |
+        at ./tests/1c-playwright-naive/tests/cart.spec.ts:89:19
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/cart-カートページ-数量の-ボタンで数量が増える-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/cart-カートページ-数量の-ボタンで数量が増える-chromium/error-context.md
+]]>
+</error>
+</testcase>
+<testcase name="カートページ › 数量の-ボタンで数量が減る" classname="cart.spec.ts" time="2.611">
+</testcase>
+<testcase name="カートページ › 商品を削除できる" classname="cart.spec.ts" time="1.938">
+</testcase>
+<testcase name="カートページ › クーポンを適用すると割引メッセージが表示される" classname="cart.spec.ts" time="1.461">
+</testcase>
+</testsuite>
+<testsuite name="checkout.spec.ts" timestamp="2026-05-08T14:24:59.437Z" hostname="chromium" tests="5" failures="1" skipped="0" time="12.339" errors="0">
+<testcase name="チェックアウトページ › チェックアウトページが表示される" classname="checkout.spec.ts" time="6.52">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../tests/1c-playwright-naive/test-results/checkout-チェックアウトページ-チェックアウトページが表示される-chromium/test-failed-1.png]]
+
+[[ATTACHMENT|../tests/1c-playwright-naive/test-results/checkout-チェックアウトページ-チェックアウトページが表示される-chromium/error-context.md]]
+]]>
+</system-out>
+<failure message="expect(locator).toHaveText(expected) failed" type="expect.toHaveText">
+<![CDATA[  [chromium] › checkout.spec.ts:18:7 › チェックアウトページ › チェックアウトページが表示される ───────────────────────────────
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator:  locator('h1')
+    Expected: "Checkout"
+    Received: "Your Cart"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveText" with timeout 5000ms
+      - waiting for locator('h1')
+        9 × locator resolved to <h1>Your Cart</h1>
+          - unexpected value "Your Cart"
+
+
+      20 |     // サーバー起動直後ならコールドスタート遅延で timeout する可能性あり
+      21 |     await addItemAndGoToCheckout(page);
+    > 22 |     await expect(page.locator('h1')).toHaveText('Checkout');
+         |                                      ^
+      23 |   });
+      24 |
+      25 |   test('配送先フォームの全フィールドが表示される', async ({ page }) => {
+        at ./tests/1c-playwright-naive/tests/checkout.spec.ts:22:38
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/checkout-チェックアウトページ-チェックアウトページが表示される-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/checkout-チェックアウトページ-チェックアウトページが表示される-chromium/error-context.md
+]]>
+</failure>
+</testcase>
+<testcase name="チェックアウトページ › 配送先フォームの全フィールドが表示される" classname="checkout.spec.ts" time="1.553">
+</testcase>
+<testcase name="チェックアウトページ › 支払い方法を選択できる" classname="checkout.spec.ts" time="1.391">
+</testcase>
+<testcase name="チェックアウトページ › 注文サマリーが表示される" classname="checkout.spec.ts" time="1.347">
+</testcase>
+<testcase name="チェックアウトページ › 正常な情報で注文を確定できる" classname="checkout.spec.ts" time="1.528">
+</testcase>
+</testsuite>
+<testsuite name="menu-and-detail.spec.ts" timestamp="2026-05-08T14:24:59.437Z" hostname="chromium" tests="9" failures="0" skipped="0" time="5.213" errors="0">
+<testcase name="メニューページ › 商品一覧が表示される" classname="menu-and-detail.spec.ts" time="0.306">
+</testcase>
+<testcase name="メニューページ › カテゴリフィルターが動作する" classname="menu-and-detail.spec.ts" time="0.357">
+</testcase>
+<testcase name="メニューページ › 価格で昇順ソートできる" classname="menu-and-detail.spec.ts" time="1.299">
+</testcase>
+<testcase name="メニューページ › ソート後に商品カードをクリックして詳細に遷移できる" classname="menu-and-detail.spec.ts" time="1.376">
+</testcase>
+<testcase name="メニューページ › 商品カードのAdd to Cartボタンが動作する" classname="menu-and-detail.spec.ts" time="0.726">
+</testcase>
+<testcase name="メニューページ › 検索で商品を絞り込める" classname="menu-and-detail.spec.ts" time="0.332">
+</testcase>
+<testcase name="商品詳細ページ › サイズ変更で価格が変わる" classname="menu-and-detail.spec.ts" time="0.279">
+</testcase>
+<testcase name="商品詳細ページ › オプションを選択すると価格に反映される" classname="menu-and-detail.spec.ts" time="0.257">
+</testcase>
+<testcase name="商品詳細ページ › 数量を変更すると合計に反映される" classname="menu-and-detail.spec.ts" time="0.281">
+</testcase>
+</testsuite>
+<testsuite name="orders.spec.ts" timestamp="2026-05-08T14:24:59.437Z" hostname="chromium" tests="10" failures="2" skipped="0" time="33.836" errors="1">
+<testcase name="注文ステータスページ › 注文後にステータスページが表示される" classname="orders.spec.ts" time="1.627">
+</testcase>
+<testcase name="注文ステータスページ › ステータスが「received」で始まる" classname="orders.spec.ts" time="1.739">
+</testcase>
+<testcase name="注文ステータスページ › ステータスが「preparing」に進む" classname="orders.spec.ts" time="6.572">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../tests/1c-playwright-naive/test-results/orders-注文ステータスページ-ステータスが「preparing」に進む-chromium/test-failed-1.png]]
+
+[[ATTACHMENT|../tests/1c-playwright-naive/test-results/orders-注文ステータスページ-ステータスが「preparing」に進む-chromium/error-context.md]]
+]]>
+</system-out>
+<failure message="expect(received).toBe(expected) // Object.is equality" type="expect.toBe">
+<![CDATA[  [chromium] › orders.spec.ts:41:7 › 注文ステータスページ › ステータスが「preparing」に進む ─────────────────────────────
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "preparing"
+    Received: "received"
+
+      49 |
+      50 |     // FP-2: ランダム遅延で5秒以内にpreparingに進まない場合がある
+    > 51 |     expect(status).toBe('preparing');
+         |                    ^
+      52 |   });
+      53 |
+      54 |   test('最終的にステータスが「completed」になる', async ({ page }) => {
+        at ./tests/1c-playwright-naive/tests/orders.spec.ts:51:20
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/orders-注文ステータスページ-ステータスが「preparing」に進む-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/orders-注文ステータスページ-ステータスが「preparing」に進む-chromium/error-context.md
+]]>
+</failure>
+</testcase>
+<testcase name="注文ステータスページ › 最終的にステータスが「completed」になる" classname="orders.spec.ts" time="15.066">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../tests/1c-playwright-naive/test-results/orders-注文ステータスページ-最終的にステータスが「completed」になる-chromium/test-failed-1.png]]
+
+[[ATTACHMENT|../tests/1c-playwright-naive/test-results/orders-注文ステータスページ-最終的にステータスが「completed」になる-chromium/error-context.md]]
+]]>
+</system-out>
+<error message="Test timeout of 15000ms exceeded." type="Error">
+<![CDATA[  [chromium] › orders.spec.ts:54:7 › 注文ステータスページ › 最終的にステータスが「completed」になる ─────────────────────────
+
+    Test timeout of 15000ms exceeded.
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator:  locator('#current-status')
+    Expected: "completed"
+    Received: "received"
+
+    Call log:
+      - Expect "toHaveText" with timeout 15000ms
+      - waiting for locator('#current-status')
+        17 × locator resolved to <strong id="current-status">received</strong>
+           - unexpected value "received"
+
+
+      58 |
+      59 |     // completedになるまで待つ（タイムアウト15秒 = playwright.config.ts のデフォルト）
+    > 60 |     await expect(page.locator('#current-status')).toHaveText('completed', { timeout: 15000 });
+         |                                                   ^
+      61 |   });
+      62 |
+      63 |   test('予想配達時間が表示される', async ({ page }) => {
+        at ./tests/1c-playwright-naive/tests/orders.spec.ts:60:51
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/orders-注文ステータスページ-最終的にステータスが「completed」になる-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/orders-注文ステータスページ-最終的にステータスが「completed」になる-chromium/error-context.md
+]]>
+</error>
+</testcase>
+<testcase name="注文ステータスページ › 予想配達時間が表示される" classname="orders.spec.ts" time="1.577">
+</testcase>
+<testcase name="注文履歴ページ › 注文履歴に注文が表示される" classname="orders.spec.ts" time="1.206">
+</testcase>
+<testcase name="注文履歴ページ › 注文履歴の各行に必要な情報が表示される" classname="orders.spec.ts" time="1.138">
+</testcase>
+<testcase name="注文履歴ページ › 注文履歴からステータスページに遷移できる" classname="orders.spec.ts" time="1.324">
+</testcase>
+<testcase name="注文履歴ページ › ページネーションが正しく動作する" classname="orders.spec.ts" time="3.216">
+</testcase>
+<testcase name="レート制限テスト › 通常のページ遷移でエラーが出ない" classname="orders.spec.ts" time="0.371">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../tests/1c-playwright-naive/test-results/orders-レート制限テスト-通常のページ遷移でエラーが出ない-chromium/test-failed-1.png]]
+
+[[ATTACHMENT|../tests/1c-playwright-naive/test-results/orders-レート制限テスト-通常のページ遷移でエラーが出ない-chromium/error-context.md]]
+]]>
+</system-out>
+<failure message="expect(locator).toBeVisible() failed" type="expect.toBeVisible">
+<![CDATA[  [chromium] › orders.spec.ts:141:7 › レート制限テスト › 通常のページ遷移でエラーが出ない ──────────────────────────────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('h1, .product-card')
+    Expected: visible
+    Error: strict mode violation: locator('h1, .product-card') resolved to 10 elements:
+        1) <div data-product-id="1" data-href="/menu/1" class="product-card animate-in">…</div> aka getByText('Coffee House Blend ¥320 ~ Add')
+        2) <div data-product-id="2" data-href="/menu/2" class="product-card animate-in">…</div> aka getByText('Coffee Espresso ¥280 ~ Add to')
+        3) <div data-product-id="3" data-href="/menu/3" class="product-card animate-in">…</div> aka getByText('Coffee Cafe Latte ¥380 ~ Add')
+        4) <div data-product-id="4" data-href="/menu/4" class="product-card animate-in">…</div> aka getByText('Coffee Matcha Latte ¥420 ~ Add to Cart')
+        5) <div data-product-id="5" data-href="/menu/5" class="product-card animate-in">…</div> aka getByText('Food Croissant ¥280 Add to')
+        6) <div data-product-id="6" data-href="/menu/6" class="product-card animate-in">…</div> aka getByText('Food BLT Sandwich ¥520 Add to')
+        7) <div data-product-id="7" data-href="/menu/7" class="product-card animate-in">…</div> aka getByText('Sweets Cheese Cake ¥450 Add')
+        8) <div data-product-id="8" data-href="/menu/8" class="product-card animate-in">…</div> aka getByText('Sweets Tiramisu ¥480 Add to')
+        9) <div data-product-id="9" data-href="/menu/9" class="product-card animate-in">…</div> aka getByText('Sweets Chocolate Scone ¥320 Add to Cart')
+        10) <div data-product-id="10" data-href="/menu/10" class="product-card animate-in">…</div> aka getByText('Coffee Cold Brew ¥350 ~ Add')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('h1, .product-card')
+
+
+      145 |
+      146 |     await page.goto('/menu');
+    > 147 |     await expect(page.locator('h1, .product-card')).toBeVisible();
+          |                                                     ^
+      148 |
+      149 |     await page.goto('/cart');
+      150 |     // カートが空でもページ自体は表示される
+        at ./tests/1c-playwright-naive/tests/orders.spec.ts:147:53
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/orders-レート制限テスト-通常のページ遷移でエラーが出ない-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/orders-レート制限テスト-通常のページ遷移でエラーが出ない-chromium/error-context.md
+]]>
+</failure>
+</testcase>
+</testsuite>
+</testsuites>

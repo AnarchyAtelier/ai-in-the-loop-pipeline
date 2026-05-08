@@ -1,0 +1,12 @@
+<testsuites id="" name="" tests="4" failures="0" skipped="0" errors="0" time="6.619676">
+<testsuite name="phantom-brew.spec.ts" timestamp="2026-05-08T15:26:44.754Z" hostname="chromium" tests="4" failures="0" skipped="0" time="4.998" errors="0">
+<testcase name="Phantom Brew blackbox flows › lets customers browse, filter, search, and sort menu items" classname="phantom-brew.spec.ts" time="1.447">
+</testcase>
+<testcase name="Phantom Brew blackbox flows › customizes a coffee item and carries the selection into the cart" classname="phantom-brew.spec.ts" time="0.917">
+</testcase>
+<testcase name="Phantom Brew blackbox flows › applies a coupon and removes an item from the cart" classname="phantom-brew.spec.ts" time="1.147">
+</testcase>
+<testcase name="Phantom Brew blackbox flows › places an order and shows it in order history" classname="phantom-brew.spec.ts" time="1.487">
+</testcase>
+</testsuite>
+</testsuites>

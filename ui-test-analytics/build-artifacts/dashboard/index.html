@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UIテスト分析ダッシュボード</title>
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.9/dist/chart.umd.min.js" defer></script>
+    <script src="./summary-data.js" defer></script>
+    <script src="./charts.js" defer></script>
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">UIテスト分析</p>
+        <h1>AI参加型テスト分析パイプライン</h1>
+      </div>
+      <div class="toolbar">
+        <label class="select-label" for="runSelect">実行</label>
+        <select id="runSelect" class="run-select" aria-label="実行"></select>
+        <div id="dataStatus" class="status-pill">読み込み中</div>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="layer" aria-labelledby="testLayerTitle">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">テスト結果</p>
+            <h2 id="testLayerTitle">テスト結果層</h2>
+          </div>
+          <div id="testKpis" class="metric-strip"></div>
+        </div>
+
+        <div class="panel-grid two">
+          <article class="panel chart-panel">
+            <header class="panel-head">
+              <h3>エラー種別</h3>
+            </header>
+            <div class="chart-box compact">
+              <canvas id="errorTypeChart"></canvas>
+            </div>
+          </article>
+
+          <article class="panel chart-panel">
+            <header class="panel-head">
+              <h3>スイート別ステータス</h3>
+            </header>
+            <div class="chart-box">
+              <canvas id="suiteStatusChart"></canvas>
+            </div>
+          </article>
+        </div>
+
+        <article class="panel">
+          <header class="panel-head">
+            <h3>連続PASS</h3>
+          </header>
+          <div class="table-wrap">
+            <table id="stillPassingTable"></table>
+          </div>
+        </article>
+      </section>
+
+      <section class="layer" aria-labelledby="aiLayerTitle">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">AI判定</p>
+            <h2 id="aiLayerTitle">AI判定層</h2>
+          </div>
+          <div id="metaFlagCards" class="metric-strip focus-strip"></div>
+        </div>
+
+        <div class="panel-grid two">
+          <article class="panel chart-panel">
+            <header class="panel-head">
+              <h3>AIの自信度分布</h3>
+            </header>
+            <div class="chart-box">
+              <canvas id="confidenceChart"></canvas>
+            </div>
+          </article>
+
+          <article class="panel chart-panel">
+            <header class="panel-head">
+              <h3>AI分類</h3>
+            </header>
+            <div class="chart-box compact">
+              <canvas id="verdictChart"></canvas>
+            </div>
+          </article>
+        </div>
+
+        <article class="panel">
+          <header class="panel-head">
+            <h3>トリアージ結果</h3>
+          </header>
+          <div class="table-wrap">
+            <table id="triageTable"></table>
+          </div>
+        </article>
+      </section>
+
+      <section class="layer" aria-labelledby="evalLayerTitle">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">評価</p>
+            <h2 id="evalLayerTitle">Evalite評価層</h2>
+          </div>
+          <div id="evalKpis" class="metric-strip eval-strip"></div>
+        </div>
+
+        <div class="panel-grid two">
+          <article class="panel">
+            <header class="panel-head">
+              <h3>誤判定</h3>
+            </header>
+            <div class="table-wrap">
+              <table id="wrongVerdictTable"></table>
+            </div>
+          </article>
+
+          <article class="panel">
+            <header class="panel-head">
+              <h3>メタフラグ取りこぼし</h3>
+            </header>
+            <div class="table-wrap">
+              <table id="metaMissTable"></table>
+            </div>
+          </article>
+        </div>
+
+        <article class="panel">
+          <header class="panel-head split">
+            <h3>構造分析: PASS裏の偽陰性候補</h3>
+            <span class="inline-note">AI判定ではなく、別名/仕様で拾う</span>
+          </header>
+          <div class="table-wrap">
+            <table id="fnCandidatesTable"></table>
+          </div>
+        </article>
+      </section>
+
+      <section class="layer" aria-labelledby="comparisonTitle">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">比較</p>
+            <h2 id="comparisonTitle">1回目 vs 2回目</h2>
+          </div>
+        </div>
+
+        <div id="comparisonKpis" class="comparison-grid"></div>
+
+        <div class="panel-grid two">
+          <article class="panel chart-panel">
+            <header class="panel-head">
+              <h3>スイート別推移</h3>
+            </header>
+            <div class="chart-box tall">
+              <canvas id="suiteTrendChart"></canvas>
+            </div>
+          </article>
+
+          <article class="panel">
+            <header class="panel-head">
+              <h3>失敗ログ内メタフラグ改善ケース</h3>
+            </header>
+            <div class="table-wrap">
+              <table id="metaImprovementTable"></table>
+            </div>
+          </article>
+        </div>
+
+        <article class="panel">
+          <header class="panel-head">
+            <h3>誤判定の前後差分</h3>
+          </header>
+          <div class="table-wrap">
+            <table id="verdictBucketTable"></table>
+          </div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

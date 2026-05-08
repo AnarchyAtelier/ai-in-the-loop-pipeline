@@ -33,7 +33,7 @@
       90 |     await page.waitForTimeout(500);
       91 |     await page.reload();
       92 |
-        at /var/jenkins_home/workspace/ui-test-analytics/1c-playwright-naive/ai-in-the-loop-pipeline/ui-test-analytics/tests/1c-playwright-naive/tests/cart.spec.ts:89:19
+        at ./tests/1c-playwright-naive/tests/cart.spec.ts:89:19
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
     ../test-results/cart-カートページ-数量の-ボタンで数量が増える-chromium/test-failed-1.png
@@ -70,7 +70,7 @@
       123 |     await page.waitForTimeout(500);
       124 |     await page.reload();
       125 |
-        at /var/jenkins_home/workspace/ui-test-analytics/1c-playwright-naive/ai-in-the-loop-pipeline/ui-test-analytics/tests/1c-playwright-naive/tests/cart.spec.ts:122:47
+        at ./tests/1c-playwright-naive/tests/cart.spec.ts:122:47
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
     ../test-results/cart-カートページ-商品を削除できる-chromium/test-failed-1.png
@@ -118,7 +118,7 @@
       47 |
       48 |     // 代引きに切り替え
       49 |     await page.locator('input[name="payment"][value="cod"]').click();
-        at /var/jenkins_home/workspace/ui-test-analytics/1c-playwright-naive/ai-in-the-loop-pipeline/ui-test-analytics/tests/1c-playwright-naive/tests/checkout.spec.ts:46:26
+        at ./tests/1c-playwright-naive/tests/checkout.spec.ts:46:26
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
     ../test-results/checkout-チェックアウトページ-支払い方法を選択できる-chromium/test-failed-1.png
@@ -181,7 +181,7 @@
       52 |   });
       53 |
       54 |   test('最終的にステータスが「completed」になる', async ({ page }) => {
-        at /var/jenkins_home/workspace/ui-test-analytics/1c-playwright-naive/ai-in-the-loop-pipeline/ui-test-analytics/tests/1c-playwright-naive/tests/orders.spec.ts:51:20
+        at ./tests/1c-playwright-naive/tests/orders.spec.ts:51:20
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
     ../test-results/orders-注文ステータスページ-ステータスが「preparing」に進む-chromium/test-failed-1.png
@@ -224,7 +224,7 @@
       61 |   });
       62 |
       63 |   test('予想配達時間が表示される', async ({ page }) => {
-        at /var/jenkins_home/workspace/ui-test-analytics/1c-playwright-naive/ai-in-the-loop-pipeline/ui-test-analytics/tests/1c-playwright-naive/tests/orders.spec.ts:60:51
+        at ./tests/1c-playwright-naive/tests/orders.spec.ts:60:51
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
     ../test-results/orders-注文ステータスページ-最終的にステータスが「completed」になる-chromium/test-failed-1.png
@@ -267,8 +267,8 @@
       82 |     await page.fill('#customer-email', 'test@example.com');
       83 |     await page.fill('#customer-address', '東京都');
       84 |     await page.fill('#customer-phone', '000-0000-0000');
-        at placeQuickOrder (/var/jenkins_home/workspace/ui-test-analytics/1c-playwright-naive/ai-in-the-loop-pipeline/ui-test-analytics/tests/1c-playwright-naive/tests/orders.spec.ts:81:16)
-        at /var/jenkins_home/workspace/ui-test-analytics/1c-playwright-naive/ai-in-the-loop-pipeline/ui-test-analytics/tests/1c-playwright-naive/tests/orders.spec.ts:121:7
+        at placeQuickOrder (./tests/1c-playwright-naive/tests/orders.spec.ts:81:16)
+        at ./tests/1c-playwright-naive/tests/orders.spec.ts:121:7
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
     ../test-results/orders-注文履歴ページ-ページネーションが正しく動作する-chromium/test-failed-1.png
@@ -317,7 +317,7 @@
       148 |
       149 |     await page.goto('/cart');
       150 |     // カートが空でもページ自体は表示される
-        at /var/jenkins_home/workspace/ui-test-analytics/1c-playwright-naive/ai-in-the-loop-pipeline/ui-test-analytics/tests/1c-playwright-naive/tests/orders.spec.ts:147:53
+        at ./tests/1c-playwright-naive/tests/orders.spec.ts:147:53
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
     ../test-results/orders-レート制限テスト-通常のページ遷移でエラーが出ない-chromium/test-failed-1.png

@@ -1,0 +1,56 @@
+<testsuites id="" name="" tests="4" failures="1" skipped="0" errors="0" time="12.837357">
+<testsuite name="phantom-brew.spec.ts" timestamp="2026-05-08T15:35:07.905Z" hostname="chromium" tests="4" failures="1" skipped="0" time="10.714" errors="0">
+<testcase name="Phantom Brew blackbox flows › lets customers browse, filter, search, and sort menu items" classname="phantom-brew.spec.ts" time="1.112">
+</testcase>
+<testcase name="Phantom Brew blackbox flows › customizes a coffee item and carries the selection into the cart" classname="phantom-brew.spec.ts" time="6.202">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../tests/1b-playwright-blackbox/test-results/phantom-brew-Phantom-Brew--77b2b-the-selection-into-the-cart-chromium/test-failed-1.png]]
+
+[[ATTACHMENT|../tests/1b-playwright-blackbox/test-results/phantom-brew-Phantom-Brew--77b2b-the-selection-into-the-cart-chromium/video.webm]]
+
+[[ATTACHMENT|../tests/1b-playwright-blackbox/test-results/phantom-brew-Phantom-Brew--77b2b-the-selection-into-the-cart-chromium/error-context.md]]
+]]>
+</system-out>
+<failure message="expect(locator).toBeVisible() failed" type="expect.toBeVisible">
+<![CDATA[  [chromium] › phantom-brew.spec.ts:45:7 › Phantom Brew blackbox flows › customizes a coffee item and carries the selection into the cart 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: 'House Blend' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByRole('heading', { name: 'House Blend' })
+
+
+      60 |
+      61 |     await expect(page.getByRole('heading', { name: 'Your Cart' })).toBeVisible();
+    > 62 |     await expect(page.getByRole('heading', { name: 'House Blend' })).toBeVisible();
+         |                                                                      ^
+      63 |     await expect(page.getByText('Size: L | Extra Shot')).toBeVisible();
+      64 |     await expect(page.locator('main')).toContainText('¥1,166');
+      65 |   });
+        at ./tests/1b-playwright-blackbox/tests/phantom-brew.spec.ts:62:70
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/phantom-brew-Phantom-Brew--77b2b-the-selection-into-the-cart-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ../test-results/phantom-brew-Phantom-Brew--77b2b-the-selection-into-the-cart-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/phantom-brew-Phantom-Brew--77b2b-the-selection-into-the-cart-chromium/error-context.md
+]]>
+</failure>
+</testcase>
+<testcase name="Phantom Brew blackbox flows › applies a coupon and removes an item from the cart" classname="phantom-brew.spec.ts" time="1.736">
+</testcase>
+<testcase name="Phantom Brew blackbox flows › places an order and shows it in order history" classname="phantom-brew.spec.ts" time="1.664">
+</testcase>
+</testsuite>
+</testsuites>

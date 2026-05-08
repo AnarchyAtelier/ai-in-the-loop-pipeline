@@ -1,24 +1,24 @@
 {
   "run": {
-    "id": 1,
+    "id": 10,
     "runType": "full",
-    "createdAt": "2026-05-07 05:15:20"
+    "createdAt": "2026-05-08 13:46:13"
   },
   "evals": [
     {
-      "id": 1,
+      "id": 10,
       "name": "AI triage vs Ground Truth",
-      "filepath": "/var/jenkins_home/workspace/ui-test-analytics/3-evalite/ai-in-the-loop-pipeline/ui-test-analytics/evals/triage.eval.ts",
+      "filepath": "C:/Github/UnderControl/ai-in-the-loop-pipeline/ui-test-analytics/evals/triage.eval.ts",
       "duration": 0,
       "status": "success",
       "variantName": null,
       "variantGroup": null,
-      "createdAt": "2026-05-07 05:15:20",
-      "averageScore": 0.7333333333333333,
+      "createdAt": "2026-05-08 13:46:13",
+      "averageScore": 0.8,
       "results": [
         {
-          "id": 1,
-          "duration": 2,
+          "id": 27,
+          "duration": 1,
           "input": {
             "run_id": "pipeline-4",
             "test_case": "Phantom Brew whitebox flows › cart coupon applies a visible discount to the order total",
@@ -53,39 +53,39 @@
           "status": "success",
           "colOrder": 0,
           "renderedColumns": [],
-          "createdAt": "2026-05-07 05:15:20",
+          "createdAt": "2026-05-08 13:46:13",
           "averageScore": 0.6666666666666666,
           "scores": [
             {
-              "id": 1,
+              "id": 79,
               "name": "verdict_accuracy",
               "score": 1,
               "description": "Scores 1 when ai_verdict matches the Ground Truth expected verdict.",
               "metadata": null,
-              "createdAt": "2026-05-07 05:15:20"
+              "createdAt": "2026-05-08 13:46:13"
             },
             {
-              "id": 2,
+              "id": 80,
               "name": "fp_detection",
               "score": 1,
               "description": "For false-positive traps, scores 1 when is_false_positive is true.",
               "metadata": null,
-              "createdAt": "2026-05-07 05:15:20"
+              "createdAt": "2026-05-08 13:46:13"
             },
             {
-              "id": 3,
+              "id": 81,
               "name": "fn_detection",
               "score": 0,
               "description": "For false-negative traps, scores 1 when is_false_negative is true.",
               "metadata": null,
-              "createdAt": "2026-05-07 05:15:20"
+              "createdAt": "2026-05-08 13:46:13"
             }
           ],
           "traces": []
         },
         {
-          "id": 2,
-          "duration": 1,
+          "id": 28,
+          "duration": 0,
           "input": {
             "run_id": "pipeline-4",
             "test_case": "チェックアウトページ › 配送先フォームの全フィールドが表示される",
@@ -120,39 +120,39 @@
           "status": "success",
           "colOrder": 1,
           "renderedColumns": [],
-          "createdAt": "2026-05-07 05:15:20",
+          "createdAt": "2026-05-08 13:46:13",
           "averageScore": 0.3333333333333333,
           "scores": [
             {
-              "id": 4,
+              "id": 82,
               "name": "verdict_accuracy",
               "score": 0,
               "description": "Scores 1 when ai_verdict matches the Ground Truth expected verdict.",
               "metadata": null,
-              "createdAt": "2026-05-07 05:15:20"
+              "createdAt": "2026-05-08 13:46:13"
             },
             {
-              "id": 5,
+              "id": 83,
               "name": "fp_detection",
               "score": 0,
               "description": "For false-positive traps, scores 1 when is_false_positive is true.",
               "metadata": null,
-              "createdAt": "2026-05-07 05:15:20"
+              "createdAt": "2026-05-08 13:46:13"
             },
             {
-              "id": 6,
+              "id": 84,
               "name": "fn_detection",
               "score": 1,
               "description": "For false-negative traps, scores 1 when is_false_negative is true.",
               "metadata": null,
-              "createdAt": "2026-05-07 05:15:20"
+              "createdAt": "2026-05-08 13:46:13"
             }
           ],
           "traces": []
         },
         {
-          "id": 3,
-          "duration": 2,
+          "id": 29,
+          "duration": 0,
           "input": {
             "run_id": "pipeline-4",
             "test_case": "注文ステータスページ › ステータスが「preparing」に進む",
@@ -187,39 +187,39 @@
           "status": "success",
           "colOrder": 2,
           "renderedColumns": [],
-          "createdAt": "2026-05-07 05:15:20",
+          "createdAt": "2026-05-08 13:46:13",
           "averageScore": 1,
           "scores": [
             {
-              "id": 7,
+              "id": 85,
               "name": "verdict_accuracy",
               "score": 1,
               "description": "Scores 1 when ai_verdict matches the Ground Truth expected verdict.",
               "metadata": null,
-              "createdAt": "2026-05-07 05:15:20"
+              "createdAt": "2026-05-08 13:46:13"
             },
             {
-              "id": 8,
+              "id": 86,
               "name": "fp_detection",
               "score": 1,
               "description": "For false-positive traps, scores 1 when is_false_positive is true.",
               "metadata": null,
-              "createdAt": "2026-05-07 05:15:20"
+              "createdAt": "2026-05-08 13:46:13"
             },
             {
-              "id": 9,
+              "id": 87,
               "name": "fn_detection",
               "score": 1,
               "description": "For false-negative traps, scores 1 when is_false_negative is true.",
               "metadata": null,
-              "createdAt": "2026-05-07 05:15:20"
+              "createdAt": "2026-05-08 13:46:13"
             }
           ],
           "traces": []
         },
         {
-          "id": 4,
-          "duration": 2,
+          "id": 30,
+          "duration": 0,
           "input": {
             "run_id": "pipeline-4",
             "test_case": "注文ステータスページ › 最終的にステータスが「completed」になる",
@@ -254,39 +254,39 @@
           "status": "success",
           "colOrder": 3,
           "renderedColumns": [],
-          "createdAt": "2026-05-07 05:15:20",
+          "createdAt": "2026-05-08 13:46:13",
           "averageScore": 1,
           "scores": [
             {
-              "id": 10,
+              "id": 88,
               "name": "verdict_accuracy",
               "score": 1,
               "description": "Scores 1 when ai_verdict matches the Ground Truth expected verdict.",
               "metadata": null,
-              "createdAt": "2026-05-07 05:15:20"
+              "createdAt": "2026-05-08 13:46:13"
             },
             {
-              "id": 11,
+              "id": 89,
               "name": "fp_detection",
               "score": 1,
               "description": "For false-positive traps, scores 1 when is_false_positive is true.",
               "metadata": null,
-              "createdAt": "2026-05-07 05:15:20"
+              "createdAt": "2026-05-08 13:46:13"
             },
             {
-              "id": 12,
+              "id": 90,
               "name": "fn_detection",
               "score": 1,
               "description": "For false-negative traps, scores 1 when is_false_negative is true.",
               "metadata": null,
-              "createdAt": "2026-05-07 05:15:20"
+              "createdAt": "2026-05-08 13:46:13"
             }
           ],
           "traces": []
         },
         {
-          "id": 5,
-          "duration": 2,
+          "id": 31,
+          "duration": 0,
           "input": {
             "run_id": "pipeline-4",
             "test_case": "レート制限テスト › 通常のページ遷移でエラーが出ない",
@@ -311,42 +311,42 @@
           },
           "expected": {
             "test_id": "FP-4",
-            "expected_verdict": "environment_issue",
+            "expected_verdict": "test_issue",
             "trap_type": "false_positive",
             "label_source": "designed",
             "label_status": "confirmed",
             "is_app_bug": false,
-            "root_cause": "Rate limiter: 20 requests per 10 seconds per session"
+            "root_cause": "Locator strict mode violation: 'h1, .product-card' resolves to multiple elements"
           },
           "status": "success",
           "colOrder": 4,
           "renderedColumns": [],
-          "createdAt": "2026-05-07 05:15:20",
-          "averageScore": 0.6666666666666666,
+          "createdAt": "2026-05-08 13:46:13",
+          "averageScore": 1,
           "scores": [
             {
-              "id": 13,
+              "id": 91,
               "name": "verdict_accuracy",
-              "score": 0,
+              "score": 1,
               "description": "Scores 1 when ai_verdict matches the Ground Truth expected verdict.",
               "metadata": null,
-              "createdAt": "2026-05-07 05:15:20"
+              "createdAt": "2026-05-08 13:46:13"
             },
             {
-              "id": 14,
+              "id": 92,
               "name": "fp_detection",
               "score": 1,
               "description": "For false-positive traps, scores 1 when is_false_positive is true.",
               "metadata": null,
-              "createdAt": "2026-05-07 05:15:20"
+              "createdAt": "2026-05-08 13:46:13"
             },
             {
-              "id": 15,
+              "id": 93,
               "name": "fn_detection",
               "score": 1,
               "description": "For false-negative traps, scores 1 when is_false_negative is true.",
               "metadata": null,
-              "createdAt": "2026-05-07 05:15:20"
+              "createdAt": "2026-05-08 13:46:13"
             }
           ],
           "traces": []

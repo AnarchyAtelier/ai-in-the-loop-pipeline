@@ -35,7 +35,7 @@
       105 |     await page.waitForTimeout(500);
       106 |     await page.reload();
       107 |
-        at /var/jenkins_home/workspace/ui-test-analytics/1c-playwright-naive/ai-in-the-loop-pipeline/ui-test-analytics/tests/1c-playwright-naive/tests/cart.spec.ts:104:58
+        at ./tests/1c-playwright-naive/tests/cart.spec.ts:104:58
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
     ../test-results/cart-カートページ-数量の-ボタンで数量が減る-chromium/test-failed-1.png
@@ -83,7 +83,7 @@
       33 |
       34 |     // 各フィールドも確認
       35 |     await expect(page.locator('#customer-name')).toBeVisible();
-        at /var/jenkins_home/workspace/ui-test-analytics/1c-playwright-naive/ai-in-the-loop-pipeline/ui-test-analytics/tests/1c-playwright-naive/tests/checkout.spec.ts:32:35
+        at ./tests/1c-playwright-naive/tests/checkout.spec.ts:32:35
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
     ../test-results/checkout-チェックアウトページ-配送先フォームの全フィールドが表示される-chromium/test-failed-1.png
@@ -148,7 +148,7 @@
       52 |   });
       53 |
       54 |   test('最終的にステータスが「completed」になる', async ({ page }) => {
-        at /var/jenkins_home/workspace/ui-test-analytics/1c-playwright-naive/ai-in-the-loop-pipeline/ui-test-analytics/tests/1c-playwright-naive/tests/orders.spec.ts:51:20
+        at ./tests/1c-playwright-naive/tests/orders.spec.ts:51:20
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
     ../test-results/orders-注文ステータスページ-ステータスが「preparing」に進む-chromium/test-failed-1.png
@@ -193,7 +193,7 @@
       61 |   });
       62 |
       63 |   test('予想配達時間が表示される', async ({ page }) => {
-        at /var/jenkins_home/workspace/ui-test-analytics/1c-playwright-naive/ai-in-the-loop-pipeline/ui-test-analytics/tests/1c-playwright-naive/tests/orders.spec.ts:60:51
+        at ./tests/1c-playwright-naive/tests/orders.spec.ts:60:51
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
     ../test-results/orders-注文ステータスページ-最終的にステータスが「completed」になる-chromium/test-failed-1.png
@@ -252,7 +252,7 @@
       148 |
       149 |     await page.goto('/cart');
       150 |     // カートが空でもページ自体は表示される
-        at /var/jenkins_home/workspace/ui-test-analytics/1c-playwright-naive/ai-in-the-loop-pipeline/ui-test-analytics/tests/1c-playwright-naive/tests/orders.spec.ts:147:53
+        at ./tests/1c-playwright-naive/tests/orders.spec.ts:147:53
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
     ../test-results/orders-レート制限テスト-通常のページ遷移でエラーが出ない-chromium/test-failed-1.png

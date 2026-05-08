@@ -13,9 +13,9 @@ async function addLargeHouseBlendWithExtraShot(page: Page) {
   await page.getByRole('button', { name: 'Add to Cart' }).click();
 }
 
-test.describe('Phantom Brew blackbox flows', () => {
+test.describe('Phantom Brew 黒箱フロー', () => {
   // Intent: Customers can discover products from the menu with the visible browse controls.
-  test('lets customers browse, filter, search, and sort menu items', async ({ page }) => {
+  test('利用者がメニュー閲覧・絞り込み・検索・並び替えを行える', async ({ page }) => {
     await page.goto('/menu');
 
     await expect(page).toHaveTitle(/Phantom Brew/);
@@ -42,7 +42,7 @@ test.describe('Phantom Brew blackbox flows', () => {
   });
 
   // Intent: Product details recalculate the selected coffee before adding it to the cart.
-  test('customizes a coffee item and carries the selection into the cart', async ({ page }) => {
+  test('コーヒーをカスタマイズしてカートへ引き継げる', async ({ page }) => {
     await page.goto('/menu/1');
 
     await expect(page.getByRole('heading', { name: 'House Blend' })).toBeVisible();
@@ -65,7 +65,7 @@ test.describe('Phantom Brew blackbox flows', () => {
   });
 
   // Intent: Cart users can apply a visible coupon and still remove the item cleanly.
-  test('applies a coupon and removes an item from the cart', async ({ page }) => {
+  test('クーポン適用後に商品をカートから削除できる', async ({ page }) => {
     await addDefaultHouseBlend(page);
     await page.goto('/cart');
 
@@ -85,7 +85,7 @@ test.describe('Phantom Brew blackbox flows', () => {
   });
 
   // Intent: A checkout submission creates an order status page and a matching history row.
-  test('places an order and shows it in order history', async ({ page }) => {
+  test('注文を確定すると注文履歴に表示される', async ({ page }) => {
     await addLargeHouseBlendWithExtraShot(page);
     await page.goto('/cart');
     await page.getByRole('link', { name: 'Proceed to Checkout' }).click();

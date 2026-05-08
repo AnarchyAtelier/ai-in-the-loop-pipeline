@@ -6,9 +6,9 @@ async function addHouseBlendFromDetail(page: Page) {
   await expect(page.locator('#cart-badge')).toHaveText('1');
 }
 
-test.describe('Phantom Brew whitebox flows', () => {
+test.describe('Phantom Brew 白箱フロー', () => {
   // Intent: Verify menu discovery features that a shopper uses before choosing an item.
-  test('menu supports browsing, filtering, search, and price sort', async ({ page }) => {
+  test('メニューで閲覧・絞り込み・検索・価格順ソートができる', async ({ page }) => {
     await page.goto('/menu');
 
     await expect(page.getByRole('link', { name: 'Phantom Brew', exact: true })).toBeVisible();
@@ -36,7 +36,7 @@ test.describe('Phantom Brew whitebox flows', () => {
   });
 
   // Intent: Verify product detail customization updates the displayed purchase total.
-  test('product detail recalculates total from size, options, and quantity', async ({ page }) => {
+  test('商品詳細でサイズ・オプション・数量から合計金額を再計算する', async ({ page }) => {
     await page.goto('/menu/1');
 
     await expect(page.getByRole('heading', { name: 'House Blend' })).toBeVisible();
@@ -51,7 +51,7 @@ test.describe('Phantom Brew whitebox flows', () => {
   });
 
   // Intent: Verify cart line items can be reviewed, changed, and removed.
-  test('cart shows added item and supports quantity update and removal', async ({ page }) => {
+  test('カートで追加商品を確認し数量変更と削除ができる', async ({ page }) => {
     await addHouseBlendFromDetail(page);
     await page.goto('/cart');
 
@@ -69,7 +69,7 @@ test.describe('Phantom Brew whitebox flows', () => {
   });
 
   // Intent: Verify a valid coupon changes the cart total shown to the shopper.
-  test('cart coupon applies a visible discount to the order total', async ({ page }) => {
+  test('カートでクーポンを適用すると注文合計に割引が反映される', async ({ page }) => {
     await addHouseBlendFromDetail(page);
     await page.goto('/cart');
 
@@ -82,7 +82,7 @@ test.describe('Phantom Brew whitebox flows', () => {
   });
 
   // Intent: Verify checkout creates an order and the order appears in history.
-  test('checkout places an order and lists it in order history', async ({ page }) => {
+  test('注文後にステータスページと注文履歴へ反映される', async ({ page }) => {
     await addHouseBlendFromDetail(page);
     await page.goto('/checkout');
 

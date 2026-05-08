@@ -21,6 +21,22 @@ def runPlaywrightJob(String jobName) {
     }
 }
 
+def runDashboardAggregateJob() {
+    def downstreamBuild = build job: downstreamJobName('5-dashboard-aggregate'),
+        wait: true,
+        propagate: false,
+        parameters: [
+            string(name: 'RUN_LIMIT', value: '20'),
+            string(name: 'START_INDEX', value: '1'),
+            booleanParam(name: 'CLEAN_OUTPUT', value: true)
+        ]
+
+    if (downstreamBuild.result != 'SUCCESS') {
+        echo "5-dashboard-aggregate completed with ${downstreamBuild.result}. Core run artifacts are still available."
+        currentBuild.result = 'UNSTABLE'
+    }
+}
+
 pipeline {
     agent { label 'playwright' }
 
@@ -112,6 +128,14 @@ pipeline {
                         wait: true,
                         propagate: true,
                         parameters: [string(name: 'PIPELINE_RUN_ID', value: env.EFFECTIVE_RUN_ID)]
+                }
+            }
+        }
+
+        stage('5-dashboard-aggregate') {
+            steps {
+                script {
+                    runDashboardAggregateJob()
                 }
             }
         }

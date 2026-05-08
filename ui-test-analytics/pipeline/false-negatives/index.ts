@@ -264,7 +264,7 @@ function toFalseNegativeCandidate(
     expectedVerdict: label.expected_verdict,
     rootCause: label.root_cause,
     detectionSource: 'ground_truth_alias_passed_test',
-    recommendedAction: `Current test passed but matches ${label.test_id}. Add or run an oracle assertion that verifies the hidden bug condition.`,
+    recommendedAction: `この通過テストは ${label.test_id} に対応しています。隠れたバグ条件を検証するオラクルアサーションを追加または実行してください。`,
   };
 }
 

@@ -1,5 +1,5 @@
 {
-  "description": "Observed CI labels for AI triage evaluation. Provisional labels are documented but excluded from metrics unless EVAL_INCLUDE_PROVISIONAL_LABELS=1.",
+  "description": "AIトリアージ評価用の観測ラベル。provisionalは記録のみ行い、EVAL_INCLUDE_PROVISIONAL_LABELS=1 を指定しない限りメトリクスから除外する。",
   "labels": [
     {
       "test_id": "OBS-FP-1",
@@ -7,15 +7,16 @@
       "status": "provisional",
       "first_seen_run": "pipeline-2",
       "confidence_required": 3,
-      "test_name": "blackbox checkout order history timeout",
+      "test_name": "黒箱チェックアウトの注文履歴確認がタイムアウトする",
       "aliases": [
-        "Phantom Brew blackbox flows › places an order and shows it in order history"
+        "Phantom Brew blackbox flows › places an order and shows it in order history",
+        "Phantom Brew 黒箱フロー › 注文を確定すると注文履歴に表示される"
       ],
       "trap_type": "observed_false_positive",
       "expected_verdict": "flaky",
-      "root_cause": "Blackbox checkout flow timed out while waiting for Proceed to Checkout. One CI run is not enough to distinguish a flaky UI timing issue from environment slowness.",
+      "root_cause": "黒箱チェックアウトフローで Proceed to Checkout 待機中にタイムアウトした。1回のCI実行だけでは、UIタイミングの不安定さと環境遅延を切り分けられない。",
       "is_app_bug": false,
-      "notes": "Keep provisional until the same behavior is observed across at least 3 runs."
+      "notes": "同じ挙動が少なくとも3runで観測されるまでは provisional のままにする。"
     }
   ]
 }

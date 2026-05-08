@@ -36,7 +36,7 @@
       73 |     await expect(page.getByText('Size: M')).toBeVisible();
       74 |     await expect(page.locator('main')).toContainText('¥418');
       75 |
-        at /var/jenkins_home/workspace/ui-test-analytics/1b-playwright-blackbox/ai-in-the-loop-pipeline/ui-test-analytics/tests/1b-playwright-blackbox/tests/phantom-brew.spec.ts:72:70
+        at ./tests/1b-playwright-blackbox/tests/phantom-brew.spec.ts:72:70
 
     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
     ../test-results/phantom-brew-Phantom-Brew--389a3-moves-an-item-from-the-cart-chromium/test-failed-1.png

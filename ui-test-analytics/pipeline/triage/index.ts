@@ -177,7 +177,8 @@ async function main() {
   console.log(
     [
       `Triaged ${triageResults.length} test case(s) for run '${currentRunId}'.`,
-      options.dryRun ? 'mode=dry-run' : `model=${modelName()}`,
+      `model=${modelName()}`,
+      options.dryRun ? 'mode=dry-run' : 'mode=api',
       `real_bug=${summary.real_bug ?? 0}`,
       `flaky=${summary.flaky ?? 0}`,
       `test_issue=${summary.test_issue ?? 0}`,
@@ -393,7 +394,7 @@ async function aiTriage(inputCases: TriageInputCase[]): Promise<TriageResult[]> 
 }
 
 function modelName(): string {
-  return process.env.OPENAI_MODEL?.trim() || 'gpt-4.1-mini';
+  return process.env.OPENAI_MODEL?.trim() || 'gpt-5.4';
 }
 
 function triageInstructions(): string {
@@ -408,8 +409,9 @@ function triageInstructions(): string {
     '- test_issue: the test is too brittle, uses a bad selector, asserts the wrong thing, or over-specifies implementation details.',
     '- environment_issue: CI/server startup, network, dependency, rate limiting, 429, ECONNREFUSED, 500/503 infrastructure, or configuration is the primary explanation.',
     '',
-    'is_false_positive should be true when a current failure is probably not an app bug.',
-    'is_false_negative should be true when evidence suggests a real app bug that weaker tests could miss, especially edge-case validation, calculation, ordering, pagination, coupon, or concurrency defects.',
+    'is_false_positive should be true when a current failure is probably not an app bug, including status/setup timeouts, selector brittleness, rollback, or other flaky behavior.',
+    'is_false_negative should be true when evidence suggests a real app bug that weaker tests could miss, especially edge-case validation, calculation, ordering, pagination, coupon, quantity, or concurrency defects even when surfaced as timeout or selector-looking failures.',
+    'Write estimated_root_cause and recommended_action in Japanese. Keep ai_verdict as one of the specified enum values.',
     'Keep root causes and actions concrete and short.',
   ].join('\n');
 }
@@ -465,8 +467,8 @@ function dryRunTriage(inputCases: TriageInputCase[]): TriageResult[] {
         test_case: inputCase.test_case,
         ai_verdict: 'real_bug',
         confidence: 0.82,
-        estimated_root_cause: 'The failure matches an edge-case application defect rather than a transient test failure.',
-        recommended_action: 'Reproduce the scenario manually, fix the application logic, then keep this test as regression coverage.',
+        estimated_root_cause: '一時的なテスト失敗ではなく、境界条件のアプリ不具合に一致しています。',
+        recommended_action: '手動で再現条件を確認し、アプリロジックを修正して回帰テストとして残してください。',
         is_false_positive: false,
         is_false_negative: true,
       };
@@ -477,8 +479,8 @@ function dryRunTriage(inputCases: TriageInputCase[]): TriageResult[] {
         test_case: inputCase.test_case,
         ai_verdict: 'environment_issue',
         confidence: 0.78,
-        estimated_root_cause: 'The error points to server availability, rate limiting, or CI environment instability.',
-        recommended_action: 'Check service startup, network readiness, rate limits, and Jenkins environment before changing app code.',
+        estimated_root_cause: 'サーバー起動、レート制限、CI環境の不安定さを示すエラーです。',
+        recommended_action: 'アプリコードを変更する前に、サービス起動、ネットワーク、レート制限、Jenkins環境を確認してください。',
         is_false_positive: true,
         is_false_negative: false,
       };
@@ -489,8 +491,8 @@ function dryRunTriage(inputCases: TriageInputCase[]): TriageResult[] {
         test_case: inputCase.test_case,
         ai_verdict: 'flaky',
         confidence: 0.72,
-        estimated_root_cause: 'The failure appears timing-dependent or nondeterministic.',
-        recommended_action: 'Replace fixed waits with observable readiness signals and rerun the test to confirm stability.',
+        estimated_root_cause: 'タイミング依存または非決定的な失敗に見えます。',
+        recommended_action: '固定待機を観測可能な準備完了シグナルに置き換え、再実行して安定性を確認してください。',
         is_false_positive: true,
         is_false_negative: false,
       };
@@ -501,8 +503,8 @@ function dryRunTriage(inputCases: TriageInputCase[]): TriageResult[] {
         test_case: inputCase.test_case,
         ai_verdict: 'test_issue',
         confidence: 0.7,
-        estimated_root_cause: 'The failure is likely caused by a brittle locator or implementation-coupled selector.',
-        recommended_action: 'Rewrite the test around user-visible roles, labels, or stable test ids.',
+        estimated_root_cause: '壊れやすいロケーター、または実装詳細に依存したセレクタが原因の可能性があります。',
+        recommended_action: 'ユーザーに見えるroleやラベル、安定したtest idを使う形にテストを書き換えてください。',
         is_false_positive: true,
         is_false_negative: false,
       };
@@ -512,8 +514,8 @@ function dryRunTriage(inputCases: TriageInputCase[]): TriageResult[] {
       test_case: inputCase.test_case,
       ai_verdict: 'test_issue',
       confidence: 0.55,
-      estimated_root_cause: 'There is not enough evidence to distinguish an app defect from a test design issue.',
-      recommended_action: 'Inspect the failing page state and add a more specific assertion or diagnostic artifact.',
+      estimated_root_cause: 'アプリ不具合とテスト設計問題を切り分ける証拠が不足しています。',
+      recommended_action: '失敗時のページ状態を確認し、より具体的なアサーションまたは診断アーティファクトを追加してください。',
       is_false_positive: true,
       is_false_negative: false,
     };

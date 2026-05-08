@@ -36,6 +36,15 @@ Jenkins の `results/*.csv` は追記型なので、記事用・ダッシュボ�
 npx tsx pipeline/artifacts/normalize-run.ts --artifacts-dir=build-artifacts/1st --from-run=pipeline-5 --to-run=pipeline-1
 ```
 
+## AIトリアージ
+
+AIトリアージは OpenAI Responses API を使い、既定モデルは `gpt-5.4` です。Jenkins やローカル実行でモデルを明示的に固定したい場合は `OPENAI_MODEL` で上書きできます。
+
+```powershell
+$env:OPENAI_MODEL = 'gpt-5.4'
+npm run pipeline:triage
+```
+
 ## Local Jenkins
 
 ```powershell
