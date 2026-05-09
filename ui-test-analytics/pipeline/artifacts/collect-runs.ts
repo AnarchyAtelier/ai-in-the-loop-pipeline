@@ -66,7 +66,7 @@ async function main() {
     await rm(targetDir, { recursive: true, force: true });
     await mkdir(targetDir, { recursive: true });
     await cp(sourceRun.resultsDir, targetDir, { recursive: true });
-    await normalizeRunIds(targetDir, [sourceRun.sourceRunId, sourceRun.detectedRunId], normalizedRunId);
+    await normalizeRunArtifacts(targetDir, sourceRun.sourceRunId, sourceRun.detectedRunId, normalizedRunId);
 
     runMap.push({
       artifact_dir: artifactDir,
@@ -235,7 +235,7 @@ async function listSourceRuns(sourceRoot: string, options: CliOptions): Promise<
       continue;
     }
 
-    if (!(await isCompleteRun(resultsDir))) {
+    if (!(await isCompleteRun(resultsDir, entry.name))) {
       continue;
     }
 
@@ -254,7 +254,7 @@ async function listSourceRuns(sourceRoot: string, options: CliOptions): Promise<
   return sourceRuns.sort(compareSourceRuns);
 }
 
-async function isCompleteRun(resultsDir: string): Promise<boolean> {
+async function isCompleteRun(resultsDir: string, sourceRunId: string): Promise<boolean> {
   const requiredFiles = [
     'test-results.csv',
     'diff-results.csv',
@@ -269,7 +269,26 @@ async function isCompleteRun(resultsDir: string): Promise<boolean> {
     }
   }
 
+  for (const fileName of ['test-results.csv', 'eval-results.csv']) {
+    if (!(await csvHasRowsForRun(path.join(resultsDir, fileName), sourceRunId))) {
+      return false;
+    }
+  }
+
   return true;
+}
+
+async function csvHasRowsForRun(filePath: string, runId: string): Promise<boolean> {
+  const rows = parseCsv(await readFile(filePath, 'utf8'));
+  const [header, ...dataRows] = rows;
+  const runIdIndex = header?.indexOf('run_id') ?? -1;
+  const nonEmptyRows = dataRows.filter((row) => row.some((value) => value.trim() !== ''));
+
+  if (runIdIndex === -1) {
+    return nonEmptyRows.length > 0;
+  }
+
+  return nonEmptyRows.some((row) => row[runIdIndex] === runId);
 }
 
 function compareSourceRuns(left: SourceRun, right: SourceRun): number {
@@ -325,7 +344,10 @@ async function inferCsvRunId(filePath: string): Promise<string | undefined> {
     return undefined;
   }
 
-  return dataRows.find((row) => row[runIdIndex])?.[runIdIndex];
+  return dataRows
+    .slice()
+    .reverse()
+    .find((row) => row[runIdIndex])?.[runIdIndex];
 }
 
 async function inferJsonRunId(filePath: string): Promise<string | undefined> {
@@ -373,10 +395,66 @@ function findRunId(value: unknown): string | undefined {
   return undefined;
 }
 
-async function normalizeRunIds(targetDir: string, sourceRunIds: Array<string | undefined>, normalizedRunId: string) {
+async function normalizeRunArtifacts(
+  targetDir: string,
+  sourceRunId: string,
+  detectedRunId: string | undefined,
+  normalizedRunId: string,
+) {
+  for (const fileName of CSV_FILES) {
+    await normalizeCsvFile(path.join(targetDir, fileName), sourceRunId, detectedRunId, normalizedRunId);
+  }
+
+  await normalizeJsonFiles(targetDir, [sourceRunId, detectedRunId], normalizedRunId);
+}
+
+async function normalizeCsvFile(
+  filePath: string,
+  sourceRunId: string,
+  detectedRunId: string | undefined,
+  normalizedRunId: string,
+) {
+  if (!(await fileExists(filePath))) {
+    return;
+  }
+
+  const rows = parseCsv(await readFile(filePath, 'utf8'));
+
+  if (rows.length === 0) {
+    return;
+  }
+
+  const [header, ...dataRows] = rows;
+  const runIdIndex = header.indexOf('run_id');
+
+  if (runIdIndex === -1) {
+    return;
+  }
+
+  const nonEmptyRows = dataRows.filter((row) => row.some((value) => value.trim() !== ''));
+  const preferredRunId = nonEmptyRows.some((row) => row[runIdIndex] === sourceRunId)
+    ? sourceRunId
+    : detectedRunId;
+
+  if (!preferredRunId) {
+    return;
+  }
+
+  const normalizedRows = nonEmptyRows
+    .filter((row) => row[runIdIndex] === preferredRunId)
+    .map((row) => row.map((value, index) => replaceRunIds(
+      index === runIdIndex ? normalizedRunId : value,
+      [preferredRunId, sourceRunId, detectedRunId],
+      normalizedRunId,
+    )));
+
+  await writeFile(filePath, `${[header, ...normalizedRows].map(toCsvLine).join('\n')}\n`, 'utf8');
+}
+
+async function normalizeJsonFiles(targetDir: string, sourceRunIds: Array<string | undefined>, normalizedRunId: string) {
   const uniqueSourceRunIds = Array.from(new Set(sourceRunIds.filter((value): value is string => Boolean(value))));
 
-  for (const fileName of [...CSV_FILES, ...JSON_FILES]) {
+  for (const fileName of JSON_FILES) {
     const filePath = path.join(targetDir, fileName);
 
     if (!(await fileExists(filePath))) {
@@ -391,6 +469,17 @@ async function normalizeRunIds(targetDir: string, sourceRunIds: Array<string | u
 
     await writeFile(filePath, content, 'utf8');
   }
+}
+
+function replaceRunIds(value: string, sourceRunIds: Array<string | undefined>, normalizedRunId: string): string {
+  let replaced = value;
+  const uniqueSourceRunIds = Array.from(new Set(sourceRunIds.filter((item): item is string => Boolean(item))));
+
+  for (const sourceRunId of uniqueSourceRunIds) {
+    replaced = replaced.split(sourceRunId).join(normalizedRunId);
+  }
+
+  return replaced;
 }
 
 async function cleanOutputRoot(outputRoot: string) {
@@ -512,6 +601,18 @@ function parseCsv(content: string): string[][] {
   }
 
   return rows;
+}
+
+function toCsvLine(values: readonly string[]): string {
+  return values.map(escapeCsvValue).join(',');
+}
+
+function escapeCsvValue(value: string): string {
+  if (!/[",\r\n]/.test(value)) {
+    return value;
+  }
+
+  return `"${value.replace(/"/g, '""')}"`;
 }
 
 function isNodeError(error: unknown): error is NodeJS.ErrnoException {

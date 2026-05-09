@@ -1,3 +1,4 @@
+const SUMMARY_DATA_URL = './summary-data.js';
 const SUMMARY_URLS = ['../build-artifacts/summary.json', './summary.json', './build-artifacts/summary.json'];
 
 const GROUPS = [
@@ -62,6 +63,8 @@ const state = {
   runs: [],
   charts: {},
   selectedRunId: '',
+  generatedAt: '',
+  summarySource: '',
 };
 
 document.addEventListener('DOMContentLoaded', init);
@@ -71,8 +74,9 @@ async function init() {
     const summary = await loadSummary();
     state.runs = [...(summary.runs ?? [])].sort(compareRuns);
     state.selectedRunId = state.runs[0]?.run_id ?? '';
+    state.generatedAt = summary.generated_at ?? '';
     setupRunSelect();
-    setStatus(`生成 ${formatDate(summary.generated_at)}`);
+    updateStatus();
     renderAll();
   } catch (error) {
     setStatus('summary.json を読めません', true);
@@ -82,10 +86,22 @@ async function init() {
 
 async function loadSummary() {
   if (window.__UI_TEST_ANALYTICS_SUMMARY__) {
+    state.summarySource = 'summary-data.js';
     return window.__UI_TEST_ANALYTICS_SUMMARY__;
   }
 
   const errors = [];
+
+  try {
+    await loadSummaryDataScript();
+
+    if (window.__UI_TEST_ANALYTICS_SUMMARY__) {
+      state.summarySource = 'summary-data.js';
+      return window.__UI_TEST_ANALYTICS_SUMMARY__;
+    }
+  } catch (error) {
+    errors.push(error instanceof Error ? error.message : String(error));
+  }
 
   for (const url of SUMMARY_URLS) {
     try {
@@ -94,6 +110,7 @@ async function loadSummary() {
         throw new Error(`${url}: ${response.status} ${response.statusText}`);
       }
 
+      state.summarySource = url;
       return response.json();
     } catch (error) {
       errors.push(error instanceof Error ? error.message : String(error));
@@ -101,6 +118,16 @@ async function loadSummary() {
   }
 
   throw new Error(errors.join(' / '));
+}
+
+function loadSummaryDataScript() {
+  return new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = `${SUMMARY_DATA_URL}?v=${Date.now()}`;
+    script.onload = () => resolve(undefined);
+    script.onerror = () => reject(new Error(`${SUMMARY_DATA_URL}: load failed`));
+    document.head.append(script);
+  });
 }
 
 function setupRunSelect() {
@@ -117,6 +144,7 @@ function setupRunSelect() {
   select.value = state.selectedRunId;
   select.addEventListener('change', () => {
     state.selectedRunId = select.value;
+    updateStatus();
     renderAll();
   });
 }
@@ -855,6 +883,11 @@ function setStatus(text, isError = false) {
   const status = qs('#dataStatus');
   status.textContent = text;
   status.classList.toggle('error', isError);
+}
+
+function updateStatus() {
+  const source = state.summarySource ? ` / ${state.summarySource}` : '';
+  setStatus(`表示 ${state.selectedRunId} / 生成 ${formatDate(state.generatedAt)}${source}`);
 }
 
 function renderEmptyShell(error) {

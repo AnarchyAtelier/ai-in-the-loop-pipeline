@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-store">
     <title>UIテスト分析ダッシュボード</title>
     <link rel="icon" href="data:,">
     <link rel="stylesheet" href="./styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.9/dist/chart.umd.min.js" defer></script>
-    <script src="./summary-data.js" defer></script>
-    <script src="./charts.js" defer></script>
+    <script src="./charts.js?v=20260509-dynamic-data" defer></script>
   </head>
   <body>
     <header class="app-header">
@@ -148,6 +148,7 @@
             <p class="eyebrow">比較</p>
             <h2 id="comparisonTitle">1回目 vs 2回目</h2>
           </div>
+          <span class="inline-note">この比較ビューはドロップダウン非連動</span>
         </div>
 
         <div id="comparisonKpis" class="comparison-grid"></div>
